@@ -1,0 +1,247 @@
+# Webalizer V2.23-08 Incremental Data - 03/03/2022 00:02:02
+2022 3 3 0 2 2
+972 356 8 25 19 9 6590626 117 25 0
+1 12 200 1 3
+745 269 5301285 4 95 17
+215 87 1289341 4 22 8
+12 0 0 1 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+25 3 7811 1
+48 43 2118772 4
+16 16 1093392 3
+22 4 14823 1
+91 29 149069 9
+208 83 1617432 32
+19 3 12528 1
+0 0 0 0
+33 4 17726 3
+34 5 21737 3
+128 37 626882 13
+72 34 547008 7
+39 14 43336 6
+90 25 102637 11
+7 3 12264 2
+82 37 130878 13
+6 5 22681 4
+14 1 3484 0
+1 1 12186 0
+0 0 0 0
+17 3 12522 2
+0 0 0 0
+19 5 18686 1
+1 1 4772 1
+0
+0
+0
+356
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+492
+0
+0
+0
+0
+0
+1
+121
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+2
+0
+0
+0
+0
+0
+# -urls- 
+/img/logo/logo.png
+0 4 0 58120 0 0
+/acitivity.php
+0 7 0 24198 0 0
+/partners.php
+0 16 0 55749 0 0
+/img/logo/support.png
+0 56 0 826406 0 0
+/services/api/get_banner.js
+0 51 0 4867 0 0
+/single_news.php
+0 31 0 109362 0 0
+/single_activity.php
+0 8 0 30422 0 0
+/assets/css/fontawesome-free/webfonts/fa-solid-900.woff2
+0 31 0 547077 0 0
+/newsletter.php
+0 14 0 57479 0 0
+/assets/css/fontawesome-free/webfonts/fa-brands-400.woff2
+0 31 0 537453 0 0
+/services/api/map.js
+0 39 0 4475 0 0
+/img/logo/logo2.png
+0 33 0 234878 0 0
+/about.php
+0 11 0 45792 0 0
+/services/api/get_download.js
+0 78 0 6428 0 0
+/services/api/get_news.js
+0 70 0 8688 0 0
+/services/api/covid.js
+0 42 0 2692 0 0
+/assets/css/fontawesome-free/css/all.min.css
+0 36 0 99330 0 0
+/
+0 114 0 502965 25 20
+/assets/js/main.js
+0 42 0 28530 0 0
+/img/Banner/MUGH1.png
+0 4 0 607906 0 0
+/img/logo/asean.png
+0 33 0 1325032 0 0
+/contact.php
+0 8 0 33015 0 0
+/img/logo/Logo.png
+0 22 0 152969 0 0
+/img/Banner/MUGH2.png
+0 4 0 1139480 0 0
+/assets/css/style.css
+0 63 0 57800 0 0
+# End Of Table - urls
+# -sites- (monthly)
+202.28.154.180
+0 29 23 81292 1 1646149395
+/
+182.232.150.201
+0 12 0 0 0 0
+-
+66.249.71.152
+0 15 14 179370 1 1646184173
+/
+66.249.71.154
+0 9 8 390443 0 0
+-
+66.249.71.156
+0 2 2 12848 0 0
+-
+182.232.148.51
+0 809 248 4856363 19 1646239340
+/
+202.28.154.181
+0 95 60 1065538 3 1646148536
+/
+18.236.85.4
+0 1 1 4772 1 1646175786
+/
+# End Of Table - sites (monthly)
+# -sites- (daily)
+182.232.150.201
+0 12 0 0 0 0
+-
+# End Of Table - sites (daily)
+# -referrers- 
+https://aun-hpn.or.th/contact.php
+0 6
+http://aun-hpn.or.th/contact.php
+0 2
+http://aun-hpn.or.th/newsletter.php
+0 2
+https://aun-hpn.or.th/about.php
+0 15
+https://info-aun-hpn.com/
+0 4
+- (Direct Request)
+0 98
+https://aun-hpn.or.th/partners.php
+0 38
+http://aun-hpn.or.th/about.php
+0 10
+https://aun-hpn.or.th/acitivity.php
+0 6
+https://aun-hpn.or.th/+673 246 3062
+0 1
+http://aun-hpn.or.th/acitivity.php
+0 3
+https://aun-hpn.or.th/single_news.php
+0 87
+https://aun-hpn.or.th/
+0 564
+https://aun-hpn.or.th/newsletter.php
+0 17
+http://aun-hpn.or.th/assets/css/fontawesome-free/css/all.min.css
+0 2
+http://aun-hpn.or.th/
+0 16
+https://aun-hpn.or.th/assets/css/fontawesome-free/css/all.min.css
+0 60
+https://aun-hpn.or.th/single_activity.php
+0 32
+https://www.info-aun-hpn.com/
+0 9
+# End Of Table - referrers
+# -agents- 
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36
+0 334
+Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/98.0.47
+0 7
+Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+0 2
+Mozilla/4.0 (compatible;)
+0 2
+Googlebot-Image/1.0
+0 8
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.104 Safari/537.36
+0 45
+Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Mobile 
+0 9
+Mozilla/5.0 (Linux; Android 11; CPH1989) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.104 Mobile Safari/537.36
+0 564
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31
+0 1
+# End Of Table - agents
+# -search strings- 
+# End Of Table - search strings
+# -usernames- 
+# End Of Table - usernames
