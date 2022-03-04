@@ -107,3 +107,19 @@ function web_count_static($conn)
 
     return $counter;
 }
+
+
+function event_type($conn)
+{
+    $query = "SELECT * FROM tbl_events_type ORDER BY et_id ASC ";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    $statement->execute();
+    $result = $statement->fetchAll();
+    $output = '';
+    foreach ($result as $row) {
+        $output .= '<option value="' . $row["et_id"] . '" required >' . $row["et_name"] . '</option>';
+    }
+    return $output;
+}

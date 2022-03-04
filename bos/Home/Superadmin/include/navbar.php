@@ -57,12 +57,25 @@
         </div>
     </li>
 
-    <li class="nav-item " disable>
-        <a class="nav-link collapsed" href="#" aria-controls="collapseTwo">
+
+    <li class="nav-item active">
+        <a class="nav-link collapsed" href="./activity.php" data-toggle="collapse" data-target="#activity"
+            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-calendar-day"></i>
             <span>จัดการกิจกรรม</span>
         </a>
+        <div id="activity" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Activity management:</h6>
+                <a class="collapse-item" href="./activity.php">เพิ่ม-แก้ไข กิจกรรม</a>
+                <a class="collapse-item" href="./activity_table.php">จัดการระบบกิจกรรม</a>
+
+            </div>
+        </div>
     </li>
+
+
+
 
 
 

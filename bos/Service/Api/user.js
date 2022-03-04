@@ -14,7 +14,7 @@ $(function() { // เรียกใช้งาน datatable
                 `${data[i].name}`,
                 `${data[i].position}`,
                 `${data[i].status}`,
-                `<input class="toggle-event"  id="toggle-event-user" data-id="${data[i].id}" type="checkbox" name="status" 
+                `<input class="toggle-event"  id="toggle-event-user${data[i].id}" data-id="${data[i].id}" type="checkbox" name="status" 
                     ${data[i].toggle_status ? 'checked' : ''} data-toggle="toggle" data-on="เปิด" 
                             data-off="ปิด" data-onstyle="success" data-style="ios">`,
                 `<div class="btn-group" role="group">
@@ -247,11 +247,14 @@ $('#edit_userform').on('submit', function(e) { // เรียกใช้งา
     });
 });
 
-$(document).on('change', '#toggle-event-user', function() { // เรียกใช้งาน สถานะ datatable
+$(document).on('change', '.toggle-event', function(e) { // เรียกใช้งาน สถานะ datatable
+    console.log('e', 1)
+    console.log('e', e.target.id)
+
     let id = $(this).data("id");
     let status = '';
 
-    if ($("#toggle-event-user").prop('checked')) {
+    if ($("#" + e.target.id).prop('checked')) {
         status = '1';
     } else {
         status = '0';
@@ -276,61 +279,6 @@ $(document).on('change', '#toggle-event-user', function() { // เรียก�
         });
     }
 });
-
-
-$("#n_image").change((e) => { // เรียกใช้งาน UPLOADFILE (สำคัญ)
-    var form_data = new FormData();
-    var ins = document.getElementById(e.target.id).files.length;
-    for (var x = 0; x < ins; x++) {
-        form_data.append("files[]", document.getElementById(e.target.id).files[x]);
-    }
-    $.ajax({
-        // url: './api/uploadfile.php', // point to server-side PHP script 
-        url: '../../Service/News/uploadfile.php', // point to server-side PHP script
-        dataType: 'text', // what to expect back from the PHP script
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_data,
-        type: 'post',
-        success: function(response) {
-
-            $("#n_imgname").val(response)
-        },
-        error: function(err) {
-            console.log('bad', err)
-        }
-    });
-})
-
-
-$("#e_image").change((e) => { // เรียกใช้งาน UPLOADFILE แก้ไข (สำคัญ)
-
-    var form_data = new FormData();
-    var ins = document.getElementById(e.target.id).files.length;
-    for (var x = 0; x < ins; x++) {
-        form_data.append("files[]", document.getElementById(e.target.id).files[x]);
-    }
-    $.ajax({
-        // url: './api/uploadfile.php', // point to server-side PHP script 
-        url: "../../Service/News/uploadfile.php", // point to server-side PHP script
-        dataType: 'text', // what to expect back from the PHP script
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_data,
-        type: 'post',
-        success: function(response) {
-            console.log('good', response)
-            $("#e_imgname").val(response)
-        },
-        error: function(err) {
-            console.log('bad', err)
-        }
-    });
-})
-
-
 
 
 

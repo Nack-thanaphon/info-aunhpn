@@ -5,9 +5,8 @@ include "../../../bos/Function/function.php"
 
 <body class="hold-transition sidebar-mini">
     <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-12 col-md-9">
+        <div class="row mx-auto ">
+            <div class="col-12 col-md-8 p-0 m-0">
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header  border-left-primary text-primary ">
@@ -34,8 +33,8 @@ include "../../../bos/Function/function.php"
 
                 </div>
             </div>
-            <div class="col-12 col-md-3 d-flex justify-content-between">
-                <div class="row">
+            <div class="col-12 col-md-4 p-0 m-0 d-none d-sm-block d-flex justify-content-between">
+                <div class="row mx-auto">
                     <div class="col-12  p-0 m-0">
                         <div class="card">
                             <div class="card-header border-left-primary ">

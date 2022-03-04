@@ -44,12 +44,16 @@
 <script src="./assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <script src="../../Service/Api/news.js"></script>
+<script src="../../Service/Api/activity.js"></script>
 <script src="../../Service/Api/user.js"></script>
 <script src="../../Service/Api/banner.js"></script>
 <script src="../../Service/Api/file.js"></script>
 <script src="../../Service/Api/file_type.js"></script>
 <script src="../../Service/Api/file_group.js"></script>
 
+
+<script src="../../Plugins/fullcalendar/lib/moment.min.js"></script>
+<script src="../../Plugins/fullcalendar/fullcalendar.min.js"></script>
 
 <!-- Page level plugins -->
 <script src="./assets/vendor/datatables/jquery.dataTables.min.js"></script>

@@ -27,7 +27,12 @@
     <link rel="stylesheet" href="../../Plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../../Plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- toast/Sweetalert -->
-    <link rel="stylesheet" href="../../Plugins/toastr/toastr.min.css">
+
+
+
+    <link rel="stylesheet" href="../../Plugins/fullcalendar/fullcalendar.min.css" />
+    <script src="../../Plugins/fullcalendar/lib/jquery.min.js"></script>
+
     <!-- Google -->
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"

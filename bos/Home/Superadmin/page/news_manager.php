@@ -104,7 +104,8 @@ include "../../../bos/Function/function.php"
                                             <h4>รูปปกข่าว</h4>
                                         </label>
                                         <div class="custom-file" onchange="preview_image(banner)">
-                                            <input type="file" class="custom-file-input" name="n_image" id="n_image">
+                                            <input type="file" class="custom-file-input n_image" name="n_image"
+                                                id="n_image">
                                             <input id="n_imgname" type="hidden" name="n_imgname">
                                             <label class="custom-file-label" for="n_image">เลือกรูปภาพ</label>
 

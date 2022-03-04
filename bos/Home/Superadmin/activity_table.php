@@ -28,7 +28,7 @@ if (empty($_SESSION['user'])) {
                     </ul>
 
                 </nav>
-                <?php include "./page/activity_manager.php" ?>
+                <?php include "./page/activity_table_manager.php" ?>
             </div>
         </div>
     </div>
