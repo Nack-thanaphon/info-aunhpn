@@ -15,12 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
     while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
+
         $status = '';
         if ($row["n_status"] == '1') {
             $status = true;
         } else {
             $status = false;
         }
+
+
 
         $data_items = array(
             "id" => $n_id,
@@ -29,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             "url" => $url,
             "slug" => $slug,
             "image" => $n_image,
-            "status" => $status,
+            "n_status" => $status,
         );
         array_push($response['result'], $data_items);
     }

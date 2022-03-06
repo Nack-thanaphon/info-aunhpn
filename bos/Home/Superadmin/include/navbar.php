@@ -94,7 +94,7 @@
             <span>คลังภาพ</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="./newsletter.php">
             <i class="fas fa-envelope-open-text"></i>
             <span>Newsletter</span></a>
     </li>

@@ -14,7 +14,7 @@ $(function() { // เรียกใช้งาน datatable
                 `${data[i].name}`,
                 `${data[i].type}`,
                 `<input class="toggle-event"  id="toggle-event" data-id="${data[i].id}" type="checkbox" name="status" 
-                    ${data[i].status ? 'checked' : ''} data-toggle="toggle" data-on="เผยแพร่" 
+                    ${data[i].n_status ? 'checked' : ''} data-toggle="toggle" data-on="เผยแพร่" 
                             data-off="ปิด" data-onstyle="success" data-style="ios">`,
                 `<div class="btn-group" role="group">
                         <button " type="button" class="btn btn-warning edit_data" data-toggle="modal" data-id="${data[i].id}"  >
@@ -217,35 +217,6 @@ $('#eformData').on('submit', function(e) { // เรียกใช้งาน 
 
 })
 
-
-$(document).on('change', '#toggle-event', function() { // เรียกใช้งาน สถานะ datatable
-    let id = $(this).data("id");
-    let status = '';
-    if ($("#toggle-event").prop('checked')) {
-        status = '1';
-    } else {
-        status = '0';
-    } {
-        Swal.fire({
-            text: 'อัพเดตข้อมูลเรียบร้อย',
-            icon: 'success',
-            confirmButtonText: 'ตกลง',
-        }).then((result) => {
-            $.ajax({
-                url: "../../Service/News/status.php",
-                method: "POST",
-                data: {
-                    id: id,
-                    status: status
-                },
-                dataType: "json",
-                success: function(data) {
-                    console.log(data);
-                }
-            })
-        });
-    }
-});
 
 
 

@@ -242,3 +242,36 @@ include "../../../bos/Function/function.php"
 
     <?php include "./include/footer.php"; ?>
 </body>
+
+<script>
+$(document).on('change', '#toggle-event', function() { // เรียกใช้งาน สถานะ datatable
+    let id = $(this).data("id");
+    let status = '';
+    if ($("#toggle-event").prop('checked')) {
+        status = '1';
+    } else {
+        status = '0';
+    } {
+        Swal.fire({
+            text: 'อัพเดตข้อมูลเรียบร้อย',
+            icon: 'success',
+            confirmButtonText: 'ตกลง',
+        }).then((result) => {
+            $.ajax({
+                url: "../../Service/News/status.php",
+                method: "POST",
+                data: {
+                    id: id,
+                    status: status
+                },
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    location.reload();
+
+                }
+            })
+        });
+    }
+});
+</script>

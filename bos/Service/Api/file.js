@@ -184,35 +184,35 @@ $(document).on('click', '.edit_file_upload', function() { // เรียกใ�
 });
 
 
-$(document).on('change', '#toggle-event-file', function() { // เรียกใช้งาน สถานะ datatable
-    let id = $(this).data("id");
-    let f_status = '';
-    if ($("#toggle-event-file").prop('checked')) {
-        f_status = '1';
-    } else {
-        f_status = '0';
-    } {
-        $.ajax({
-                url: "../../Service/File/status.php",
-                method: "POST",
-                data: {
-                    id: id,
-                    status: f_status
-                },
-                dataType: "json",
-                success: function(data) {
-                    console.log(data);
-                }
-            })
-            .then((result) => {
-                Swal.fire({
-                    text: 'อัพเดตข้อมูลเรียบร้อย',
-                    icon: 'success',
-                    confirmButtonText: 'ตกลง',
-                })
-            });
-    }
-});
+// $(document).on('change', '#toggle-event-file', function() { // เรียกใช้งาน สถานะ datatable
+//     let id = $(this).data("id");
+//     let f_status = '';
+//     if ($("#toggle-event-file").prop('checked')) {
+//         f_status = '1';
+//     } else {
+//         f_status = '0';
+//     } {
+//         $.ajax({
+//                 url: "../../Service/File/status.php",
+//                 method: "POST",
+//                 data: {
+//                     id: id,
+//                     status: f_status
+//                 },
+//                 dataType: "json",
+//                 success: function(data) {
+//                     console.log(data);
+//                 }
+//             })
+//             .then((result) => {
+//                 Swal.fire({
+//                     text: 'อัพเดตข้อมูลเรียบร้อย',
+//                     icon: 'success',
+//                     confirmButtonText: 'ตกลง',
+//                 })
+//             });
+//     }
+// });
 
 $('#efileupload').on('submit', function(e) { // เรียกใช้งาน [บันทึกข้อมูลแก้ไข] (สำคัญ)
     e.preventDefault();

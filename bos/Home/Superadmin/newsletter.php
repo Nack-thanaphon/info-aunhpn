@@ -28,10 +28,11 @@ if (empty($_SESSION['user'])) {
                     </ul>
 
                 </nav>
-
+                <?php include "./page/newsletter_manager.php" ?>
             </div>
         </div>
     </div>
 
+    <?php include "./include/footer.php"; ?>
 
 </body>

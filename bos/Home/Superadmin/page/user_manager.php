@@ -24,7 +24,7 @@ include "../../../bos/Function/function.php"
                                         </div>
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
                                             <button type="button" name="add" id="add_button" data-toggle="modal"
-                                                data-target="#crete_user"
+                                                data-target="#c_user"
                                                 class="btn btn-success btn-xs">เพิ่มข้อมูลผู้ใช้งาน
                                             </button>
                                         </div>
@@ -51,7 +51,7 @@ include "../../../bos/Function/function.php"
 
     <!-- edit -->
 
-    <div id="crete_user" class="modal fade">
+    <div id="c_user" class="modal fade">
         <div class="modal-dialog">
             <form method="post" id="crete_user">
                 <div class="modal-content">
@@ -220,3 +220,36 @@ include "../../../bos/Function/function.php"
 
     <?php include "./include/footer.php"; ?>
 </body>
+
+<script>
+$(document).on('change', '#toggle-event', function() { // เรียกใช้งาน สถานะ datatable
+    let id = $(this).data("id");
+    let status = '';
+    if ($("#toggle-event").prop('checked')) {
+        status = '1';
+    } else {
+        status = '0';
+    } {
+        Swal.fire({
+            text: 'อัพเดตข้อมูลเรียบร้อย',
+            icon: 'success',
+            confirmButtonText: 'ตกลง',
+        }).then((result) => {
+            $.ajax({
+                url: "../../Service/User/status.php",
+                method: "POST",
+                data: {
+                    id: id,
+                    status: status
+                },
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    location.reload();
+
+                }
+            })
+        });
+    }
+});
+</script>

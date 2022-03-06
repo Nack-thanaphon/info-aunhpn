@@ -241,36 +241,36 @@ $('#eadbanner').on('submit', function(e) { // เรียกใช้งาน 
 
 
 
-$(document).on('change', '#toggle-event-banner', function() { // เรียกใช้งาน สถานะ datatable
-    let id = $(this).data("id");
-    let status = '';
-    if ($("#toggle-event-banner").prop('checked')) {
-        status = '1';
-    } else {
-        status = '0';
-    }
+// $(document).on('change', '#toggle-event-banner', function() { // เรียกใช้งาน สถานะ datatable
+//     let id = $(this).data("id");
+//     let status = '';
+//     if ($("#toggle-event-banner").prop('checked')) {
+//         status = '1';
+//     } else {
+//         status = '0';
+//     }
 
-    $.ajax({
-        url: "../../Service/Banner/status.php",
-        method: "POST",
-        data: {
-            id: id,
-            status: status
-        },
-        dataType: "json",
-        success: function(data) {
-            Swal.fire({
-                text: 'อัพเดตข้อมูลเรียบร้อย',
-                icon: 'success',
-                confirmButtonText: 'ตกลง',
+//     $.ajax({
+//         url: "../../Service/Banner/status.php",
+//         method: "POST",
+//         data: {
+//             id: id,
+//             status: status
+//         },
+//         dataType: "json",
+//         success: function(data) {
+//             Swal.fire({
+//                 text: 'อัพเดตข้อมูลเรียบร้อย',
+//                 icon: 'success',
+//                 confirmButtonText: 'ตกลง',
 
-            });
+//             });
 
-        }
+//         }
 
 
-    });
-});
+//     });
+// });
 
 
 
