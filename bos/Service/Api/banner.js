@@ -13,9 +13,9 @@ $(function() { // เรียกใช้งาน datatable
                 `<img src="../../uploads/banner/${data[i].image}" class="img-fluid" width="100px">`,
                 `${data[i].name}`,
                 `${data[i].date}`,
-                `<input class="toggle-event"  id="toggle-event-banner" data-id="${data[i].id}" type="checkbox" name="status" 
-                    ${data[i].status ? 'checked' : ''} data-toggle="toggle" data-on="เผยแพร่" 
-                            data-off="ปิด" data-onstyle="success" data-style="ios">`,
+                `<input class="toggle-event"  id="toggle_banner${data[i].id}" data-id="${data[i].id}" type="checkbox" name="status" 
+                ${data[i].b_status ? 'checked' : ''} data-toggle="toggle" data-on="เปิด" 
+                        data-off="ปิด" data-onstyle="success" data-style="ios">`,
                 `<div class="btn-group" role="group">
                         <button " type="button" class="btn btn-warning edit_data" data-toggle="modal" data-id="${data[i].id}"  >
                             <i class="far fa-edit"></i> แก้ไข
@@ -39,7 +39,7 @@ $(function() { // เรียกใช้งาน datatable
     })
 
     function initDataTables(tableData) { // สร้าง datatable
-        $('#banner_tb').DataTable({
+        $('#banner_a').DataTable({
             data: tableData,
             columns: [{
                     title: "ลำดับ",
@@ -238,39 +238,6 @@ $('#eadbanner').on('submit', function(e) { // เรียกใช้งาน 
     })
 
 });
-
-
-
-// $(document).on('change', '#toggle-event-banner', function() { // เรียกใช้งาน สถานะ datatable
-//     let id = $(this).data("id");
-//     let status = '';
-//     if ($("#toggle-event-banner").prop('checked')) {
-//         status = '1';
-//     } else {
-//         status = '0';
-//     }
-
-//     $.ajax({
-//         url: "../../Service/Banner/status.php",
-//         method: "POST",
-//         data: {
-//             id: id,
-//             status: status
-//         },
-//         dataType: "json",
-//         success: function(data) {
-//             Swal.fire({
-//                 text: 'อัพเดตข้อมูลเรียบร้อย',
-//                 icon: 'success',
-//                 confirmButtonText: 'ตกลง',
-
-//             });
-
-//         }
-
-
-//     });
-// });
 
 
 

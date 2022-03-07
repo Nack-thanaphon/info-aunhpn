@@ -45,7 +45,7 @@ $(function() { // เรียกใช้งาน datatable
                 },
 
                 {
-                    title: "ประเภทเอกสาร",
+                    title: "ชนิดเอกสาร",
                     className: "align-middle",
                     width: "70%"
                 },

@@ -14,9 +14,9 @@ $(function() { // เรียกใช้งาน datatable
                 `${data[i].name}`,
                 `${data[i].position}`,
                 `${data[i].status}`,
-                `<input class="toggle-event"  id="toggle-event-user${data[i].id}" data-id="${data[i].id}" type="checkbox" name="status" 
-                    ${data[i].toggle_status ? 'checked' : ''} data-toggle="toggle" data-on="เปิด" 
-                            data-off="ปิด" data-onstyle="success" data-style="ios">`,
+                `<input class="toggle-event"  id="toggle_user${data[i].id}" data-id="${data[i].id}" type="checkbox" name="status" 
+                ${data[i].u_status ? 'checked' : ''} data-toggle="toggle" data-on="เปิด" 
+                        data-off="ปิด" data-onstyle="success" data-style="ios">`,
                 `<div class="btn-group" role="group">
                         <button " type="button" class="btn btn-warning " id="edit-user" data-toggle="modal" data-id="${data[i].id}"  >
                             <i class="far fa-edit"></i> แก้ไข

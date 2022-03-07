@@ -6,7 +6,7 @@ include "../../database/connect.php";
 
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $id = $_POST['id'];
     $status = $_POST['status'];
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
 
     http_response_code(200);
-    echo json_encode('success');
+    echo json_encode($stmt);
 } else {
     http_response_code(405);
 }

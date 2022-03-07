@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             "name" => $f_name,
             "group" => '<span class="badge badge-info">' . $g_name . '</span>',
             "type" => $t_name,
-            "status" => $status,
+            "s_status" => $status,
         );
         array_push($response['result'], $data_items);
     }

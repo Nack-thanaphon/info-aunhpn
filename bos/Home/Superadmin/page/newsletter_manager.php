@@ -25,7 +25,7 @@ include "../../../bos/Function/function.php"
                         </div>
                         <div class="col-12">
                             <div class="card-body">
-                                <table id="banner_tb" class="table table-hover" width="100%">
+                                <table id="newsletter_tb" class="table table-hover" width="100%">
                                 </table>
                             </div>
                         </div>

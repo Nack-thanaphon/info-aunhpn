@@ -11,9 +11,7 @@ $(function() { // เรียกใช้งาน datatable
             tableData.push([
                 `<a href="https://www.mugh.or.th/single_news.php?id=${data[i].id}" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
                 `${data[i].name}`,
-                `<input class="toggle-event"  id="toggle-event-file-group" data-id="${data[i].id}" type="checkbox" name="status" 
-                    ${data[i].status ? 'checked' : ''} data-toggle="toggle" data-on="เผยแพร่" 
-                            data-off="ปิด" data-onstyle="success" data-style="ios">`,
+
                 `<div class="btn-group" role="group">
                         <button " type="button" class="btn btn-warning edit_file_group" data-toggle="modal" data-id="${data[i].id}"  >
                             <i class="far fa-edit"></i> แก้ไข
@@ -41,24 +39,20 @@ $(function() { // เรียกใช้งาน datatable
             data: tableData,
             columns: [{
                     title: "ลำดับที่",
-                    className: "align-middle"
+                    className: "align-middle",
+                    width: "10%"
                 },
 
                 {
                     title: "ประเภทเอกสาร",
                     className: "align-middle",
-                    width: "50%"
+                    width: "70%"
                 },
 
-
-
-                {
-                    title: "สถานะ",
-                    className: "align-middle"
-                },
                 {
                     title: "จัดการ",
-                    className: "align-middle"
+                    className: "align-middle",
+                    width: "20%"
                 }
             ],
             initComplete: function() { // เรียกใช้งาน ลบข้อมูล datatable

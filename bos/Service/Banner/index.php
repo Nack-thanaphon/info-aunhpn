@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             "link" => $b_link,
             "date" => $udate,
             "image" => $b_image,
-            "status" => $status,
+            "b_status" => $status,
         );
         array_push($response['result'], $data_items);
     }

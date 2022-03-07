@@ -215,17 +215,19 @@ include "../../../bos/Function/function.php"
 
         </div>
     </div>
-
-
-
     <?php include "./include/footer.php"; ?>
 </body>
 
+
 <script>
-$(document).on('change', '#toggle-event', function() { // เรียกใช้งาน สถานะ datatable
+$(document).on('change', '.toggle-event', function(e) { // เรียกใช้งาน สถานะ datatable
+    console.log('e', 1)
+    console.log('e', e.target.id)
+
     let id = $(this).data("id");
     let status = '';
-    if ($("#toggle-event").prop('checked')) {
+
+    if ($("#" + e.target.id).prop('checked')) {
         status = '1';
     } else {
         status = '0';
@@ -244,9 +246,7 @@ $(document).on('change', '#toggle-event', function() { // เรียกใช�
                 },
                 dataType: "json",
                 success: function(data) {
-                    console.log(data);
                     location.reload();
-
                 }
             })
         });

@@ -23,11 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         }
 
 
-        $toggle_status = '';
+        $u_status = '';
         if ($row["user_status"] == '1') {
-            $toggle_status = true;
+            $u_status = true;
         } else {
-            $toggle_status = false;
+            $u_status = false;
         }
 
         $data_items = array(
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             "email" => $user_email,
             "position" => $user_role,
             "status" => $status,
-            "toggle_status" => $toggle_status,
+            "u_status" => $u_status,
         );
         array_push($response['result'], $data_items);
     }

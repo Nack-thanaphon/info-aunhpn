@@ -13,9 +13,9 @@ $(function() { // เรียกใช้งาน datatable
                 `<img src="../../${data[i].image}" class="img-fluid" width="100px">`,
                 `${data[i].name}`,
                 `${data[i].type}`,
-                `<input class="toggle-event"  id="toggle-event" data-id="${data[i].id}" type="checkbox" name="status" 
-                    ${data[i].n_status ? 'checked' : ''} data-toggle="toggle" data-on="เผยแพร่" 
-                            data-off="ปิด" data-onstyle="success" data-style="ios">`,
+                `<input class="toggle-event"  id="toggle_news${data[i].id}" data-id="${data[i].id}" type="checkbox" name="status" 
+                ${data[i].n_status ? 'checked' : ''} data-toggle="toggle" data-on="เปิด" 
+                        data-off="ปิด" data-onstyle="success" data-style="ios">`,
                 `<div class="btn-group" role="group">
                         <button " type="button" class="btn btn-warning edit_data" data-toggle="modal" data-id="${data[i].id}"  >
                             <i class="far fa-edit"></i> แก้ไข

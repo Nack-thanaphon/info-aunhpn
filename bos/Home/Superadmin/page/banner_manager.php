@@ -25,7 +25,7 @@ include "../../../bos/Function/function.php"
                         </div>
                         <div class="col-12">
                             <div class="card-body">
-                                <table id="banner_tb" class="table table-hover" width="100%">
+                                <table id="banner_a" class="table table-hover" width="100%">
                                 </table>
                             </div>
                         </div>
@@ -295,7 +295,42 @@ include "../../../bos/Function/function.php"
             </div>
         </div>
     </div>
-
+    <?php include "./include/footer.php"; ?>
 
 
 </body>
+
+<script>
+$(document).on('change', '.toggle-event', function(e) { // เรียกใช้งาน สถานะ datatable
+    console.log('e', 1)
+    console.log('e', e.target.id)
+
+    let id = $(this).data("id");
+    let status = '';
+
+    if ($("#" + e.target.id).prop('checked')) {
+        status = '1';
+    } else {
+        status = '0';
+    } {
+        Swal.fire({
+            text: 'อัพเดตข้อมูลเรียบร้อย',
+            icon: 'success',
+            confirmButtonText: 'ตกลง',
+        }).then((result) => {
+            $.ajax({
+                url: "../../Service/Banner/status.php",
+                method: "POST",
+                data: {
+                    id: id,
+                    status: status
+                },
+                dataType: "json",
+                success: function(data) {
+                    location.reload();
+                }
+            })
+        });
+    }
+});
+</script>

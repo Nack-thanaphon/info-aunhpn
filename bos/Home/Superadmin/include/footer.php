@@ -37,20 +37,13 @@
 
 
 <!-- Bootstrap core JavaScript-->
+
+
 <script src="./assets/vendor/jquery/jquery.min.js"></script>
 <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="./assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<script src="../../Service/Api/news.js"></script>
-<script src="../../Service/Api/activity.js"></script>
-<script src="../../Service/Api/user.js"></script>
-<script src="../../Service/Api/banner.js"></script>
-<script src="../../Service/Api/file.js"></script>
-<script src="../../Service/Api/file_type.js"></script>
-<script src="../../Service/Api/file_group.js"></script>
-
 
 <script src="../../Plugins/fullcalendar/lib/moment.min.js"></script>
 <script src="../../Plugins/fullcalendar/fullcalendar.min.js"></script>
@@ -79,3 +72,10 @@
 <script src="./assets/js/main.js"></script>
 <script src="./assets/js/demo/chart-area-demo.js"></script>
 <script src="./assets/js/demo/chart-pie-demo.js"></script>
+<script src="../../Service/Api/news.js"></script>
+<script src="../../Service/Api/activity.js"></script>
+<script src="../../Service/Api/user.js"></script>
+<script src="../../Service/Api/banner.js"></script>
+<script src="../../Service/Api/file.js"></script>
+<script src="../../Service/Api/file_type.js"></script>
+<script src="../../Service/Api/file_group.js"></script>
