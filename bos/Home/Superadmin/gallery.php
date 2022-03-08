@@ -28,10 +28,12 @@ if (empty($_SESSION['user'])) {
                     </ul>
 
                 </nav>
-                <?php include "./page/gallary_manager.php" ?>
+                <?php include "../../Service/Gallery/gallery_manager.php" ?>
+
             </div>
         </div>
     </div>
+    <?php include "./include/footer.php"; ?>
 
 
 </body>

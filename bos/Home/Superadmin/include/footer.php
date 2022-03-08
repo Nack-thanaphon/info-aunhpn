@@ -75,6 +75,7 @@
 <script src="../../Service/Api/news.js"></script>
 <script src="../../Service/Api/activity.js"></script>
 <script src="../../Service/Api/user.js"></script>
+<script src="../../Service/Api/gallery.js"></script>
 <script src="../../Service/Api/banner.js"></script>
 <script src="../../Service/Api/file.js"></script>
 <script src="../../Service/Api/file_type.js"></script>
