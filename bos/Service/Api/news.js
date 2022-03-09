@@ -236,9 +236,9 @@ $("#n_image").change((e) => { // เรียกใช้งาน UPLOADFILE (�
     console.log(1)
     var form_data = new FormData();
     var ins = document.getElementById(e.target.id).files.length;
-    // for (var x = 0; x < ins; x++) {
-    //     form_data.append("files[]", document.getElementById(e.target.id).files[x]);
-    // }
+    for (var x = 0; x < ins; x++) {
+        form_data.append("files[]", document.getElementById(e.target.id).files[x]);
+    }
     form_data.append("files[]", document.getElementById(e.target.id).files[0]);
     console.log('fromdata', form_data)
     $.ajax({

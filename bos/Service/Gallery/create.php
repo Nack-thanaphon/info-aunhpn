@@ -1,5 +1,11 @@
 <?php
 
+header('Content-Type: application/json');
+header('Access-Control-Allow-Credentials: true');
+
+include "../../database/connect.php";
+
+
 function format_folder_size($size)
 {
     if ($size >= 1073741824) {
@@ -40,38 +46,99 @@ function get_folder_size($folder_name)
 
 
 if (isset($_POST["action"])) {
-    $response = array();
-    $response['result'] = array();
 
     if ($_POST["action"] == "fetch") {
-        $folder = array_filter(glob('*'), 'is_dir');
-        $output = '';
-        if (count($folder) > 0) {
-            foreach ($folder as $name) {
+        $response = array();
+        $response['result'] = array();
 
-                $data_items = array(
-                    "name" => $name,
-                    "total" => (count(scandir($name)) - 2),
-                    "size" => get_folder_size($name),
-                );
-                array_push($response['result'], $data_items);
+        $select_stmt = $conn->prepare("SELECT * FROM tbl_gallery ");
+        $select_stmt->execute();
+
+
+        while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
+            extract($row);
+
+            $g_name = $row['g_name'];
+            $folder = array_filter(glob($g_name), 'is_dir');
+
+            if (count($folder) > 0) {
+                foreach ($folder as $name) {
+                    $total = (count(scandir($name)) - 2);
+                    $size = get_folder_size($name);
+                }
             }
-        } else {
+
+            $data_items = array(
+                "id" => $g_id,
+                "name" => $g_name,
+                "total" => $total,
+                "size" => $size,
+            );
+            array_push($response['result'], $data_items);
         }
         echo json_encode($response);
+        http_response_code(200);
+    } else {
+        http_response_code(405);
     }
+
+
+    // }
+
+
+
+    // $response = array();
+    // $response['result'] = array();
+
+    // if ($_POST["action"] == "fetch") {
+    //     $folder = array_filter(glob('*'), 'is_dir');
+    //     $output = '';
+    //     $select_stmt = $conn->prepare("SELECT * FROM tbl_gallery ");
+    //     $select_stmt->execute();
+
+    //     if (count($folder) > 0) {
+    //         foreach ($folder as $name) {
+
+    //             $data_items = array(
+    //                 "name" => $name,
+    //                 "total" => (count(scandir($name)) - 2),
+    //                 "size" => get_folder_size($name),
+    //             );
+    //             array_push($response['result'], $data_items);
+    //         }
+    //     } else {
+    //     }
+
+
+    //     echo json_encode($response);
+    // }
 
 
 
 
     if ($_POST["action"] == "create") {
         if (!file_exists($_POST["folder_name"])) {
-            mkdir($_POST["folder_name"], 0777, true);
-            echo 'Folder Created';
+            mkdir($_POST["folder_name"], 0777, true); {
+                $statement = $conn->prepare("INSERT INTO tbl_gallery (g_name,g_detail) 
+                 VALUES (:g_name,:g_detail)");
+                $result = $statement->execute(
+                    array(
+                        ':g_name' => $_POST["folder_name"],
+                        ':g_detail' => $_POST["gd_name"],
+                    )
+                );
+                $response = [
+                    'status' => true,
+                    'message' => 'Create Success'
+                ];
+            }
+            http_response_code(201);
+            echo json_encode($response);
         } else {
             echo 'Folder Already Created';
         }
     }
+
 
 
 

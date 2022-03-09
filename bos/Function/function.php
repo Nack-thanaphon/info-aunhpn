@@ -66,10 +66,10 @@ function file_type($conn)
     $statement->execute();
     $result = $statement->fetchAll();
     $output = '';
-    foreach ($result as $row) {
+    foreach ($result as $i => $row) {
 
-        $output .= ' <input class="form-check-input"  type="radio" 
-        id="f_type" name="f_type" value="' . $row["t_id"] . '" required  checked="checked"> 
+        $output .= ' <input class="editcheckbox edit-ftype' . ($i + 1) . ' form-check-input"  type="radio" 
+        id="f_type' . $i + 1 . '" name="f_type" value="' . $row["t_id"] . '" required  > 
         <label class="form-check-label" for="f_group">' . $row["t_name"] . '</label>';
     }
     return $output;

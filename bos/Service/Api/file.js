@@ -169,6 +169,7 @@ $(document).on('click', '.edit_file_upload', function() { // เรียกใ�
         },
         dataType: "json",
         success: function(data) {
+            console.log('data >>> ', data)
             $('#ef_id').val(data[0].f_id);
             $('#ef_name').val(data[0].f_name);
             $('#ef_group').val(data[0].f_group);
@@ -179,6 +180,10 @@ $(document).on('click', '.edit_file_upload', function() { // เรียกใ�
             $('#ef_date').val(data[0].f_date);
             $('#ef_by').val(data[0].f_by);
             $('#eadfile_uploads').modal('show');
+
+            if (data[0].f_type == '1') $(".edit-ftype1").trigger('click')
+            else if (data[0].f_type == '2') $(".edit-ftype2").trigger('click')
+            else if (data[0].f_type == '3') $(".edit-ftype3").trigger('click')
         }
     });
 });

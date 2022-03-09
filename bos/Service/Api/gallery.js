@@ -9,19 +9,19 @@ $(function() { // เรียกใช้งาน datatable
         },
     }).done(function(data) {
 
+
         let tableData = []
         data = data.result;
         for (var i = 0; i < data.length; i++) {
             tableData.push([
-
+                `${data[i].id}`,
                 `${data[i].name}`,
                 `${data[i].total}`,
                 `${data[i].size}`,
-                `<button type="button" name="delete" data-name="${data[i].name}" class="delete btn btn-warning">update</button>`,
+                `<button type="button" name="update" data-name="${data[i].name}" class="update btn btn-warning">update</button>`,
                 `<button type="button" name="delete" data-name="${data[i].name}" class="delete btn btn-danger">Delete</button>`,
                 `<button type="button" name="upload" data-name="${data[i].name}" class="upload btn btn-info">Upload File</button>`,
                 `<button type="button" name="view_files" data-name="${data[i].name}" class="view_files btn btn-default">View Files</button>`,
-
             ]);
         };
 
@@ -39,8 +39,11 @@ $(function() { // เรียกใช้งาน datatable
     function initDataTables(tableData) { // สร้าง datatable
         $('#g_table').DataTable({
             data: tableData,
-            columns: [
+            columns: [{
+                    title: "ลำดับที่",
+                    className: "align-middle",
 
+                },
                 {
                     title: "ชื่ออัลบั้ม",
                     className: "align-middle",
@@ -141,20 +144,12 @@ $(function() { // เรียกใช้งาน datatable
 
 $(document).ready(function() {
 
-
-    $(document).on('click', '#create_folder', function() {
-        $('#action').val("create");
-        $('#folder_name').val('');
-        $('#folder_button').val('Create');
-        $('#folderModal').modal('show');
-        $('#old_name').val('');
-        $('#change_title').text("Create Folder");
-    });
-
-    $(document).on('click', '#folder_button', function() {
+    $(document).on('click', '#c_gallery', function() {
         var folder_name = $('#folder_name').val();
+        var g_detail = $('#d_gallary').val();
         var old_name = $('#old_name').val();
-        var action = $('#action').val();
+        var action = "create";
+
         if (folder_name != '') {
             $.ajax({
                 url: "../../Service/Gallery/create.php",
@@ -163,12 +158,13 @@ $(document).ready(function() {
                 method: "POST",
                 data: {
                     folder_name: folder_name,
+                    gd_name: g_detail,
+
                     old_name: old_name,
                     action: action
                 },
                 success: function(data) {
-                    $('#folderModal').modal('hide');
-                    load_folder_list();
+
                     alert(data);
                 }
             });
@@ -202,7 +198,7 @@ $(document).ready(function() {
                     action: action
                 },
                 success: function(data) {
-                    load_folder_list();
+                    // load_folder_list();
                     alert(data);
                 }
             });
@@ -266,7 +262,7 @@ $(document).ready(function() {
                 success: function(data) {
                     alert(data);
                     $('#filelistModal').modal('hide');
-                    load_folder_list();
+                    // load_folder_list();
                 }
             });
         }
@@ -295,3 +291,31 @@ $(document).ready(function() {
     });
 
 });
+
+$("#n_image").change((e) => { // เรียกใช้งาน UPLOADFILE (สำคัญ)
+    console.log(1)
+    var form_data = new FormData();
+    var ins = document.getElementById(e.target.id).files.length;
+    for (var x = 0; x < ins; x++) {
+        form_data.append("files[]", document.getElementById(e.target.id).files[x]);
+    }
+    form_data.append("files[]", document.getElementById(e.target.id).files[0]);
+    console.log('fromdata', form_data)
+    $.ajax({
+        // url: './api/uploadfile.php', // point to server-side PHP script 
+        url: '../../Service/News/uploadfile.php', // point to server-side PHP script
+        dataType: 'text', // what to expect back from the PHP script
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function(response) {
+            console.log('response', response)
+            $("#n_imgname").val(response)
+        },
+        error: function(err) {
+            console.log('bad', err)
+        }
+    });
+})
