@@ -36,6 +36,7 @@ function get_folder_size($folder_name)
         if ($file === '.' or $file === '..') {
             continue;
         } else {
+
             $path = $folder_name . '/' . $file;
             $total_size = $total_size + filesize($path);
         }
@@ -51,15 +52,15 @@ if (isset($_POST["action"])) {
         $response = array();
         $response['result'] = array();
 
-        $select_stmt = $conn->prepare("SELECT * FROM tbl_gallery ");
+        $select_stmt = $conn->prepare("SELECT * FROM tbl_gallery WHERE g_status = '1' ");
         $select_stmt->execute();
 
 
         while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
-
+            $gallery = "../../uploads/gallery/";
             $g_name = $row['g_name'];
-            $folder = array_filter(glob($g_name), 'is_dir');
+            $folder = array_filter(glob($gallery . $g_name), 'is_dir');
 
             if (count($folder) > 0) {
                 foreach ($folder as $name) {
@@ -83,44 +84,12 @@ if (isset($_POST["action"])) {
     }
 
 
-    // }
-
-
-
-    // $response = array();
-    // $response['result'] = array();
-
-    // if ($_POST["action"] == "fetch") {
-    //     $folder = array_filter(glob('*'), 'is_dir');
-    //     $output = '';
-    //     $select_stmt = $conn->prepare("SELECT * FROM tbl_gallery ");
-    //     $select_stmt->execute();
-
-    //     if (count($folder) > 0) {
-    //         foreach ($folder as $name) {
-
-    //             $data_items = array(
-    //                 "name" => $name,
-    //                 "total" => (count(scandir($name)) - 2),
-    //                 "size" => get_folder_size($name),
-    //             );
-    //             array_push($response['result'], $data_items);
-    //         }
-    //     } else {
-    //     }
-
-
-    //     echo json_encode($response);
-    // }
-
-
-
 
     if ($_POST["action"] == "create") {
         if (!file_exists($_POST["folder_name"])) {
-            mkdir($_POST["folder_name"], 0777, true); {
-                $statement = $conn->prepare("INSERT INTO tbl_gallery (g_name,g_detail) 
-                 VALUES (:g_name,:g_detail)");
+            $path = "../../uploads/gallery/";
+            mkdir($path . $_POST["folder_name"], 0777, true); {
+                $statement = $conn->prepare("INSERT INTO tbl_gallery (g_name,g_detail) VALUES (:g_name,:g_detail)");
                 $result = $statement->execute(
                     array(
                         ':g_name' => $_POST["folder_name"],
@@ -135,90 +104,7 @@ if (isset($_POST["action"])) {
             http_response_code(201);
             echo json_encode($response);
         } else {
-            echo 'Folder Already Created';
-        }
-    }
-
-
-
-
-
-
-    if ($_POST["action"] == "change") {
-        if (!file_exists($_POST["folder_name"])) {
-            rename($_POST["old_name"], $_POST["folder_name"]);
-            echo 'Folder Name Change';
-        } else {
-            echo 'Folder Already Created';
-        }
-    }
-
-
-
-
-
-
-    if ($_POST["action"] == "delete") {
-        $files = scandir($_POST["folder_name"]);
-        foreach ($files as $file) {
-            if ($file === '.' or $file === '..') {
-                continue;
-            } else {
-                unlink($_POST["folder_name"] . '/' . $file);
-            }
-        }
-        if (rmdir($_POST["folder_name"])) {
-            echo 'Folder Deleted';
-        }
-    }
-
-
-
-
-
-    if ($_POST["action"] == "fetch_files") {
-        $file_data = scandir($_POST["folder_name"]);
-        $output = '
-  <table class="table table-bordered table-striped">
-   <tr>
-    <th>Image</th>
-    <th>File Name</th>
-    <th>Delete</th>
-   </tr>
-  ';
-
-        foreach ($file_data as $file) {
-            if ($file === '.' or $file === '..') {
-                continue;
-            } else {
-                $path = $_POST["folder_name"] . '/' . $file;
-                $output .= '
-    <tr>
-     <td><img src="' . $path . '" class="img-thumbnail" height="50" width="50" /></td>
-     <td contenteditable="true" data-folder_name="' . $_POST["folder_name"] . '"  data-file_name = "' . $file . '" class="change_file_name">' . $file . '</td>
-     <td><button name="remove_file" class="remove_file btn btn-danger btn-xs" id="' . $path . '">Remove</button></td>
-    </tr>
-    ';
-            }
-        }
-        $output .= '</table>';
-        echo $output;
-    }
-
-    if ($_POST["action"] == "remove_file") {
-        if (file_exists($_POST["path"])) {
-            unlink($_POST["path"]);
-            echo 'File Deleted';
-        }
-    }
-
-    if ($_POST["action"] == "change_file_name") {
-        $old_name = $_POST["folder_name"] . '/' . $_POST["old_file_name"];
-        $new_name = $_POST["folder_name"] . '/' . $_POST["new_file_name"];
-        if (rename($old_name, $new_name)) {
-            echo 'File name change successfully';
-        } else {
-            echo 'There is an error';
+            echo 'ชื่อ folder ซ้ำ';
         }
     }
 }

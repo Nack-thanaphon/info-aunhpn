@@ -1,19 +1,60 @@
 <?php
-if ($_FILES["upload_file"]["name"] != '') {
-    $data = explode(".", $_FILES["upload_file"]["name"]);
-    $extension = $data[1];
-    $allowed_extension = array("jpg", "png", "gif");
-    if (in_array($extension, $allowed_extension)) {
-        $new_file_name = rand() . '.' . $extension;
-        $path = $_POST["hidden_folder_name"] . '/' . $new_file_name;
-        if (move_uploaded_file($_FILES["upload_file"]["tmp_name"], $path)) {
-            echo 'Image Uploaded';
-        } else {
-            echo 'There is some error';
+
+header('Content-Type: application/json');
+header('Access-Control-Allow-Credentials: true');
+
+include "../../database/connect.php";
+
+// Count total files
+
+$countfiles = count($_FILES['files']['name']);
+
+// Upload directory
+$gallery = "../../uploads/gallery/";
+$upload_location = $gallery . $_POST['folder'];
+$id = $_POST['id'];
+
+// To store uploaded files path
+$files_arr = array();
+
+// Loop all files
+for ($index = 0; $index < $countfiles; $index++) {
+
+    if (isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != '') {
+        // File name
+        $filename = $_FILES['files']['name'][$index];
+
+        // Get extension
+        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+        // Valid image extension
+        $valid_ext = array("png", "jpeg", "jpg");
+
+        // Check extension
+        if (in_array($ext, $valid_ext)) {
+
+            // File path
+
+            $params = array();
+            $path = $upload_location . "/" . $filename;
+
+            // Upload file
+            if (move_uploaded_file($_FILES['files']['tmp_name'][$index], $path)) {
+                $params = array(
+                    'image' => $path,
+                    'g_id' => $id,
+                    /** ตัวอย่าง FK สำหรับอ้างถึงว่า รูปภาพที่บันทึกนี้ ถูกใช้กับข้อมูลอะไร */
+                    'datetime' => date("Y-m-d h:i:s")
+                );
+                /** เพิ่มข้อมูลชื่อรูปภาพเข้าสู่ฐานข้อมูล */
+                $sql = "INSERT INTO tbl_images (i_name, g_id, i_create) 
+                        VALUES (:image, :g_id, :datetime)";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute($params);
+            }
         }
-    } else {
-        echo 'Invalid Image File';
     }
-} else {
-    echo 'Please Select Image';
 }
+
+echo json_encode($files_arr);
+die;

@@ -42,7 +42,8 @@
         </a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link collapsed" href="./file.php" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="./file.php" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-bookmark"></i>
             <span>จัดการดาวน์โหลด</span>
         </a>
@@ -58,7 +59,8 @@
 
 
     <li class="nav-item active">
-        <a class="nav-link collapsed" href="./activity.php" data-toggle="collapse" data-target="#activity" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="./activity.php" data-toggle="collapse" data-target="#activity"
+            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-calendar-day"></i>
             <span>จัดการกิจกรรม</span>
         </a>
@@ -86,15 +88,15 @@
         Website-Panal
     </div>
 
-    <li class="nav-item">
+    <li class="nav-item active">
         <a class="nav-link" href="./gallery.php">
             <i class="fas fa-fw fa-table"></i>
-            <span>คลังภาพ</span></a>
+            <span>จัดการคลังภาพ</span></a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item active">
         <a class="nav-link" href="./newsletter.php">
             <i class="fas fa-envelope-open-text"></i>
-            <span>Newsletter</span></a>
+            <span>จัดการ Newsletter</span></a>
     </li>
     <!-- <li class="nav-item">
         <a class="nav-link" href="#">

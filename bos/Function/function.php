@@ -89,6 +89,35 @@ function count_total_banner($conn)
     $statement->execute();
     return $statement->rowCount();
 }
+
+
+
+function count_total_gallery($conn)
+{
+    $query = "SELECT * FROM tbl_gallery";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    return $statement->rowCount();
+}
+
+function count_total_images($conn)
+{
+    $query = "SELECT * FROM tbl_images";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    return $statement->rowCount();
+}
+
+function count_prepare_delete($conn)
+{
+    $query = "SELECT * FROM tbl_gallery WHERE g_status = '0' ";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    return $statement->rowCount();
+}
+
+
+
 function total_banner_online($conn)
 {
     $query = "SELECT * FROM tbl_banner where b_status ='1'";

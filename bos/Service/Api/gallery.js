@@ -8,8 +8,6 @@ $(function() { // เรียกใช้งาน datatable
             action: action
         },
     }).done(function(data) {
-
-
         let tableData = []
         data = data.result;
         for (var i = 0; i < data.length; i++) {
@@ -18,10 +16,23 @@ $(function() { // เรียกใช้งาน datatable
                 `${data[i].name}`,
                 `${data[i].total}`,
                 `${data[i].size}`,
-                `<button type="button" name="update" data-name="${data[i].name}" class="update btn btn-warning">update</button>`,
-                `<button type="button" name="delete" data-name="${data[i].name}" class="delete btn btn-danger">Delete</button>`,
-                `<button type="button" name="upload" data-name="${data[i].name}" class="upload btn btn-info">Upload File</button>`,
-                `<button type="button" name="view_files" data-name="${data[i].name}" class="view_files btn btn-default">View Files</button>`,
+                `<div class="btn-group" role="group">
+                <button type="button" name="update"  data-id="${data[i].id}" data-name="${data[i].name}"  class="update btn btn-warning "><p class="m-0 p-0 font-weight-bold ">
+                <i class="fas fa-pen m-0 p-0"></i>
+                </p></button>
+                <button type="button" name="delete"  data-id="${data[i].id}" data-name="${data[i].name}" class="delete btn btn-danger"><p class="m-0 p-0 font-weight-bold ">
+                <i class="fas fa-trash m-0 p-0"></i>
+                </p></button>
+                </div>`,
+
+                `<div class="btn-group mx-auto  " role="group">
+                <button type="button" name="upload" data-id="${data[i].id}" data-name="${data[i].name}" class="upload btn btn-primary"><p class="m-auto p-0 font-weight-bold ">
+                <i class="fas fa-upload m-0 p-0"></i>
+                </p></button> 
+                <button type="button" name="view_files" data-id="${data[i].id}" data-name="${data[i].name}" class="view_files btn btn-success "><p class="m-0 p-0 font-weight-bold ">
+                <i class="fas fa-eye"></i>
+                </p></button>
+                </div>`,
             ]);
         };
 
@@ -47,6 +58,7 @@ $(function() { // เรียกใช้งาน datatable
                 {
                     title: "ชื่ออัลบั้ม",
                     className: "align-middle",
+                    width: "40%"
 
                 },
 
@@ -61,56 +73,55 @@ $(function() { // เรียกใช้งาน datatable
                     className: "align-middle"
                 },
                 {
-                    title: "อัพเดต",
+                    title: "จัดการ",
                     className: "align-middle"
                 },
-                {
-                    title: "ลบ",
-                    className: "align-middle"
-                },
-                {
-                    title: "อัพโหลด",
-                    className: "align-middle"
-                },
-                {
-                    title: "เรียกดู",
-                    className: "align-middle"
-                }
-            ],
-            initComplete: function() { // เรียกใช้งาน ลบข้อมูล datatable
-                $(document).on('click', '#delete', function() {
-                    let id = $(this).data('id')
-                    Swal.fire({
-                        text: "คุณแน่ใจหรือไม่...ที่จะลบรายการนี้?",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'ใช่! ลบเลย',
-                        cancelButtonText: 'ยกเลิก'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            $.ajax({
-                                type: "POST",
-                                url: "../../Service/News/delete.php",
 
-                                data: {
-                                    id: id
-                                }
-                            }).done(function() {
-                                Swal.fire({
-                                    text: 'รายการของคุณถูกลบเรียบร้อย',
-                                    icon: 'success',
-                                    confirmButtonText: 'ตกลง',
-                                }).then((result) => {
-                                    location.reload();
-                                });
-                            })
-                        }
-                    })
-                }).on('change', '.toggle-event', function() {
-                    toastr.success('อัพเดทข้อมูลเสร็จเรียบร้อย')
-                })
+                {
+                    title: "อัพโหลด | เรียกดู",
+                    className: "align-middle"
+                },
+            ],
+
+
+            initComplete: function() { // เรียกใช้งาน ลบข้อมูล datatable
+                // $(document).on('click', '.delete', function() {
+                //     let id = $(this).data('id')
+                //     var folder_name = $(this).data("name");
+                //     var action = "delete";
+                //     Swal.fire({
+                //         text: "คุณแน่ใจหรือไม่...ที่จะลบรายการนี้?",
+                //         icon: 'warning',
+                //         showCancelButton: true,
+                //         confirmButtonColor: '#3085d6',
+                //         cancelButtonColor: '#d33',
+                //         confirmButtonText: 'ใช่! ลบเลย',
+                //         cancelButtonText: 'ยกเลิก'
+                //     }).then((result) => {
+                //         if (result.isConfirmed) {
+                //             $.ajax({
+                //                 type: "POST",
+                //                 url: "../../Service/Gallery/delete.php",
+
+                //                 data: {
+                //                     id: id,
+                //                     folder_name: folder_name,
+                //                     action: action
+                //                 }
+                //             }).done(function() {
+                //                 Swal.fire({
+                //                     text: 'รายการของคุณถูกลบเรียบร้อย',
+                //                     icon: 'success',
+                //                     confirmButtonText: 'ตกลง',
+                //                 }).then((result) => {
+                //                     location.reload();
+                //                 });
+                //             })
+                //         }
+                //     })
+                // }).on('change', '.toggle-event', function() {
+                //     toastr.success('อัพเดทข้อมูลเสร็จเรียบร้อย')
+                // })
             },
             fnDrawCallback: function() {
                 $('.toggle-event').bootstrapToggle();
@@ -153,13 +164,10 @@ $(document).ready(function() {
         if (folder_name != '') {
             $.ajax({
                 url: "../../Service/Gallery/create.php",
-
-
                 method: "POST",
                 data: {
                     folder_name: folder_name,
                     gd_name: g_detail,
-
                     old_name: old_name,
                     action: action
                 },
@@ -173,149 +181,220 @@ $(document).ready(function() {
         }
     });
 
+
+
     $(document).on("click", ".update", function() {
-        var folder_name = $(this).data("name");
-        $('#old_name').val(folder_name);
-        $('#folder_name').val(folder_name);
-        $('#action').val("change");
-        $('#folderModal').modal("show");
-        $('#folder_button').val('Update');
-        $('#change_title').text("Change Folder Name");
+        let id = $(this).data('id');
+
+        $.ajax({
+            url: "../../Service/Gallery/update.php",
+            method: "GET",
+            data: {
+                id: id
+            },
+            dataType: "json",
+            success: function(data) {
+                $('#eid').val(data[0].g_id);
+                $('#old_name').val(data[0].g_name);
+                $('#efolder_name').val(data[0].g_name);
+                $('#ed_gallary').val(data[0].g_detail);
+                $('#gedit_name').modal("show");
+
+            }
+        });
     });
 
-    $(document).on("click", ".delete", function() {
-        var folder_name = $(this).data("name");
-        var action = "delete";
-        if (confirm("Are you sure you want to remove it?")) {
-            $.ajax({
-                url: "../../Service/Gallery/create.php",
+    $('#eg_update').on('click', function(e) { // เรียกใช้งาน [บันทึกข้อมูลแก้ไข] (สำคัญ)
+
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            dataType: "JSON",
+            url: "../../Service/Gallery/update.php",
+            data: {
+
+                id: $('#eid').val(),
+                eold_name: $('#old_name').val(),
+                efolder_name: $('#efolder_name').val(),
+                ed_gallary: $('#ed_gallary').val()
+            },
+            success: function(response) {
+                Swal.fire({
+                    text: 'อัพเดตข้อมูลเรียบร้อย',
+                    icon: 'success',
+                    confirmButtonText: 'ตกลง',
+                }).then((result) => {
+                    // location.assign('./news.php');
+                });
+                console.log("good", response);
+
+            },
+            error: function(err) {
+                console.log("bad", err);
+            }
+        })
+
+    })
 
 
 
-                method: "POST",
-                data: {
-                    folder_name: folder_name,
-                    action: action
-                },
-                success: function(data) {
-                    // load_folder_list();
-                    alert(data);
-                }
-            });
-        }
-    });
 
     $(document).on('click', '.upload', function() {
         var folder_name = $(this).data("name");
+        let id = $(this).data('id')
         $('#hidden_folder_name').val(folder_name);
         $('#uploadModal').modal('show');
+        $('#g_id').val(id);
+
+        console.log(id);
+        console.log(folder_name);
     });
 
-    $('#upload_form').on('submit', function() {
+
+
+
+    $('#submit').on('click', function() {
+
+        var form_data = new FormData();
+
+        let id = $('#g_id').val();
+        let folder = $('#hidden_folder_name').val();
+        var totalfiles = document.getElementById('files').files.length;
+        form_data.append("id", id)
+        form_data.append("folder", folder)
+
+        // Read selected files
+        for (var index = 0; index < totalfiles; index++) {
+            form_data.append("files[]", document.getElementById('files').files[index]);
+        }
         $.ajax({
             url: "../../Service/Gallery/upload.php",
-
-            method: "POST",
-            data: new FormData(this),
+            type: 'POST',
+            data: form_data,
+            id,
             contentType: false,
             cache: false,
             processData: false,
-            success: function(data) {
-                load_folder_list();
-                alert(data);
+            success: function(response) {
+                alert(response);
             }
         });
     });
 
-    $(document).on('click', '.view_files', function() {
-        var folder_name = $(this).data("name");
-        var action = "fetch_files";
+
+
+    $(document).on("click", ".view_files", function() {
+        let id = $(this).data('id');
+
         $.ajax({
-            url: "../../Service/Gallery/create.php",
-
-
-            method: "POST",
+            url: "../../Service/Gallery/image_update.php",
+            method: "GET",
             data: {
-                action: action,
-                folder_name: folder_name
+                id: id,
             },
-            success: function(data) {
-                $('#file_list').html(data);
+            dataType: "json",
+            success: function(response) {
+
+                let html = '';
+                console.log("good", response);
+                data = response.result;
+
+                for (var i = 0; i < data.length; i++) {
+                    html += `
+                     <tr>
+                        <td>${data[i].id}</td>
+                        <td><img src="../../Service/Gallery/${data[i].image}" class="img-thumbnail" height="50" width="50" /></td>
+                        <td>${data[i].name}</td>
+                        
+                        <td><button name="remove_file" class="remove_file btn btn-danger" data-id="${data[i].id}" id="../../Service/Gallery/${data[i].image}">  
+                            <p class="m-0 p-0 font-weight-bold ">
+                            <i class="fas fa-trash m-0 p-0"></i>
+                            </p>
+                        </button>
+                        </td>
+                    </tr> 
+                    `
+                }
+                $('#tbody').html(html);
                 $('#filelistModal').modal('show');
+
+            },
+            error: function(err) {
+                console.log("bad", err);
             }
-        });
-    });
+        })
+    })
+
+
+
+
 
     $(document).on('click', '.remove_file', function() {
+        let id = $(this).data('id');
         var path = $(this).attr("id");
         var action = "remove_file";
-        if (confirm("Are you sure you want to remove this file?")) {
-            $.ajax({
-                url: "../../Service/Gallery/create.php",
 
-
-                method: "POST",
-                data: {
-                    path: path,
-                    action: action
-                },
-                success: function(data) {
-                    alert(data);
-                    $('#filelistModal').modal('hide');
-                    // load_folder_list();
-                }
-            });
-        }
-    });
-
-    $(document).on('blur', '.change_file_name', function() {
-        var folder_name = $(this).data("folder_name");
-        var old_file_name = $(this).data("file_name");
-        var new_file_name = $(this).text();
-        var action = "change_file_name";
-        $.ajax({
-            url: "../../Service/Gallery/create.php",
-
-
-            method: "POST",
-            data: {
-                folder_name: folder_name,
-                old_file_name: old_file_name,
-                new_file_name: new_file_name,
-                action: action
-            },
-            success: function(data) {
-                alert(data);
+        Swal.fire({
+            text: "คุณแน่ใจหรือไม่...ที่จะลบรายการนี้?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่! ลบเลย',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "../../Service/Gallery/status.php",
+                    method: "POST",
+                    data: {
+                        id: id,
+                        path: path,
+                        action: action
+                    },
+                    success: function(data) {
+                        alert(data);
+                        $('#filelistModal').modal('hide');
+                        // load_folder_list();
+                    }
+                });
             }
+
         });
     });
 
-});
 
-$("#n_image").change((e) => { // เรียกใช้งาน UPLOADFILE (สำคัญ)
-    console.log(1)
-    var form_data = new FormData();
-    var ins = document.getElementById(e.target.id).files.length;
-    for (var x = 0; x < ins; x++) {
-        form_data.append("files[]", document.getElementById(e.target.id).files[x]);
-    }
-    form_data.append("files[]", document.getElementById(e.target.id).files[0]);
-    console.log('fromdata', form_data)
-    $.ajax({
-        // url: './api/uploadfile.php', // point to server-side PHP script 
-        url: '../../Service/News/uploadfile.php', // point to server-side PHP script
-        dataType: 'text', // what to expect back from the PHP script
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_data,
-        type: 'post',
-        success: function(response) {
-            console.log('response', response)
-            $("#n_imgname").val(response)
-        },
-        error: function(err) {
-            console.log('bad', err)
-        }
+
+    $(document).on('click', '.delete', function() {
+        let id = $(this).data('id');
+        Swal.fire({
+            text: "คุณแน่ใจหรือไม่...ที่จะลบรายการนี้?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่! ลบเลย',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "../../Service/Gallery/status.php",
+                    method: "POST",
+                    data: {
+                        id: id,
+                    },
+                    success: function(data) {
+                        alert(data);
+                        // $('#filelistModal').modal('hide');
+                        // load_folder_list();
+                    }
+                });
+            }
+
+        });
     });
+
+
+
+
 })

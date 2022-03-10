@@ -47,11 +47,11 @@ include "../../../bos/Function/function.php"
                                 <div class="row">
                                     <div class="col">
                                         <h1 class="p-0 text-right" style="font-size: 3.5rem;">
-                                            <?php echo  count_total_banner($conn) ?>
+                                            <?php echo  count_total_gallery($conn) ?>
                                         </h1>
                                     </div>
                                     <div class="col-4">
-                                        <p class="p-0 m-0 text-right">/ ไฟล์</p>
+                                        <p class="p-0 m-0 text-right">/ อัลบั้ม</p>
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@ include "../../../bos/Function/function.php"
                         <div class="card">
                             <div class="card-header border-left-primary   ">
                                 <b>
-                                    <i class="fas fa-rss-square p-0"></i>
+                                    <i class="fas fa-camera p-0"></i>
                                     จำนวนภาพทั้งหมด
                                 </b>
                             </div>
@@ -69,11 +69,11 @@ include "../../../bos/Function/function.php"
                                 <div class="row">
                                     <div class="col">
                                         <h1 class="p-0 text-right" style="font-size: 3.5rem;">
-                                            <?php echo  total_banner_online($conn) ?>
+                                            <?php echo  count_total_images($conn) ?>
                                         </h1>
                                     </div>
                                     <div class="col-4">
-                                        <p class="p-0 m-0 text-right">/ ไฟล์</p>
+                                        <p class="p-0 m-0 text-right">/ ภาพ</p>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@ include "../../../bos/Function/function.php"
                         <div class="card">
                             <div class="card-header border-left-primary   ">
                                 <b>
-                                    <i class="fas fa-rss-square p-0"></i>
+                                    <i class="fas fa-trash p-0"></i>
                                     ถังขยะ
                                 </b>
                             </div>
@@ -91,7 +91,7 @@ include "../../../bos/Function/function.php"
                                 <div class="row">
                                     <div class="col">
                                         <h1 class="p-0 text-right" style="font-size: 3.5rem;">
-                                            <?php echo  total_banner_online($conn) ?>
+                                            <?php echo  count_prepare_delete($conn) ?>
                                         </h1>
                                     </div>
                                     <div class="col-4">
@@ -149,50 +149,7 @@ include "../../../bos/Function/function.php"
             </div>
         </div>
 
-        <!-- <div class="card mb-4">
-            <div class="card-header  border-left-primary text-primary ">
-                <div class="row mx-auto">
-                    <div class="col-6 p-0 ">
-                        <h4 class="m-0 p-0 font-weight-bold ">
-                            <i class="fas fa-rss-square m-0 p-0"></i>
-                            สร้างอัลบั้มรูปภาพ
-                        </h4>
-                    </div>
-                    <div class="col-6 text-right">
-                        <a href="./gallery.php" class="btn btn-danger text-white">กลับ</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="card-body">
 
-
-                    <div class="col" id="middle_line">
-                        <p class="text-primary"><span>กรุณาอัพโหลดภาพ</span></p>
-
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <div class="custom-form-group">
-                            <div class="custom-file-drop-area ">
-                                <form action="" method="" enctype="multipart/for-data">
-                                    <label for="filephotos">วางไฟล์ลงตรงนี้</label>
-                                    <input class="form-control" type="file" id="filephotos" name="files[]" multiple />
-                                </form>
-                            </div>
-                            <div class="row m-0 p-0 ">
-                                <div id="preview" class="col-12 p-0 ">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button id="submit" value='Upload' type="submit" class="btn-submit">อัพโหลดรูปภาพ</button>
-
-                </div>
-            </div>
-
-
-        </div> -->
 
     </div>
 
@@ -201,19 +158,53 @@ include "../../../bos/Function/function.php"
     <div id="uploadModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Upload File</h4>
+
+                <div class="modal-header  border-left-primary text-primary ">
+
+                    <h4 class="m-0 p-0 font-weight-bold ">
+                        <i class="fas fa-rss-square m-0 p-0"></i>
+                        อัพโหลดภาพ
+                    </h4>
                 </div>
-                <div class="modal-body">
-                    <form method="post" id="upload_form" enctype='multipart/form-data'>
-                        <p>Select Image
-                            <input type="file" name="upload_file" />
-                        </p>
-                        <br />
-                        <input type="hidden" name="hidden_folder_name" id="hidden_folder_name" />
-                        <input type="submit" name="upload_button" class="btn btn-info" value="Upload" />
-                    </form>
+
+
+                <div class="col-12">
+                    <div class="card-body">
+
+
+                        <div class="col" id="middle_line">
+                            <p class="text-primary"><span>กรุณาอัพโหลดภาพ</span></p>
+
+                        </div>
+
+
+                        <form method="post" id="upload_form" enctype='multipart/form-data'>
+
+                            <div class="form-group col-md-12">
+                                <div class="custom-form-group">
+                                    <div class="custom-file-drop-area ">
+                                        <form id="uploads_form" action="" method="" enctype="multipart/for-data">
+                                            <label for="filephotos">วางไฟล์ลงตรงนี้</label>
+                                            <input type="hidden" name="folder" id="hidden_folder_name" />
+
+                                            <!-- <input type="file" id='filephotos' name="files[]" multiple><br> -->
+                                            <input type="file" id='files' name="files[]" multiple><br>
+
+                                            <input type="hidden" id="g_id" name="g_id">
+                                            <button id="submit" type="button" class="btn-submit">อัพโหลดรูปภาพ</button>
+                                        </form>
+                                    </div>
+                                    <div class="row m-0 p-0 ">
+                                        <div id="preview" class="col-12 p-0 ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <button id="submit" value='Upload' type="submit" class="btn-submit">อัพโหลดรูปภาพ</button> -->
+
+                        </form>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -223,13 +214,39 @@ include "../../../bos/Function/function.php"
     </div>
 
     <div id="filelistModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">File List</h4>
+                <div class="modal-header  border-left-primary text-primary ">
+
+                    <h4 class="m-0 p-0 font-weight-bold ">
+                        <i class="fas fa-rss-square m-0 p-0"></i>
+                        รายการภาพ
+                    </h4>
                 </div>
-                <div class="modal-body" id="file_list">
+                <div class="modal-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <!-- <tr>
+                    <td>1</td>
+                    <td>Movie name</td>
+                    <td>Horror</td>
+                    <td>
+                        <div class="btn-control">
+                            <div onclick="open_modal_edit()" class="btn-edit">Edit</div>
+                            <div onclick="delete_movielist()" class="btn-delete">Delete</div>
+                        </div>
+                    </td>
+                </tr> -->
+                        </tbody>
+                    </table>
 
                 </div>
                 <div class="modal-footer">
@@ -237,6 +254,99 @@ include "../../../bos/Function/function.php"
                 </div>
             </div>
         </div>
+    </div>
+
+
+
+
+
+    <div id="exampleModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header  border-left-primary text-primary ">
+
+                    <h4 class="m-0 p-0 font-weight-bold ">
+                        <i class="fas fa-rss-square m-0 p-0"></i>
+                        สร้างอัลบั้มรูปภาพ
+                    </h4>
+                </div>
+
+
+                <form id="create_gallery">
+                    <div class="modal-body">
+                        <div class="form-group col-md-12">
+                            <label for="" class="text-primary"> <label for="">ชื่ออัลบั้ม</label>
+                            </label>
+                            <input type="text" name="folder_name" id="folder_name" class="form-control"
+                                placeholder="กรุณากรอกชื่ออัลบั้ม" />
+                        </div>
+                        <div class="form-group col-md-12">
+                            <div class="form-group">
+                                <label for="n_name" id="text_header" class="text-primary">รายละเอียดอัลบั้ม</label>
+
+                                <textarea class="form-control" id="d_gallary" type="text" name="d_gallary" rows="3"
+                                    placeholder="กรุณากรอกรายละเอียดอัลบั้ม"></textarea>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="action" id="action" />
+                        <input type="hidden" name="old_name" id="old_name" />
+                        <button type="submit" name="folder_button" id="c_gallery" class="btn-submit"
+                            value="Create">เรียบร้อย</button>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <div id="gedit_name" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header  border-left-primary text-primary ">
+
+                    <h4 class="m-0 p-0 font-weight-bold ">
+                        <i class="fas fa-edit m-0 p-0"></i>
+                        แก้ไขชื่ออัลบั้ม
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label for="" class="text-primary"> <label for="">ชื่ออัลบั้ม</label>
+                        </label>
+                        <input type="hidden" name="old_name" id="old_name" />
+                        <input type="text" name="folder_name" id="efolder_name" class="form-control"
+                            placeholder="กรุณากรอกชื่ออัลบั้ม" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="form-group">
+                            <label>รายละเอียดอัลบั้ม</label>
+
+                            <textarea class="form-control" id="ed_gallary" type="text" name="ed_gallary" rows="3"
+                                placeholder="กรุณากรอกรายละเอียดอัลบั้ม"></textarea>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="eid" id="eid" />
+                    <button type="submit" name="eg_update" id="eg_update" class="btn-submit"
+                        value="Create">เรียบร้อย</button>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
     </div>
 
 
@@ -276,35 +386,5 @@ include "../../../bos/Function/function.php"
                 alert("Your browser doesn't support to File API")
             }
         });
-
-        $(document).ready(function() {
-
-            $('#submit').click(function() {
-
-                var form_data = new FormData();
-
-                // Read selected files
-                var totalfiles = document.getElementById('filephotos').files.length;
-                for (var index = 0; index < totalfiles; index++) {
-                    form_data.append("files[]", document.getElementById('filephotos').files[index]);
-                }
-
-                // AJAX request
-                $.ajax({
-                    url: '../../Service/Gallery/create.php',
-                    type: 'post',
-                    data: form_data,
-                    dataType: 'json',
-                    contentType: false,
-                    processData: false,
-                    success: function(response) {
-                        console.log(response)
-                    }
-                });
-
-            });
-
-        });
         </script>
-</body>
 </body>
