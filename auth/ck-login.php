@@ -56,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 if ($encpassword == $user_password) {
                     if ($row['user_status'] == '1') {
                         $_SESSION['user'] = array(
+                            'id' => $row['user_id'],
                             'user_email' => $row['user_email'],
                             'full_name' => $row['full_name'],
                             'user_name' => $row['user_name'],

@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
 
-        $bg = ($row["b_date"]);
-        $udate = DateThai($bg);
+        $create = ($row["b_date"]);
+        $bn_date = DateThai($create);
 
         $status = '';
         if ($row["b_status"] == '1') {
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             "name" => $b_title,
             "detail" => $b_detail,
             "link" => $b_link,
-            "date" => $udate,
+            "date" => $bn_date,
             "image" => $b_image,
             "b_status" => $status,
         );

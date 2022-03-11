@@ -120,7 +120,7 @@ include "../../../bos/Function/function.php"
 
                                     <div class="form-group col-md-12">
                                         <label for="detail">รายละเอียด</label>
-                                        <textarea id="detail" class="textarea" name="n_detail" value="dfasfasfasfs"
+                                        <textarea id="detail" class="textarea" name="n_detail" value=""
                                             placeholder="Place some text here" required>
                                             </textarea>
                                     </div>
