@@ -74,12 +74,6 @@
         </div>
     </li>
 
-
-
-
-
-
-
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -93,16 +87,24 @@
             <i class="fas fa-fw fa-table"></i>
             <span>จัดการคลังภาพ</span></a>
     </li>
+
     <li class="nav-item active">
-        <a class="nav-link" href="./newsletter.php">
+        <a class="nav-link collapsed" href="./newsletter.php" data-toggle="collapse" data-target="#newsletter"
+            aria-expanded="true" aria-controls="collapseTwo">
+
             <i class="fas fa-envelope-open-text"></i>
             <span>จัดการ Newsletter</span></a>
+        <div id="newsletter" class="collapse" aria-labelledby="headingTwo">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header text-uppercase">Newsletter management:</h6>
+                <a class="collapse-item" href="./newsletter.php">เพิ่ม-แก้ไข จดหมายข่าว</a>
+                <a class="collapse-item" href="./newsletter_table.php">จัดการจดหมายข่าว</a>
+
+            </div>
+        </div>
+
     </li>
-    <!-- <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-id-card"></i>
-            <span>จัดการผู้มาติดต่อ</span></a>
-    </li> -->
+
     <li class="nav-item  active">
         <a class="nav-link" href="user.php">
             <i class="fas fa-users-cog"></i>

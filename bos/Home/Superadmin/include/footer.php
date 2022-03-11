@@ -73,6 +73,7 @@
 <script src="./assets/js/demo/chart-area-demo.js"></script>
 <script src="./assets/js/demo/chart-pie-demo.js"></script>
 <script src="../../Service/Api/news.js"></script>
+<script src="../../Service/Api/newsletter.js"></script>
 <script src="../../Service/Api/activity.js"></script>
 <script src="../../Service/Api/user.js"></script>
 <script src="../../Service/Api/gallery.js"></script>

@@ -345,7 +345,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "../../Service/Gallery/status.php",
+                    url: "../../Service/Gallery/delete.php",
                     method: "POST",
                     data: {
                         id: id,
