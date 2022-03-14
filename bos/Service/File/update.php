@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $date = $_POST['date'];
 
     $query = " UPDATE tbl_file SET `f_name` = '" . $name . "', `f_detail` = '" . $detail . "', 
-    `f_group` = '" . $group . "' ,`f_type` = '" . $type . "',`f_by` = '" . $by . "',`f_date` = '" . $date . "'
+    `f_group` = '" . $group . "' ,`t_id` = '" . $type . "',`f_by` = '" . $by . "',`f_date` = '" . $date . "'
     WHERE f_id = '" . $id . "' ";
     $stmt = $conn->prepare($query);
     $stmt->execute();

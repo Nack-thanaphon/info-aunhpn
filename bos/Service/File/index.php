@@ -8,7 +8,7 @@ include "../../database/connect.php";
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $select_stmt = $conn->prepare("SELECT * FROM tbl_file 
     INNER JOIN  tbl_file_type ON  
-    tbl_file_type.t_id= tbl_file.f_type
+    tbl_file_type.t_id= tbl_file.t_id
     INNER JOIN  tbl_file_group ON  
     tbl_file_group.g_id = tbl_file.f_group
     ");

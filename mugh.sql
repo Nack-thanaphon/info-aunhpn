@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2022 at 03:31 AM
+-- Generation Time: Mar 11, 2022 at 09:51 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- PHP Version: 8.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -101,7 +101,7 @@ CREATE TABLE `tbl_file` (
   `f_id` int(11) NOT NULL,
   `f_name` text NOT NULL,
   `f_group` text NOT NULL,
-  `f_type` varchar(20) NOT NULL,
+  `t_id` varchar(20) NOT NULL,
   `f_detail` text NOT NULL,
   `f_by` text NOT NULL,
   `f_file` text NOT NULL,
@@ -114,7 +114,7 @@ CREATE TABLE `tbl_file` (
 -- Dumping data for table `tbl_file`
 --
 
-INSERT INTO `tbl_file` (`f_id`, `f_name`, `f_group`, `f_type`, `f_detail`, `f_by`, `f_file`, `f_status`, `f_date`, `f_update`) VALUES
+INSERT INTO `tbl_file` (`f_id`, `f_name`, `f_group`, `t_id`, `f_detail`, `f_by`, `f_file`, `f_status`, `f_date`, `f_update`) VALUES
 (9, 'งานวิชาการ', '1', '1', '', '', 'doc_77394025720220228_133349.pdf', '1', '2022-02-28', '2022-02-28 06:33:49');
 
 -- --------------------------------------------------------
@@ -218,8 +218,7 @@ INSERT INTO `tbl_images` (`i_id`, `g_id`, `i_name`, `i_create`) VALUES
 (10, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy (5) - Copy.jpg', '2022-03-10 09:32:40'),
 (11, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy (6) - Copy.jpg', '2022-03-10 09:32:40'),
 (12, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy (7) - Copy.jpg', '2022-03-10 09:32:40'),
-(13, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy.jpg', '2022-03-10 09:32:40'),
-(15, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy (3).jpg', '2022-03-10 09:32:40');
+(13, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy.jpg', '2022-03-10 09:32:40');
 
 -- --------------------------------------------------------
 
@@ -249,6 +248,34 @@ CREATE TABLE `tbl_news` (
 INSERT INTO `tbl_news` (`n_id`, `n_type`, `n_name`, `url`, `n_detail`, `slug`, `n_image`, `n_views`, `n_date`, `n_status`, `update_at`, `create_at`) VALUES
 (58, '1', 'asdasd', 'gfgdh', '                                            ', 'l6-4kr', 'uploads/images/16465078383020.jpg', 0, '2022-03-06', '0', '2022-03-05 19:17:21', '2022-03-06'),
 (59, '1', 'asdasd', 'hdfhfgdhfd', '                                            ', 'svsvs', 'uploads/images/16465087896580.jpg', 0, '2022-03-06', '1', '2022-03-05 19:33:19', '2022-03-06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_newsletter`
+--
+
+CREATE TABLE `tbl_newsletter` (
+  `id` int(11) NOT NULL,
+  `n_user_id` int(11) NOT NULL,
+  `n_title` text NOT NULL,
+  `n_detail` text NOT NULL,
+  `n_views` text NOT NULL,
+  `n_date` text NOT NULL,
+  `n_status` enum('1','0') NOT NULL,
+  `n_create` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_newsletter`
+--
+
+INSERT INTO `tbl_newsletter` (`id`, `n_user_id`, `n_title`, `n_detail`, `n_views`, `n_date`, `n_status`, `n_create`) VALUES
+(5, 1, 'hdfghfdhfdg', '<div class=\"content-title-box\" style=\"margin: 0px 0px 5px; padding: 5px 15px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; position: relative; font-weight: bold; background: rgb(0, 66, 102); border-top-left-radius: 5px; border-top-right-radius: 5px; color: rgb(51, 51, 51); font-family: Helvetica, Arial, Thonburi, Tahoma, FreeSans, sans-serif;\"><h2 itemprop=\"name\" style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 1.2em; vertical-align: baseline;\"><a href=\"https://www.blognone.com/node/127572\" title=\"รัสเซียสร้าง CA เองป้องกันกรณีโดนคว่ำบาตร ธนาคารเริ่มใช้งาน\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 15.6px; vertical-align: baseline; color: rgb(255, 255, 255);\">รัสเซียสร้าง CA เองป้องกันกรณีโดนคว่ำบาตร ธนาคารเริ่มใช้งาน</a></h2></div><div class=\"meta\" style=\"margin: 0px; padding: 5px 15px; border: 0px; outline: 0px; font-size: 0.8em; vertical-align: baseline; color: rgb(51, 51, 51); font-family: Helvetica, Arial, Thonburi, Tahoma, FreeSans, sans-serif;\"><span class=\"submitted\" style=\"margin: 0px 10px 0px 0px; padding: 3px; border: 1px solid rgb(209, 209, 209); outline: 0px; font-size: 10.4px; vertical-align: baseline; background-color: rgb(238, 238, 238); border-radius: 5px;\">By:&nbsp;<span class=\"username\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\">lew</span>&nbsp;<div class=\"user_badges\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline;\"><a href=\"https://www.blognone.com/crew\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; color: rgb(29, 95, 179);\"><img class=\"badge badge-2 founder\" src=\"https://www.blognone.com/sites/default/files/badges/badge-founder.png\" alt=\"Founder\" title=\"Founder\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px 1px; padding: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline; max-width: 640px;\"></a><img class=\"badge badge-13 juscis-writer\" src=\"https://www.blognone.com/sites/default/files/badges/jusci-blue-i.png\" alt=\"Jusci&amp;#039;s Writer\" title=\"Jusci&amp;#039;s Writer\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px 1px; padding: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline; max-width: 640px;\"><img class=\"badge badge-22 meconomics\" src=\"https://www.blognone.com/sites/default/files/badges/mecon-badge.png\" alt=\"MEconomics\" title=\"MEconomics\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px 1px; padding: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline; max-width: 640px;\"><a href=\"https://www.blognone.com/news/15370/ask-blognone-are-you-android\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; color: rgb(29, 95, 179);\"><img class=\"badge badge-4 android\" src=\"https://www.blognone.com/sites/default/files/badges/badge-android.png\" alt=\"Android\" title=\"Android\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px 1px; padding: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline; max-width: 640px;\"></a></div>&nbsp;on 11 March 2022 - 11:22</span>&nbsp;<span class=\"terms-label\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\">Tags:<span style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\"><span class=\"terms\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\"><div class=\"field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above\" style=\"margin: 0px; padding: 3px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; display: inline;\"><div class=\"field-items\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; float: none; display: inline;\"><div class=\"field-item even\" style=\"margin: 0px 10px 0px 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; float: none; display: inline;\"><a href=\"https://www.blognone.com/topics/russia\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; color: rgb(29, 95, 179);\">Russia</a></div><div class=\"field-item odd\" style=\"margin: 0px 10px 0px 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; float: none; display: inline;\"><a href=\"https://www.blognone.com/topics/digital-certificate\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; color: rgb(29, 95, 179);\">Digital Certificate</a></div></div></div></span></span></span></div><div class=\"content\" style=\"margin: 5px 0px 0px; padding: 5px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; min-height: 120px; color: rgb(51, 51, 51); font-family: Helvetica, Arial, Thonburi, Tahoma, FreeSans, sans-serif;\"><div class=\"node-image\" style=\"margin: 5px 5px 5px 10px; padding: 0px 10px 0px 0px; border: 0px; outline: 0px; vertical-align: baseline; float: left; display: inline; width: 100px; height: 100px; line-height: 100px;\"><img alt=\"Node Thumbnail\" src=\"https://www.blognone.com/sites/default/files/styles/thumbnail/public/topics-images/russia.png?itok=SewVN53w\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px; padding: 0px; outline: 0px; max-width: 640px;\"></div><div class=\"node-content\" itemprop=\"description\" style=\"margin: 0px 10px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline;\"><div class=\"field field-name-body field-type-text-with-summary field-label-hidden\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline;\"><div class=\"field-items\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; float: none; display: inline;\"><div class=\"field-item even\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; float: none; display: inline;\"><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">บริการรัฐบาลอิเล็กทรอนิกส์รัสเซีย หรือ Gosuslugi เปิดให้บริการออกใบรับรองดิจิทัล เพียงไม่กี่วันหลังจากรัสเซียบุกยูเครน ป้องกันกรณีที่บริษัทออกใบรับรองหยุดให้บริการในรัสเซียและทำให้บริการสำคัญๆ เข้าผ่านเบราว์เซอร์ไม่ได้</p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">ใบรับรอง Russian Trusted Root CA (หมายเลข serial E1:D1:81:E5:CE:5A:5F:04:AA:D2:E9:B6:9D:66:B1:C5:FA:AC:2C:87) เพิ่งสร้างเมื่อวันที่ 1 มีนาคมที่ผ่านมา และตอนนี้เบราว์เซอร์รัสเซีย เช่น Yandex และ Atom (ของค่าย Vk) ก็ยอมรับไว้ในเบราว์เซอร์แล้ว กระบวนการออกใบรับรองยังเป็นการตรวจเอกสารทำให้การออกใบรับรองอาจใช้เวลาถึง 5 วัน หน่วยงานที่ออกใบรับรองไปแล้ว เช่น ธนาคาร Sberbank, ธนาคาร VTB, และธนาคารกลางรัสเซีย ตอนนี้การใช้งานใบรับรองของรัสเซียยังเป็นไปตามสมัครใจ</p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">ตอนนี้ยังไม่มีข่าวผู้ให้บริการ CA รายใดประกาศแบนเว็บไซต์รัสเซียอย่างชัดเจน แต่ก่อนหน้านี้บริการจดโดเมนอย่าง&nbsp;<a href=\"https://www.blognone.com/node/127390\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(29, 95, 179);\">Namecheap ก็ประกาศไม่ให้บริการลูกค้ารัสเซียมาแล้ว</a>&nbsp;และรัฐบาลยูเครนก็พยายามกดดันหน่วยงานต่างๆ ให้แบนรัสเซียอย่างต่อเนื่อง เช่น การขอให้ ICANN ตัดโดเมนของรัสเซียออกจากระบบ&nbsp;<a href=\"https://www.icann.org/en/system/files/correspondence/marby-to-fedorov-02mar22-en.pdf\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(29, 95, 179);\">แต่ทาง ICANN ปฎิเสธ</a></p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">ที่มา -&nbsp;<a href=\"https://www.bleepingcomputer.com/news/security/russia-creates-its-own-tls-certificate-authority-to-bypass-sanctions/\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(29, 95, 179);\">Bleeping Computer</a></p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\"><img src=\"https://www.blognone.com/sites/default/files/externals/86a7cbfdfb8578cb1ca7a111eea2a1e7.jpg\" alt=\"No Description\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px; padding: 0px; outline: 0px; vertical-align: baseline; max-width: 640px;\"></p></div></div></div></div></div>', '0', '0000-00-00', '1', '2022-03-11'),
+(6, 1, 'gjdgdfjdfjgdfjgf', '<p>fdjfgjfgjfgddjdf</p>', '0', '0000-00-00', '1', '2022-03-10'),
+(7, 1, 'bzxbzxzxb', '<p>zxbzxbzxzbx</p>', '0', '2022-03-11', '1', '2022-03-11'),
+(8, 1, 'vvdv', '<p>vdsvsd</p>', '0', 'vsdsdvddf', '1', '2022-03-11'),
+(9, 3, 'sdfsdfsadf', '<p>sadfsadfdsafdsa</p>', '0', 'sfsdsf', '1', '2022-03-11');
 
 -- --------------------------------------------------------
 
@@ -308,8 +335,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `full_name`, `user_email`, `user_password`, `user_name`, `user_image`, `user_role_id`, `user_status`, `token`, `salt`) VALUES
-(22, 'จริยา ศรีกลัด', 'jariya@gmail.com', '61b9da061eb76f39354a0a95c9c6a2ab', 'Jariya srikud', '', '2', '1', '15a8ba7494e42f3f0c7fbf43fe3fe811', '7m12hjPSyV'),
-(27, 'ธนพล กัลปพฤกษ์', 'e21bvz@hotmail.com', 'cf26b68d975f74373fce89bb5870c60a', 'ธนพล กัลปพฤกษ์', '', '1', '1', '57363c72156f407e99bfb8fb1a48410f', '4GLH9N7ju9');
+(1, 'ธนพล กัลปพฤกษ์', 'e21bvz@hotmail.com', '8a74f79ac42b1c4361710c814b05ddf4', 'nack', '', '1', '1', '7b8e3b4ee014f30ea53e01bf355ec23b', 'VkztNO8yhW'),
+(3, 'เพียงเพ็ญ แป้นจันทร์', 'e21bvz@gmail.com', '752d6214ea1886db6bef647258d8bc1b', 'nui', '', '1', '1', 'a5ea0f2afc90412c8f887902c27d1488', 'tcih02W3DH');
 
 -- --------------------------------------------------------
 
@@ -409,6 +436,12 @@ ALTER TABLE `tbl_news`
   ADD PRIMARY KEY (`n_id`);
 
 --
+-- Indexes for table `tbl_newsletter`
+--
+ALTER TABLE `tbl_newsletter`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_news_counter`
 --
 ALTER TABLE `tbl_news_counter`
@@ -497,6 +530,12 @@ ALTER TABLE `tbl_news`
   MODIFY `n_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
+-- AUTO_INCREMENT for table `tbl_newsletter`
+--
+ALTER TABLE `tbl_newsletter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `tbl_news_counter`
 --
 ALTER TABLE `tbl_news_counter`
@@ -512,7 +551,7 @@ ALTER TABLE `tbl_news_type`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_user_role`

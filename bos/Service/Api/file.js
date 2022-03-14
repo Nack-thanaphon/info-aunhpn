@@ -173,7 +173,7 @@ $(document).on('click', '.edit_file_upload', function() { // เรียกใ�
             $('#ef_id').val(data[0].f_id);
             $('#ef_name').val(data[0].f_name);
             $('#ef_group').val(data[0].f_group);
-            $('#f_type').val(data[0].f_type);
+            $('#t_id').val(data[0].t_id);
             $('#efile_name').html(data[0].f_file);
             $('#ef_fname').val(data[0].f_file);
             $('#ef_detail').val(data[0].f_detail);
@@ -181,9 +181,9 @@ $(document).on('click', '.edit_file_upload', function() { // เรียกใ�
             $('#ef_by').val(data[0].f_by);
             $('#eadfile_uploads').modal('show');
 
-            if (data[0].f_type == '1') $(".edit-ftype1").trigger('click')
-            else if (data[0].f_type == '2') $(".edit-ftype2").trigger('click')
-            else if (data[0].f_type == '3') $(".edit-ftype3").trigger('click')
+            if (data[0].t_id == '1') $(".edit-ftype1").trigger('click')
+            else if (data[0].t_id == '2') $(".edit-ftype2").trigger('click')
+            else if (data[0].t_id == '3') $(".edit-ftype3").trigger('click')
         }
     });
 });
@@ -200,7 +200,7 @@ $('#efileupload').on('submit', function(e) { // เรียกใช้งา�
             id: $('#ef_id').val(),
             name: $('#ef_name').val(),
             group: $('#ef_group').val(),
-            type: $('#f_type').val(),
+            type: $('#t_id').val(),
             detail: $('#ef_detail').val(),
             date: $('#ef_date').val(),
             by: $('#ef_by').val(),

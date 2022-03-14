@@ -69,7 +69,7 @@ function file_type($conn)
     foreach ($result as $i => $row) {
 
         $output .= ' <input class="editcheckbox edit-ftype' . ($i + 1) . ' form-check-input"  type="radio" 
-        id="f_type' . $i + 1 . '" name="f_type" value="' . $row["t_id"] . '" required  > 
+        id="t_id' . $i + 1 . '" name="t_id" value="' . $row["t_id"] . '" required  > 
         <label class="form-check-label" for="f_group">' . $row["t_name"] . '</label>';
     }
     return $output;
@@ -144,8 +144,7 @@ function event_type($conn)
     $statement = $conn->prepare($query);
     $statement->execute();
     $result = $statement->fetchAll();
-    $statement->execute();
-    $result = $statement->fetchAll();
+
     $output = '';
     foreach ($result as $row) {
         $output .= '<option value="' . $row["et_id"] . '" required >' . $row["et_name"] . '</option>';

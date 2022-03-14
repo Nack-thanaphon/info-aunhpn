@@ -21,9 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $date = $_POST['date'];
     $create = $_POST['create'];
 
-
-
-
     $query = " UPDATE tbl_newsletter 
     SET 
     `n_title` = '" . $name . "', 

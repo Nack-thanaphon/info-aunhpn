@@ -33,20 +33,20 @@ if (isset($_POST['f_fname'])) {
 
             //ประกาศตัวแปรรับค่าจากฟอร์ม
             $file_group = $_POST['f_group'];
-            $file_type = $_POST['f_type'];
+            $file_type = $_POST['t_id'];
             $file_name = $_POST['f_name'];
             $file_detail = $_POST['f_detail'];
             $file_by = $_POST['f_by'];
             $file_date = $_POST['f_date'];
 
             //sql insert
-            $stmt = $conn->prepare("INSERT INTO tbl_file (f_name, f_group,f_type,f_detail,f_by,f_file,f_date,f_status)
-                 VALUES (:f_name, :f_group,:f_type,:f_detail,:f_by,:f_file,:f_date,:f_status)");
+            $stmt = $conn->prepare("INSERT INTO tbl_file (f_name, f_group,t_id,f_detail,f_by,f_file,f_date,f_status)
+                 VALUES (:f_name, :f_group,:t_id,:f_detail,:f_by,:f_file,:f_date,:f_status)");
             $result = $stmt->execute(
                 array(
                     ':f_name' =>  $file_name,
                     ':f_group' => $file_group,
-                    ':f_type' => $file_type,
+                    ':t_id' => $file_type,
                     ':f_detail' => $file_detail,
                     ':f_by' => $file_by,
                     ':f_file' => $newname,
