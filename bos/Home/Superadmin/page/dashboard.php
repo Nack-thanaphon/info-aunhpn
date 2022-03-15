@@ -159,7 +159,7 @@ function web_stat_nation() {
         },
     }).done(function(data) {
 
-        console.log(data)
+        // console.log(data)
         let name = [];
         let total = [];
         var coloR = [];
@@ -239,7 +239,7 @@ function web_stat_7day() {
         },
     }).done(function(data) {
 
-        console.log(data)
+        // console.log(data)
         let date = [];
         let total = [];
         for (var i = 0; i < data.length; i++) {

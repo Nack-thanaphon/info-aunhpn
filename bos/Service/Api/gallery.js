@@ -226,11 +226,11 @@ $(document).ready(function() {
                 }).then((result) => {
                     // location.assign('./news.php');
                 });
-                console.log("good", response);
+                // console.log("good", response);
 
             },
             error: function(err) {
-                console.log("bad", err);
+                // console.log("bad", err);
             }
         })
 
@@ -246,8 +246,6 @@ $(document).ready(function() {
         $('#uploadModal').modal('show');
         $('#g_id').val(id);
 
-        console.log(id);
-        console.log(folder_name);
     });
 
 
@@ -296,7 +294,7 @@ $(document).ready(function() {
             success: function(response) {
 
                 let html = '';
-                console.log("good", response);
+
                 data = response.result;
 
                 for (var i = 0; i < data.length; i++) {
@@ -320,7 +318,7 @@ $(document).ready(function() {
 
             },
             error: function(err) {
-                console.log("bad", err);
+                // console.log("bad", err);
             }
         })
     })

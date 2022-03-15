@@ -207,11 +207,11 @@ $('#eformData').on('submit', function(e) { // เรียกใช้งาน 
             }).then((result) => {
                 location.assign('./news.php');
             });
-            console.log("good", response);
+            // console.log("good", response);
 
         },
         error: function(err) {
-            console.log("bad", err);
+            // console.log("bad", err);
         }
     })
 
@@ -233,14 +233,14 @@ $(function() { // เรียกใช้งาน Summernote
 
 
 $("#n_image").change((e) => { // เรียกใช้งาน UPLOADFILE (สำคัญ)
-    console.log(1)
+    // console.log(1)
     var form_data = new FormData();
     var ins = document.getElementById(e.target.id).files.length;
     for (var x = 0; x < ins; x++) {
         form_data.append("files[]", document.getElementById(e.target.id).files[x]);
     }
     form_data.append("files[]", document.getElementById(e.target.id).files[0]);
-    console.log('fromdata', form_data)
+    // console.log('fromdata', form_data)
     $.ajax({
         // url: './api/uploadfile.php', // point to server-side PHP script 
         url: '../../Service/News/uploadfile.php', // point to server-side PHP script
@@ -251,11 +251,11 @@ $("#n_image").change((e) => { // เรียกใช้งาน UPLOADFILE (�
         data: form_data,
         type: 'post',
         success: function(response) {
-            console.log('response', response)
+            // console.log('response', response)
             $("#n_imgname").val(response)
         },
         error: function(err) {
-            console.log('bad', err)
+            // console.log('bad', err)
         }
     });
 })
@@ -278,11 +278,11 @@ $("#e_image").change((e) => { // เรียกใช้งาน UPLOADFILE �
         data: form_data,
         type: 'post',
         success: function(response) {
-            console.log('good', response)
+            // console.log('good', response)
             $("#e_imgname").val(response)
         },
         error: function(err) {
-            console.log('bad', err)
+            // console.log('bad', err)
         }
     });
 })

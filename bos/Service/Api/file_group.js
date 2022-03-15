@@ -197,49 +197,15 @@ $('#efile_group').on('submit', function(e) { // เรียกใช้งา�
                 location.reload();
 
             });
-            console.log("good", response);
+
 
         },
         error: function(err) {
-            console.log("bad", err);
+
         }
     })
 
 })
-
-
-// $(document).on('change', '#toggle-event-file-group', function() { // เรียกใช้งาน สถานะ datatable
-//     let id = $(this).data("id");
-//     let g_status = '';
-//     if ($("#toggle-event-file-group").prop('checked')) {
-//         g_status = '1';
-//     } else {
-//         g_status = '0';
-//     } {
-//         $.ajax({
-//                 url: "../../Service/File/file_group/status.php",
-//                 method: "POST",
-//                 data: {
-//                     id: id,
-//                     status: g_status
-//                 },
-//                 dataType: "json",
-//                 success: function(data) {
-//                     console.log(data);
-//                 }
-//             })
-//             .then((result) => {
-//                 Swal.fire({
-//                     text: 'อัพเดตข้อมูลเรียบร้อย',
-//                     icon: 'success',
-//                     confirmButtonText: 'ตกลง',
-//                 })
-//             });
-//     }
-// });
-
-
-
 
 function preview_image(event) { // เรียกใช้งาน preview imagebefore (สำคัญ)
     var reader = new FileReader();

@@ -14,7 +14,7 @@ $(function() {
 
             },
             success: (resp) => {
-                console.log(resp);
+                // console.log(resp);
                 switch (resp) {
                     case (resp = "superadmin"):
                         toastr.success("เข้าสู่ระบบสำเร็จ");
@@ -39,7 +39,7 @@ $(function() {
             error: (err) => {
                 toastr.error("เข้าสู่ระบบไม่สำเร็จ")
                 location.reload()
-                console.log(err);
+                    // console.log(err);
             }
         })
     })

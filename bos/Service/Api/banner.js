@@ -262,7 +262,7 @@ $("#e_image").change((e) => { // เรียกใช้งาน UPLOADFILE �
         data: form_data,
         type: 'post',
         success: function(response) {
-            console.log('good', response)
+            // console.log('good', response)
             $("#e_imgname").val(response)
         },
         error: function(err) {

@@ -242,7 +242,7 @@ $('#edit_userform').on('submit', function(e) { // เรียกใช้งา
 
         },
         error: function(err) {
-            console.log("bad", err);
+            // console.log("bad", err);
         }
     });
 });

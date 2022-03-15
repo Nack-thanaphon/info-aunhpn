@@ -380,7 +380,6 @@ include "../../../bos/Function/function.php"
                         });
                         fileReader.readAsDataURL(f);
                     }
-                    console.log(files);
                 });
             } else {
                 alert("Your browser doesn't support to File API")

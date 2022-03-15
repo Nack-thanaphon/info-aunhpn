@@ -169,7 +169,7 @@ $(document).on('click', '.edit_file_upload', function() { // เรียกใ�
         },
         dataType: "json",
         success: function(data) {
-            console.log('data >>> ', data)
+
             $('#ef_id').val(data[0].f_id);
             $('#ef_name').val(data[0].f_name);
             $('#ef_group').val(data[0].f_group);
@@ -214,11 +214,11 @@ $('#efileupload').on('submit', function(e) { // เรียกใช้งา�
                 location.reload();
 
             });
-            console.log("good", response);
+
 
         },
         error: function(err) {
-            console.log("bad", err);
+
         }
     })
 

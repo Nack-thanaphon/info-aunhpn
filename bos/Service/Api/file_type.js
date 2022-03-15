@@ -180,11 +180,11 @@ $('#efile_type').on('submit', function(e) { // เรียกใช้งาน
                 location.reload();
 
             });
-            console.log("good", response);
+
 
         },
         error: function(err) {
-            console.log("bad", err);
+
         }
     })
 

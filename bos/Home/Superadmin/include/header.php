@@ -45,12 +45,5 @@
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./assets/vendor/chart.js/Chart.min.js"></script>
-    <script src="./assets/js/demo/chart-area-demo.js"></script>
-
-
-
-
-
-
 
 </head>

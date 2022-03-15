@@ -86,10 +86,10 @@ $(document).ready(function() {
             $('#detail').summernote('pasteHTML', data[0].n_detail);
             $('#n_date').val(data[0].n_date);
             $('#n_create').val(data[0].n_create);
-            console.log("good", data)
+            // console.log("good", data)
         },
         error: function(err) {
-            console.log("bad", err)
+            // console.log("bad", err)
 
         }
     })
@@ -117,11 +117,11 @@ $('#eNewsletter_ad').on('submit', function(e) { // เรียกใช้ง�
             }).then((result) => {
                 location.assign('./newsletter.php');
             });
-            console.log("good", response);
+            // console.log("good", response);
 
         },
         error: function(err) {
-            console.log("bad", err);
+            // console.log("bad", err);
         }
     })
 

@@ -49,7 +49,7 @@
 <script src="../../Plugins/fullcalendar/fullcalendar.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="./assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- <script src="./assets/vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
 <script src="./assets/vendor/datatables/jquery.dataTables.min.js"></script>
 
 <script src="../../Plugins/sweetalert2/sweetalert2.min.js"></script>
@@ -70,8 +70,6 @@
 <!-- Custom scripts for all pages-->
 <script src="./assets/js/sb-admin-2.min.js"></script>
 <script src="./assets/js/main.js"></script>
-<script src="./assets/js/demo/chart-area-demo.js"></script>
-<script src="./assets/js/demo/chart-pie-demo.js"></script>
 <script src="../../Service/Api/news.js"></script>
 <script src="../../Service/Api/newsletter.js"></script>
 <script src="../../Service/Api/activity.js"></script>

@@ -245,8 +245,8 @@ include "../../../bos/Function/function.php"
 
 <script>
 $(document).on('change', '.toggle-event', function(e) { // เรียกใช้งาน สถานะ datatable
-    console.log('e', 1)
-    console.log('e', e.target.id)
+    // console.log('e', 1)
+    // console.log('e', e.target.id)
 
     let id = $(this).data("id");
     let status = '';
