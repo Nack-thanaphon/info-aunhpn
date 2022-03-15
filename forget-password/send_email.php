@@ -1,5 +1,5 @@
 <?php
-require_once './database/connect.php';
+require_once '../database/connect.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -18,21 +18,25 @@ if (isset($_POST['uemail'])) {
 			$dbusername = $row["user_name"];
 			$dbtoken = $row["token"];
 
+
+
+
 			// They can click on this link to reset the password with the token. 
-			$reset_link = "Hi, $dbusername. Click here to reset your password
-			https://www.info-aun-hpn.com/reset_password.php?token=$dbtoken";
+			$reset_link = "เรียนคุณ $dbusername! <br>
+			กรุณาคลิ๊กด้านล่างนี้เพื่อเปลี่ยนรหัสผ่านของคุณ<br><br><br>
+			โดย AUN-HPN[team]<br><br>
+			<hr><a href='localhost/reset_password.php?token=$dbtoken' class='btn btn-success'>เปลี่ยนรหัสผ่าน</a>";
 
 
-			require_once "PHPMailer/PHPMailer.php";
-			require_once "PHPMailer/SMTP.php";
-			require_once "PHPMailer/Exception.php";
+			require_once "../PHPMailer/PHPMailer.php";
+			require_once "../PHPMailer/SMTP.php";
+			require_once "../PHPMailer/Exception.php";
 
 			$mail = new PHPMailer();
 
 			// SMTP Settings
 			$mail->isSMTP();
 			$mail->Host = 'smtp.gmail.com';
-
 			$mail->Mailer = "smtp";
 			$mail->SMTPAuth = true;
 			$mail->Username = "aunhpn.mahidol@gmail.com"; // enter your email address
@@ -56,12 +60,11 @@ if (isset($_POST['uemail'])) {
 				header("location:index.php");
 			} else {
 				echo "Mailer Error: " . $mail->ErrorInfo;
-				header("location:index.php");
 			}
 		} else {
-			$_SESSION["errorMsg"] = "ไม่มีอีเมลล์นี้ในระบบ";
+			$_SESSION["errorMsg"] = "คุณใส่อีเมลล์ไม่ถูกต้อง";
 		}
 	} else {
-		$_SESSION["errorMsg"] = "wrong email";
+		$_SESSION["errorMsg"] = "ไม่มีอีเมลล์นี้ในระบบ";
 	}
 }

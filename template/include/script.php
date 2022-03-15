@@ -1,5 +1,4 @@
-<a id="button"><i class="fas fa-chevron-up"></i></a>
-<script src="services/forget_password.js"></script>
+<script src="../services/forget_password.js"></script>
 <script src="services/login.js"></script>
 
 <script src='https://www.google.com/recaptcha/api.js'></script>
