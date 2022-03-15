@@ -41,15 +41,15 @@ require_once '../database/connect.php';
                         <h1 class="login-title">Forget Password</h1>
                         <?php include '../template/include/message.php'; ?>
 
-                        <form>
-                            <div class="form-group mb-4">
-                                <label id="m-email" class="text-uppercase">กรุณากรอกอีเมลล์</label>
-                                <input type="text" id="txt_email" class="form-control" placeholder="Enter Your Email">
-                                <!-- <small id="messagePass" class="text-danger">Password is mandatory.</small> -->
-                            </div>
-                            <button id="btn_send" type="submit" class="btn btn-block login-btn">Send
-                                Email</button>
-                        </form>
+
+                        <div class="form-group mb-4">
+                            <label id="m-email" class="text-uppercase">กรุณากรอกอีเมลล์</label>
+                            <input type="text" id="txt_email" class="form-control" placeholder="Enter Your Email">
+                            <!-- <small id="messagePass" class="text-danger">Password is mandatory.</small> -->
+                        </div>
+                        <button id="btn_send" type="submit" class="btn btn-block login-btn">Send
+                            Email</button>
+
                         <a href="../" class="forgot-password-link">
                             ย้อนกลับ</a>
                     </div>
@@ -62,8 +62,6 @@ require_once '../database/connect.php';
         </div>
     </main>
     </div>
-
-
     <script src="../services/forget_password.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

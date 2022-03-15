@@ -18,9 +18,6 @@ if (isset($_POST['uemail'])) {
 			$dbusername = $row["user_name"];
 			$dbtoken = $row["token"];
 
-
-
-
 			// They can click on this link to reset the password with the token. 
 			$reset_link = "เรียนคุณ $dbusername! <br>
 			กรุณาคลิ๊กด้านล่างนี้เพื่อเปลี่ยนรหัสผ่านของคุณ<br><br><br>

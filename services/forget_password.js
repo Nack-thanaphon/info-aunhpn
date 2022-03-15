@@ -1,8 +1,5 @@
 $(document).on("click", "#btn_send", function(e) {
-
     var email = $("#txt_email").val();
-
-
     if (email == "") {
         $('#txt_email').focus();
         $('#txt_email').addClass('add');
@@ -23,47 +20,6 @@ $(document).on("click", "#btn_send", function(e) {
 });
 
 
-
-
-
-$(document).on("click", "#btn_update", function(e) {
-
-    var password = $("#password").val();
-    var cpassword = $("#cpassword").val();
-    var token = $("#token").val();
-
-
-    if (password == "") {
-        $('#password').focus();
-        $('#message').show();
-        $('#message').html('กรณากรอกรหัสผ่าน');
-    } else if (cpassword == "") {
-        $('#password').focus();
-        $('#cmessage').show();
-        $('#cmessage').html('กรณากรอกรหัสผ่านอีกครั้ง');
-        return false;
-    } else if (password != cpassword) {
-
-        $('#cmessage').show();
-        $('#cmessage').html('รหัสผ่านไม่ตรงกัน');
-
-    } {
-
-        $.ajax({
-            url: "../forget-password/update_password.php",
-            method: "post",
-
-            data: {
-                utoken: token,
-                upassword: MD5($("#password").val())
-            },
-            success: (response) => {
-                console.log('good', response)
-            },
-        });
-    }
-
-});
 
 
 MD5 = function(e) {
@@ -237,3 +193,51 @@ MD5 = function(e) {
 
     return (p(a) + p(b) + p(c) + p(d)).toLowerCase();
 };
+
+
+
+
+$(document).on("click", "#btn_update", function(e) {
+
+    let password = $("#password").val();
+    let cpassword = $("#cpassword").val();
+    let token = ($("#token").val());
+
+    if (password == "") {
+        $('#message').show();
+        $('#message').html('กรณากรอกรหัสผ่าน');
+        return false
+
+    }
+    if (cpassword == "") {
+        $('#cmessage').html('กรณากรอกรหัสผ่านอีกครั้ง');
+        $('#cmessage').show();
+        return false
+
+    }
+    if (password != cpassword) {
+        $('#cmessage').html('รหัสผ่านไม่ตรงกัน');
+        $('#cmessage').show();
+        return false
+    } else {
+
+        $.ajax({
+            url: "../forget-password/update_password.php",
+            method: "post",
+            data: {
+                utoken: token,
+                upassword: MD5($("#password").val())
+            },
+            success: (response) => {
+                Swal.fire(
+                    'เรียบร้อย',
+                    'เปลี่ยนรหัสผ่านเรียบร้อย',
+                    'success'
+                );
+                setTimeout(() => {
+                    window.location.href = "../";
+                }, 1000);
+            },
+        });
+    }
+});

@@ -1,4 +1,3 @@
-<script src="../services/forget_password.js"></script>
 <script src="services/login.js"></script>
 
 <script src='https://www.google.com/recaptcha/api.js'></script>

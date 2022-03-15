@@ -1,7 +1,6 @@
 <?php
 
 require_once '../database/connect.php';
-date_default_timezone_set("Asia/Bangkok");
 
 function generateRandomString($length = 10)
 {
@@ -23,17 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$now = date("Y-m-d H:i:s");
 	$update_token = md5(generateRandomString(10) . $now);
 	// Apply SQL update query and updating new password 
-	$statement = $conn->prepare("UPDATE tbl_user SET user_password =:pwd, salt =:update_salt,token =:update_token WHERE token =:token");
+	$update_stmt = $conn->prepare(" UPDATE tbl_user SET user_password =:pwd, salt =:update_salt,token =:update_token WHERE token =:token");
 
-	$result = $statement->execute(
-		array(
-			":token" => $txt_token,
-			":pwd"	=> $newpassword,
-			":update_token" => $update_token,
-			":update_salt" => $salt
-		)
-	);
-	http_response_code(200);
-} else {
-	http_response_code(405);
+	// If query properly executed, then password updated successfully in the table  
+	if ($update_stmt->execute(array(
+		":pwd"	=> $newpassword,
+		":token" => $txt_token,
+		":update_token" => $update_token,
+		":update_salt" => $salt
+	)))
+		echo json_encode('success');
 }
