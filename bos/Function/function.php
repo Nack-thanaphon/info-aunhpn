@@ -128,13 +128,10 @@ function total_banner_online($conn)
 
 function web_count_static($conn)
 {
-    $sql = "select visitor_counter from tbl_visitor_counter";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $counter = $arr[0]['visitor_counter'];
-
-    return $counter;
+    $query = "SELECT * FROM tbl_webstat";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    return $statement->rowCount();
 }
 
 

@@ -21,9 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $g_name = $_POST['efolder_name'];
     $old_name = $_POST['eold_name'];
     $g_detail = $_POST['ed_gallary'];
+    $dir = "../../uploads/gallery/";
 
     if (!file_exists($g_name)) {
-        rename($old_name, $g_name);
+        rename($dir . $old_name, $dir . $g_name);
     }
 
     $query = " UPDATE tbl_gallery SET `g_name` = '" . $g_name . "', `g_detail` = '" . $g_detail . "'  WHERE g_id = '" . $id . "' ";

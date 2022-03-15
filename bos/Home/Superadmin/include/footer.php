@@ -82,3 +82,4 @@
 <script src="../../Service/Api/file_type.js"></script>
 <script src="../../Service/Api/file_group.js"></script>
 <script src="../../Service/Api/chart.js"></script>
+<script src="../../Service/Api/chart_visit.js"></script>

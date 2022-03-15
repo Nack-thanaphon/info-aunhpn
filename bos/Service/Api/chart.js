@@ -19,6 +19,7 @@ function showGraph() {
         data: {},
     }).done(function(data) {
 
+        console.log(data)
         let name = [];
         let total = [];
         for (var i = 0; i < data.length; i++) {
