@@ -6,10 +6,10 @@ header('Access-Control-Allow-Credentials: true');
 include "../../database/connect.php";
 
 
-if ($_SERVER['REQUEST_METHOD'] = "GET") {
-    // $stmt = $conn->prepare("SELECT * FROM tbl_file INNER JOIN  tbl_file_type ON  tbl_file_type.t_id = tbl_file.t_id");
+if (isset($_GET['action']) == 'by_nation') {
 
-    $stmt = $conn->prepare("SELECT * ,COUNT(f_id) AS Total FROM tbl_file  LEFT OUTER JOIN  tbl_file_type  ON  tbl_file.t_id = tbl_file_type.t_id GROUP BY tbl_file.t_id");
+    // $stmt = $conn->prepare("SELECT * FROM tbl_file INNER JOIN  tbl_file_type ON  tbl_file_type.t_id = tbl_file.t_id");
+    $stmt = $conn->prepare("SELECT (c_nation),COUNT(c_id) AS Total FROM tbl_webstat  GROUP BY c_nation");
     $stmt->execute();
 
     $data = array();
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] = "GET") {
 
 
         $data[] = array(
-            'name' => $row['t_name'],
+            'name' => $row['c_nation'],
             'total' => $row['Total']
         );
     }

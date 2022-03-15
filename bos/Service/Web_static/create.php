@@ -45,23 +45,4 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         http_response_code(201);
         echo json_encode($response);
     }
-} else if ($_SERVER['REQUEST_METHOD'] = "GET") {
-    $stmt = $conn->prepare("SELECT (c_nation),COUNT(c_id) AS Total FROM tbl_webstat  GROUP BY c_nation");
-    $stmt->execute();
-
-    $data = array();
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        extract($row);
-
-
-
-        $data[] = array(
-            'name' => $row['c_nation'],
-            'total' => $row['Total']
-        );
-    }
-    echo json_encode($data);
-    http_response_code(200);
-} else {
-    http_response_code(405);
 }

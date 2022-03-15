@@ -30,18 +30,10 @@ if (empty($_SESSION['user'])) {
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div class="card p-5">
-                        <!-- Page Heading -->
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                    class="fas fa-download fa-sm text-white-50"></i> ออกรายงาน Excel</a>
-                        </div>
 
-                        <!-- Content Row -->
 
-                        <?php include "./page/web_ip.php"; ?>
-                    </div>
+                    <?php include "./page/web_static_manager.php"; ?>
+
 
                     <!-- Content Row -->
 
@@ -56,6 +48,7 @@ if (empty($_SESSION['user'])) {
         <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
+
 
 
     <div id="web_static" name="c_ip" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>"></div>

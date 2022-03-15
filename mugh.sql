@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2022 at 09:51 AM
+-- Generation Time: Mar 15, 2022 at 04:23 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.15
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `mugh`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `survey_table`
+--
+
+CREATE TABLE `survey_table` (
+  `survey_id` int(11) NOT NULL,
+  `language` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `survey_table`
+--
+
+INSERT INTO `survey_table` (`survey_id`, `language`) VALUES
+(1, 'PHP'),
+(3, 'Python'),
+(4, 'Node.js'),
+(5, 'PHP'),
+(6, 'PHP'),
+(7, 'Node.js'),
+(8, 'PHP'),
+(9, 'Python'),
+(10, 'PHP'),
+(11, 'Node.js'),
+(12, 'Node.js');
 
 -- --------------------------------------------------------
 
@@ -68,6 +96,13 @@ CREATE TABLE `tbl_events` (
   `e_update` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_events`
+--
+
+INSERT INTO `tbl_events` (`id`, `e_user`, `title`, `e_detail`, `e_address`, `e_file`, `start`, `end`, `time_start`, `time_end`, `e_update`) VALUES
+(10, 0, 'bjnj', 'bujbnjn', 'h jj ', 'bjnj', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2022-03-14 15:58:36');
+
 -- --------------------------------------------------------
 
 --
@@ -101,11 +136,11 @@ CREATE TABLE `tbl_file` (
   `f_id` int(11) NOT NULL,
   `f_name` text NOT NULL,
   `f_group` text NOT NULL,
-  `t_id` varchar(20) NOT NULL,
+  `t_id` int(11) NOT NULL,
   `f_detail` text NOT NULL,
   `f_by` text NOT NULL,
   `f_file` text NOT NULL,
-  `f_status` enum('1','0','','') NOT NULL,
+  `f_status` enum('1','0') NOT NULL,
   `f_date` date NOT NULL,
   `f_update` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -115,7 +150,9 @@ CREATE TABLE `tbl_file` (
 --
 
 INSERT INTO `tbl_file` (`f_id`, `f_name`, `f_group`, `t_id`, `f_detail`, `f_by`, `f_file`, `f_status`, `f_date`, `f_update`) VALUES
-(9, 'งานวิชาการ', '1', '1', '', '', 'doc_77394025720220228_133349.pdf', '1', '2022-02-28', '2022-02-28 06:33:49');
+(13, 'งานวิชาการ', '1', 1, '', '', 'doc_77394025720220228_133349.pdf', '1', '2022-02-28', '2022-02-28 06:33:49'),
+(14, 'งานวิชาการ', '2', 1, '', '', 'doc_77394025720220228_133349.pdf', '1', '2022-02-28', '2022-02-28 06:33:49'),
+(16, 'klnnm', '1', 2, 'kbbll', 'nlnl', 'doc_175132156820220314_022044.pdf', '1', '2022-03-14', '2022-03-13 19:20:44');
 
 -- --------------------------------------------------------
 
@@ -161,9 +198,8 @@ CREATE TABLE `tbl_file_type` (
 --
 
 INSERT INTO `tbl_file_type` (`t_id`, `t_name`, `t_date`) VALUES
-(1, 'PDF(เอกสาร)', '2022-02-27 04:16:38'),
-(2, 'DOC (เอกสาร)', '2022-02-27 04:23:43'),
-(3, 'อื่นๆ', '2022-02-27 10:34:49');
+(1, 'PDF', '2022-02-27 04:16:38'),
+(2, 'DOC', '2022-02-27 04:23:43');
 
 -- --------------------------------------------------------
 
@@ -186,7 +222,8 @@ CREATE TABLE `tbl_gallery` (
 
 INSERT INTO `tbl_gallery` (`g_id`, `g_name`, `g_detail`, `g_status`, `g_user`, `g_date`) VALUES
 (2, 'faaf', '', '0', '', '0000-00-00'),
-(3, 'รักนุ้ยมาก', '', '1', '', '0000-00-00');
+(3, 'รักนุ้ยมาก', '', '0', '', '0000-00-00'),
+(4, 'testgdgd', 'test', '0', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -218,7 +255,12 @@ INSERT INTO `tbl_images` (`i_id`, `g_id`, `i_name`, `i_create`) VALUES
 (10, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy (5) - Copy.jpg', '2022-03-10 09:32:40'),
 (11, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy (6) - Copy.jpg', '2022-03-10 09:32:40'),
 (12, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy (7) - Copy.jpg', '2022-03-10 09:32:40'),
-(13, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy.jpg', '2022-03-10 09:32:40');
+(13, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy.jpg', '2022-03-10 09:32:40'),
+(15, 3, '../../uploads/gallery/รักนุ้ยมาก/photo-1527960669566-f882ba85a4c6 - Copy (3).jpg', '2022-03-10 09:32:40'),
+(17, 4, '../../uploads/gallery/test/photo-1527960669566-f882ba85a4c6 - Copy - Copy.jpg', '2022-03-14 12:50:43'),
+(18, 4, '../../uploads/gallery/test/photo-1527960669566-f882ba85a4c6 - Copy (2) - Copy.jpg', '2022-03-14 12:50:43'),
+(19, 4, '../../uploads/gallery/test/photo-1527960669566-f882ba85a4c6 - Copy (2).jpg', '2022-03-14 12:50:43'),
+(20, 4, '../../uploads/gallery/test/photo-1527960669566-f882ba85a4c6 - Copy (3) - Copy.jpg', '2022-03-14 12:50:43');
 
 -- --------------------------------------------------------
 
@@ -240,14 +282,6 @@ CREATE TABLE `tbl_news` (
   `update_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `create_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tbl_news`
---
-
-INSERT INTO `tbl_news` (`n_id`, `n_type`, `n_name`, `url`, `n_detail`, `slug`, `n_image`, `n_views`, `n_date`, `n_status`, `update_at`, `create_at`) VALUES
-(58, '1', 'asdasd', 'gfgdh', '                                            ', 'l6-4kr', 'uploads/images/16465078383020.jpg', 0, '2022-03-06', '0', '2022-03-05 19:17:21', '2022-03-06'),
-(59, '1', 'asdasd', 'hdfhfgdhfd', '                                            ', 'svsvs', 'uploads/images/16465087896580.jpg', 0, '2022-03-06', '1', '2022-03-05 19:33:19', '2022-03-06');
 
 -- --------------------------------------------------------
 
@@ -271,11 +305,8 @@ CREATE TABLE `tbl_newsletter` (
 --
 
 INSERT INTO `tbl_newsletter` (`id`, `n_user_id`, `n_title`, `n_detail`, `n_views`, `n_date`, `n_status`, `n_create`) VALUES
-(5, 1, 'hdfghfdhfdg', '<div class=\"content-title-box\" style=\"margin: 0px 0px 5px; padding: 5px 15px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; position: relative; font-weight: bold; background: rgb(0, 66, 102); border-top-left-radius: 5px; border-top-right-radius: 5px; color: rgb(51, 51, 51); font-family: Helvetica, Arial, Thonburi, Tahoma, FreeSans, sans-serif;\"><h2 itemprop=\"name\" style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 1.2em; vertical-align: baseline;\"><a href=\"https://www.blognone.com/node/127572\" title=\"รัสเซียสร้าง CA เองป้องกันกรณีโดนคว่ำบาตร ธนาคารเริ่มใช้งาน\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 15.6px; vertical-align: baseline; color: rgb(255, 255, 255);\">รัสเซียสร้าง CA เองป้องกันกรณีโดนคว่ำบาตร ธนาคารเริ่มใช้งาน</a></h2></div><div class=\"meta\" style=\"margin: 0px; padding: 5px 15px; border: 0px; outline: 0px; font-size: 0.8em; vertical-align: baseline; color: rgb(51, 51, 51); font-family: Helvetica, Arial, Thonburi, Tahoma, FreeSans, sans-serif;\"><span class=\"submitted\" style=\"margin: 0px 10px 0px 0px; padding: 3px; border: 1px solid rgb(209, 209, 209); outline: 0px; font-size: 10.4px; vertical-align: baseline; background-color: rgb(238, 238, 238); border-radius: 5px;\">By:&nbsp;<span class=\"username\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\">lew</span>&nbsp;<div class=\"user_badges\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline;\"><a href=\"https://www.blognone.com/crew\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; color: rgb(29, 95, 179);\"><img class=\"badge badge-2 founder\" src=\"https://www.blognone.com/sites/default/files/badges/badge-founder.png\" alt=\"Founder\" title=\"Founder\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px 1px; padding: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline; max-width: 640px;\"></a><img class=\"badge badge-13 juscis-writer\" src=\"https://www.blognone.com/sites/default/files/badges/jusci-blue-i.png\" alt=\"Jusci&amp;#039;s Writer\" title=\"Jusci&amp;#039;s Writer\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px 1px; padding: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline; max-width: 640px;\"><img class=\"badge badge-22 meconomics\" src=\"https://www.blognone.com/sites/default/files/badges/mecon-badge.png\" alt=\"MEconomics\" title=\"MEconomics\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px 1px; padding: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline; max-width: 640px;\"><a href=\"https://www.blognone.com/news/15370/ask-blognone-are-you-android\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; color: rgb(29, 95, 179);\"><img class=\"badge badge-4 android\" src=\"https://www.blognone.com/sites/default/files/badges/badge-android.png\" alt=\"Android\" title=\"Android\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px 1px; padding: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline; max-width: 640px;\"></a></div>&nbsp;on 11 March 2022 - 11:22</span>&nbsp;<span class=\"terms-label\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\">Tags:<span style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\"><span class=\"terms\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\"><div class=\"field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above\" style=\"margin: 0px; padding: 3px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; display: inline;\"><div class=\"field-items\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; float: none; display: inline;\"><div class=\"field-item even\" style=\"margin: 0px 10px 0px 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; float: none; display: inline;\"><a href=\"https://www.blognone.com/topics/russia\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; color: rgb(29, 95, 179);\">Russia</a></div><div class=\"field-item odd\" style=\"margin: 0px 10px 0px 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; float: none; display: inline;\"><a href=\"https://www.blognone.com/topics/digital-certificate\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; color: rgb(29, 95, 179);\">Digital Certificate</a></div></div></div></span></span></span></div><div class=\"content\" style=\"margin: 5px 0px 0px; padding: 5px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; min-height: 120px; color: rgb(51, 51, 51); font-family: Helvetica, Arial, Thonburi, Tahoma, FreeSans, sans-serif;\"><div class=\"node-image\" style=\"margin: 5px 5px 5px 10px; padding: 0px 10px 0px 0px; border: 0px; outline: 0px; vertical-align: baseline; float: left; display: inline; width: 100px; height: 100px; line-height: 100px;\"><img alt=\"Node Thumbnail\" src=\"https://www.blognone.com/sites/default/files/styles/thumbnail/public/topics-images/russia.png?itok=SewVN53w\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px; padding: 0px; outline: 0px; max-width: 640px;\"></div><div class=\"node-content\" itemprop=\"description\" style=\"margin: 0px 10px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline;\"><div class=\"field field-name-body field-type-text-with-summary field-label-hidden\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline;\"><div class=\"field-items\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; float: none; display: inline;\"><div class=\"field-item even\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; float: none; display: inline;\"><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">บริการรัฐบาลอิเล็กทรอนิกส์รัสเซีย หรือ Gosuslugi เปิดให้บริการออกใบรับรองดิจิทัล เพียงไม่กี่วันหลังจากรัสเซียบุกยูเครน ป้องกันกรณีที่บริษัทออกใบรับรองหยุดให้บริการในรัสเซียและทำให้บริการสำคัญๆ เข้าผ่านเบราว์เซอร์ไม่ได้</p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">ใบรับรอง Russian Trusted Root CA (หมายเลข serial E1:D1:81:E5:CE:5A:5F:04:AA:D2:E9:B6:9D:66:B1:C5:FA:AC:2C:87) เพิ่งสร้างเมื่อวันที่ 1 มีนาคมที่ผ่านมา และตอนนี้เบราว์เซอร์รัสเซีย เช่น Yandex และ Atom (ของค่าย Vk) ก็ยอมรับไว้ในเบราว์เซอร์แล้ว กระบวนการออกใบรับรองยังเป็นการตรวจเอกสารทำให้การออกใบรับรองอาจใช้เวลาถึง 5 วัน หน่วยงานที่ออกใบรับรองไปแล้ว เช่น ธนาคาร Sberbank, ธนาคาร VTB, และธนาคารกลางรัสเซีย ตอนนี้การใช้งานใบรับรองของรัสเซียยังเป็นไปตามสมัครใจ</p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">ตอนนี้ยังไม่มีข่าวผู้ให้บริการ CA รายใดประกาศแบนเว็บไซต์รัสเซียอย่างชัดเจน แต่ก่อนหน้านี้บริการจดโดเมนอย่าง&nbsp;<a href=\"https://www.blognone.com/node/127390\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(29, 95, 179);\">Namecheap ก็ประกาศไม่ให้บริการลูกค้ารัสเซียมาแล้ว</a>&nbsp;และรัฐบาลยูเครนก็พยายามกดดันหน่วยงานต่างๆ ให้แบนรัสเซียอย่างต่อเนื่อง เช่น การขอให้ ICANN ตัดโดเมนของรัสเซียออกจากระบบ&nbsp;<a href=\"https://www.icann.org/en/system/files/correspondence/marby-to-fedorov-02mar22-en.pdf\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(29, 95, 179);\">แต่ทาง ICANN ปฎิเสธ</a></p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">ที่มา -&nbsp;<a href=\"https://www.bleepingcomputer.com/news/security/russia-creates-its-own-tls-certificate-authority-to-bypass-sanctions/\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(29, 95, 179);\">Bleeping Computer</a></p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\"><img src=\"https://www.blognone.com/sites/default/files/externals/86a7cbfdfb8578cb1ca7a111eea2a1e7.jpg\" alt=\"No Description\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px; padding: 0px; outline: 0px; vertical-align: baseline; max-width: 640px;\"></p></div></div></div></div></div>', '0', '0000-00-00', '1', '2022-03-11'),
-(6, 1, 'gjdgdfjdfjgdfjgf', '<p>fdjfgjfgjfgddjdf</p>', '0', '0000-00-00', '1', '2022-03-10'),
-(7, 1, 'bzxbzxzxb', '<p>zxbzxbzxzbx</p>', '0', '2022-03-11', '1', '2022-03-11'),
-(8, 1, 'vvdv', '<p>vdsvsd</p>', '0', 'vsdsdvddf', '1', '2022-03-11'),
-(9, 3, 'sdfsdfsadf', '<p>sadfsadfdsafdsa</p>', '0', 'sfsdsf', '1', '2022-03-11');
+(19, 3, 'fsfsfs', '<p>fsfsfsfsfsfsssff</p>', '0', 'fsfsfs', '1', '2022-03-13'),
+(20, 1, 'test', '<div class=\"content-title-box\" style=\"margin: 0px 0px 5px; padding: 5px 15px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; position: relative; font-weight: bold; background: rgb(0, 66, 102); border-top-left-radius: 5px; border-top-right-radius: 5px; color: rgb(51, 51, 51); font-family: Helvetica, Arial, Thonburi, Tahoma, FreeSans, sans-serif;\"><h2 itemprop=\"name\" style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 1.2em; vertical-align: baseline;\"><a href=\"https://www.blognone.com/node/127606\" title=\"Instagram Live สามารถเพิ่ม Moderator ช่วยดูแลความเรียบร้อยได้แล้ว\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 15.6px; vertical-align: baseline; color: rgb(255, 255, 255);\">Instagram Live สามารถเพิ่ม Moderator ช่วยดูแลความเรียบร้อยได้แล้ว</a></h2></div><div class=\"meta\" style=\"margin: 0px; padding: 5px 15px; border: 0px; outline: 0px; font-size: 0.8em; vertical-align: baseline; color: rgb(51, 51, 51); font-family: Helvetica, Arial, Thonburi, Tahoma, FreeSans, sans-serif;\"><span class=\"submitted\" style=\"margin: 0px 10px 0px 0px; padding: 3px; border: 1px solid rgb(209, 209, 209); outline: 0px; font-size: 10.4px; vertical-align: baseline; background-color: rgb(238, 238, 238); border-radius: 5px;\">By:&nbsp;<span class=\"username\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\">arjin</span>&nbsp;<div class=\"user_badges\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline;\"><a href=\"http://www.blognone.com/crew#writers\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; color: rgb(29, 95, 179);\"><img class=\"badge badge-1 writer\" src=\"https://www.blognone.com/sites/default/files/badges/badge-writer.png\" alt=\"Writer\" title=\"Writer\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px 1px; padding: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline; max-width: 640px;\"></a><a href=\"https://www.blognone.com/news/15492/ask-blognone-are-you-iphone\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; color: rgb(29, 95, 179);\"><img class=\"badge badge-5 iphone\" src=\"https://www.blognone.com/sites/default/files/badges/iphone-2.png\" alt=\"iPhone\" title=\"iPhone\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px 1px; padding: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline; max-width: 640px;\"></a><img class=\"badge badge-17 windows\" src=\"https://www.blognone.com/sites/default/files/badges/badge-windows-dim.png\" alt=\"Windows\" title=\"Windows\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px 1px; padding: 0px; outline: 0px; font-size: 10.4px; vertical-align: top; display: inline; max-width: 640px;\"></div>&nbsp;on 14 March 2022 - 08:05</span>&nbsp;<span class=\"terms-label\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\">Tags:<span style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\"><span class=\"terms\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline;\"><div class=\"field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above\" style=\"margin: 0px; padding: 3px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; display: inline;\"><div class=\"field-items\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; float: none; display: inline;\"><div class=\"field-item even\" style=\"margin: 0px 10px 0px 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; float: none; display: inline;\"><a href=\"https://www.blognone.com/topics/instagram\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 10.4px; vertical-align: baseline; color: rgb(29, 95, 179);\">Instagram</a></div></div></div></span></span></span></div><div class=\"content\" style=\"margin: 5px 0px 0px; padding: 5px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; min-height: 120px; color: rgb(51, 51, 51); font-family: Helvetica, Arial, Thonburi, Tahoma, FreeSans, sans-serif;\"><div class=\"node-image\" style=\"margin: 5px 5px 5px 10px; padding: 0px 10px 0px 0px; border: 0px; outline: 0px; vertical-align: baseline; float: left; display: inline; width: 100px; height: 100px; line-height: 100px;\"><img alt=\"Node Thumbnail\" src=\"https://www.blognone.com/sites/default/files/styles/thumbnail/public/topics-images/ig.png?itok=JOZCKhEe\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px; padding: 0px; outline: 0px; max-width: 640px;\"></div><div class=\"node-content\" itemprop=\"description\" style=\"margin: 0px 10px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline;\"><div class=\"field field-name-body field-type-text-with-summary field-label-hidden\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline;\"><div class=\"field-items\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; float: none; display: inline;\"><div class=\"field-item even\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; float: none; display: inline;\"><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">Instagram ประกาศ<a href=\"https://twitter.com/instagram/status/1502363456212660225\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(29, 95, 179);\">เพิ่มฟังก์ชันใหม่</a>ในการไลฟ์ โดยผู้ที่กำลังไลฟ์อยู่สามารถเพิ่มผู้ดูแลหรือ moderator ได้ ซึ่ง moderator สามารถช่วยดูแลความเรียบร้อยระหว่างการไลฟ์ ได้แก่ กดรายงานคอมเมนต์ นำคนดูออกจากไลฟ์ และปิดการแสดงความเห็นจากคนดูแบบระบุคนได้</p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">ครีเอเตอร์หรือผู้ที่ไลฟ์อยู่ สามารถกดเพิ่ม moderator โดยกดปุ่ม 3 จุด ในแถบคอมเมนต์ระหว่างไลฟ์ ซึ่งจะมีรายชื่อบัญชีที่เราสามารถกดเพิ่มมาเป็น moderator</p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">การเพิ่ม moderator ช่วยดูแลระหว่างไลฟ์ เป็นคุณสมบัติพื้นฐานที่มีในแอปไลฟ์แทบทุกตัว และ Instagram ก็เพิ่งเพิ่มเข้ามานั่นเอง</p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\">ที่มา:&nbsp;<a href=\"https://www.theverge.com/2022/3/13/22974597/instagram-finally-letting-livestreamers-add-moderators-live\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(29, 95, 179);\">The Verge</a></p><p style=\"margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0.4em 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: inherit;\"><img alt=\"alt=&quot;Instagram Live Moderator&quot;\" src=\"https://www.blognone.com/sites/default/files/externals/3acc6a2b3b795f89350d9cb353b6fdd9.jpg\" style=\"border-width: initial; border-color: initial; border-image: initial; margin: 0px; padding: 0px; outline: 0px; vertical-align: baseline; max-width: 640px;\"></p></div></div></div></div></div>', '0', 'test', '1', '2022-03-14');
 
 -- --------------------------------------------------------
 
@@ -362,24 +393,60 @@ INSERT INTO `tbl_user_role` (`user_role_id`, `user_role`, `create_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_visitor_counter`
+-- Table structure for table `tbl_webstat`
 --
 
-CREATE TABLE `tbl_visitor_counter` (
-  `id` int(11) NOT NULL,
-  `visitor_counter` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `tbl_webstat` (
+  `c_id` int(30) NOT NULL,
+  `c_ip` text NOT NULL,
+  `c_nation` varchar(20) NOT NULL,
+  `c_date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_visitor_counter`
+-- Dumping data for table `tbl_webstat`
 --
 
-INSERT INTO `tbl_visitor_counter` (`id`, `visitor_counter`) VALUES
-(1, 281);
+INSERT INTO `tbl_webstat` (`c_id`, `c_ip`, `c_nation`, `c_date`) VALUES
+(1, '107.213.89.100', 'United States', '2022-03-12'),
+(2, '', 'Thailand', '2022-03-13'),
+(3, '', 'Thailand', '2022-03-14'),
+(4, '', 'Thailand', '2022-03-14'),
+(5, '', 'Thailand', '2022-03-14'),
+(6, '', 'Thailand', '2022-03-14'),
+(7, '', 'Thailand', '2022-03-14'),
+(8, '', 'Thailand', '2022-03-16'),
+(9, '', 'Thailand', '2022-03-14'),
+(10, '', 'Thailand', '2022-03-14'),
+(11, '101.148.169.121', 'China', '2022-03-14'),
+(12, '', 'indea', '2022-03-17'),
+(13, '', 'Thailand', '2022-03-14'),
+(14, '', 'pakisatan', '2022-03-18'),
+(15, '', 'Thailand', '2022-03-14'),
+(16, '', 'Thailand', '2022-03-14'),
+(17, '', 'indonesea', '2022-03-19'),
+(18, '', 'Thailand', '2022-03-14'),
+(19, '', 'Lao', '2022-03-20'),
+(20, '', 'Thailand', '2022-03-14'),
+(21, '', 'Thailand', '2022-03-14'),
+(22, '', 'Thailand', '2022-03-23'),
+(23, '', 'Thailand', '2022-03-14'),
+(24, '101.148.169.121', 'China', '2022-03-14'),
+(25, '', 'Thailand', '2022-03-15'),
+(26, '', 'Thailand', '2022-03-15'),
+(27, '', 'Thailand', '2022-03-15'),
+(28, '', 'Thailand', '2022-03-15'),
+(29, '', 'Thailand', '2022-03-15');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `survey_table`
+--
+ALTER TABLE `survey_table`
+  ADD PRIMARY KEY (`survey_id`);
 
 --
 -- Indexes for table `tbl_banner`
@@ -466,14 +533,20 @@ ALTER TABLE `tbl_user_role`
   ADD PRIMARY KEY (`user_role_id`);
 
 --
--- Indexes for table `tbl_visitor_counter`
+-- Indexes for table `tbl_webstat`
 --
-ALTER TABLE `tbl_visitor_counter`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `tbl_webstat`
+  ADD PRIMARY KEY (`c_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `survey_table`
+--
+ALTER TABLE `survey_table`
+  MODIFY `survey_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_banner`
@@ -485,7 +558,7 @@ ALTER TABLE `tbl_banner`
 -- AUTO_INCREMENT for table `tbl_events`
 --
 ALTER TABLE `tbl_events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_events_type`
@@ -497,7 +570,7 @@ ALTER TABLE `tbl_events_type`
 -- AUTO_INCREMENT for table `tbl_file`
 --
 ALTER TABLE `tbl_file`
-  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_file_group`
@@ -509,19 +582,19 @@ ALTER TABLE `tbl_file_group`
 -- AUTO_INCREMENT for table `tbl_file_type`
 --
 ALTER TABLE `tbl_file_type`
-  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_gallery`
 --
 ALTER TABLE `tbl_gallery`
-  MODIFY `g_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `g_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_images`
 --
 ALTER TABLE `tbl_images`
-  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `i_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_news`
@@ -533,7 +606,7 @@ ALTER TABLE `tbl_news`
 -- AUTO_INCREMENT for table `tbl_newsletter`
 --
 ALTER TABLE `tbl_newsletter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_news_counter`
@@ -551,7 +624,7 @@ ALTER TABLE `tbl_news_type`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `tbl_user_role`
@@ -560,10 +633,10 @@ ALTER TABLE `tbl_user_role`
   MODIFY `user_role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tbl_visitor_counter`
+-- AUTO_INCREMENT for table `tbl_webstat`
 --
-ALTER TABLE `tbl_visitor_counter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `tbl_webstat`
+  MODIFY `c_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

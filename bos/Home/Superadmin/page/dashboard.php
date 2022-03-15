@@ -54,92 +54,92 @@ include "../../../bos/Function/function.php"
         </div>
     </div>
 
-    <div class="col-12 col-md-12 py-3">
 
-        <h4>จำนวนผู้เข้าชมเว็บไซต์</h4>
-    </div>
+    <div class="row m-0 p-0  ">
+        <div class="col-12 col-xl-12 py-3 d-none d-lg-block">
 
+            <h4>จำนวนผู้เข้าชมเว็บไซต์</h4>
+        </div>
+        <!-- Area Chart -->
+        <div class="col-xl-8 col-lg-7 d-none d-lg-block">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">จำนวนผู้เข้าชม(7 วันล่าสุด)</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
 
-    <!-- Area Chart -->
-    <div class="col-xl-8 col-lg-7">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">จำนวนผู้เข้าชม(รายสัปดาห์)</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-
-                </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <div class="chart-area">
-                    <div class="chartjs-size-monitor">
-                        <div class="chartjs-size-monitor-expand">
-                            <div class=""></div>
-                        </div>
-                        <div class="chartjs-size-monitor-shrink">
-                            <div class=""></div>
-                        </div>
                     </div>
-                    <canvas id="web_stat_daily" style="display: block; width: 668px; height: 320px;" width="668"
-                        height="320" class="chartjs-render-monitor"></canvas>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-area">
+                        <div class="chartjs-size-monitor">
+                            <div class="chartjs-size-monitor-expand">
+                                <div class=""></div>
+                            </div>
+                            <div class="chartjs-size-monitor-shrink">
+                                <div class=""></div>
+                            </div>
+                        </div>
+                        <canvas id="web_stat_daily" style="display: block; width: 668px; height: 320px;" width="668"
+                            height="320" class="chartjs-render-monitor"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Pie Chart -->
-    <div class="col-xl-4 col-lg-5">
-        <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">จำนวนผู้เข้าชม(ตามสถานที่)</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
+        <!-- Pie Chart -->
+        <div class="col-xl-4 col-lg-5 d-none d-lg-block">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">จำนวนผู้เข้าชม(ตามสถานที่)</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
 
-                </div>
-            </div>
-            <!-- Card Body -->
-            <div class="card-body">
-                <div class="chart-pie pt-4 pb-2">
-                    <div class="chartjs-size-monitor">
-                        <div class="chartjs-size-monitor-expand">
-                            <div class=""></div>
-                        </div>
-                        <div class="chartjs-size-monitor-shrink">
-                            <div class=""></div>
-                        </div>
                     </div>
-                    <canvas id="web_stat_nation" width="301" height="245"
-                        style="display: block; width: 301px; height: 245px;" class="chartjs-render-monitor"></canvas>
                 </div>
-                <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-primary"></i> Direct
-                    </span>
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                        <i class="fas fa-circle text-info"></i> Referral
-                    </span>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-pie pt-4 pb-2">
+                        <div class="chartjs-size-monitor">
+                            <div class="chartjs-size-monitor-expand">
+                                <div class=""></div>
+                            </div>
+                            <div class="chartjs-size-monitor-shrink">
+                                <div class=""></div>
+                            </div>
+                        </div>
+                        <canvas id="web_stat_nation" width="301" height="245"
+                            style="display: block; width: 301px; height: 245px;"
+                            class="chartjs-render-monitor"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-primary"></i> อัพเดตล่าสุด :
+                            <?php echo DateThai(date("Y/m/d")) ?>
+                        </span>
+
+                    </div>
+
                 </div>
             </div>
         </div>
+
+
+
+
+
     </div>
-
-
-
-
-
 </div>
+
 
 
 
@@ -149,21 +149,32 @@ $(document).ready(function() {
 });
 
 function web_stat_nation() {
-
-
+    let action = 'by_nation';
     $.ajax({
         type: "GET",
         dataType: "JSON",
-        url: "../../Service/Web_static/create.php",
-        data: {},
+        url: "../../Service/Web_static/web_stat_fech_n.php",
+        data: {
+            action: action
+        },
     }).done(function(data) {
 
         console.log(data)
         let name = [];
         let total = [];
+        var coloR = [];
+
+        var dynamicColors = function() {
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            return "rgb(" + r + "," + g + "," + b + ")";
+        };
+
         for (var i = 0; i < data.length; i++) {
             name.push(data[i].name);
             total.push(data[i].total);
+            coloR.push(dynamicColors());
         }
 
 
@@ -174,7 +185,7 @@ function web_stat_nation() {
                 labels: name,
                 datasets: [{
                     data: total,
-                    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#96b9cc'],
+                    backgroundColor: coloR,
                     hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
                 }],
@@ -201,26 +212,38 @@ function web_stat_nation() {
 
 }
 </script>
+
+
+
+
+
+
 <script>
 $(document).ready(function() {
-    web_stat_nation();
+    web_stat_7day();
 });
 
-function web_stat_nation() {
 
+
+
+
+function web_stat_7day() {
+    let action = 'by_week';
 
     $.ajax({
         type: "GET",
         dataType: "JSON",
-        url: "../../Service/Web_static/create.php",
-        data: {},
+        url: "../../Service/Web_static/web_stat_fech_w.php",
+        data: {
+            action: action
+        },
     }).done(function(data) {
 
         console.log(data)
-        let name = [];
+        let date = [];
         let total = [];
         for (var i = 0; i < data.length; i++) {
-            name.push(data[i].name);
+            date.push(data[i].date);
             total.push(data[i].total);
         }
 
@@ -259,7 +282,7 @@ function web_stat_nation() {
         var myBarChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: name,
+                labels: date,
                 datasets: [{
                     label: name,
                     backgroundColor: "#4e73df",
@@ -295,8 +318,8 @@ function web_stat_nation() {
                     yAxes: [{
                         ticks: {
                             min: 0,
-                            max: 15000,
-                            maxTicksLimit: 5,
+                            max: 100,
+                            maxTicksLimit: 7,
                             padding: 10,
                             // Include a dollar sign in the ticks
                             callback: function(value, index, values) {
@@ -329,7 +352,8 @@ function web_stat_nation() {
                     caretPadding: 10,
                     callbacks: {
                         label: function(tooltipItem, chart) {
-                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label ||
+                                '';
                             return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
                         }
                     }
@@ -337,4 +361,5 @@ function web_stat_nation() {
             }
         });
     });
+}
 </script>
