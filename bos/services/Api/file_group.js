@@ -2,7 +2,7 @@ $(function() { // เรียกใช้งาน datatable
     $.ajax({
         type: "GET",
         dataType: "JSON",
-        url: "../../Service/Banner/",
+        url: "../../services/File/file_group/",
         data: {},
     }).done(function(data) {
         let tableData = []
@@ -10,14 +10,10 @@ $(function() { // เรียกใช้งาน datatable
         for (var i = 0; i < data.length; i++) {
             tableData.push([
                 `<a href="https://www.mugh.or.th/single_news.php?id=${data[i].id}" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
-                `<img src="../../uploads/banner/${data[i].image}" class="img-fluid" width="100px">`,
                 `${data[i].name}`,
-                `${data[i].date}`,
-                `<input class="toggle-event"  id="toggle_banner${data[i].id}" data-id="${data[i].id}" type="checkbox" name="status" 
-                ${data[i].b_status ? 'checked' : ''} data-toggle="toggle" data-on="เปิด" 
-                        data-off="ปิด" data-onstyle="success" data-style="ios">`,
+
                 `<div class="btn-group" role="group">
-                        <button " type="button" class="btn btn-warning edit_data" data-toggle="modal" data-id="${data[i].id}"  >
+                        <button " type="button" class="btn btn-warning edit_file_group" data-toggle="modal" data-id="${data[i].id}"  >
                             <i class="far fa-edit"></i> แก้ไข
                         </button>
                         <button type="button" class="btn btn-danger" id="delete" data-id="${data[i].id}">
@@ -34,40 +30,29 @@ $(function() { // เรียกใช้งาน datatable
             icon: 'error',
             confirmButtonText: 'ตกลง',
         }).then(function() {
-
+            // location.assign('./')
         })
     })
 
     function initDataTables(tableData) { // สร้าง datatable
-        $('#banner_a').DataTable({
+        $('#file_g').DataTable({
             data: tableData,
             columns: [{
-                    title: "ลำดับ",
-                    className: "align-middle"
-                },
-                {
-                    title: "รูปภาพ",
-                    className: "align-middle"
-                },
-                {
-                    title: "หัวข้อแบนเนอร์",
+                    title: "ลำดับที่",
                     className: "align-middle",
-                    width: "30%"
+                    width: "10%"
                 },
 
                 {
-                    title: "วัน /เดือน/ปี",
+                    title: "ประเภทเอกสาร",
                     className: "align-middle",
-
+                    width: "70%"
                 },
 
-                {
-                    title: "สถานะ",
-                    className: "align-middle"
-                },
                 {
                     title: "จัดการ",
-                    className: "align-middle"
+                    className: "align-middle",
+                    width: "20%"
                 }
             ],
             initComplete: function() { // เรียกใช้งาน ลบข้อมูล datatable
@@ -85,8 +70,7 @@ $(function() { // เรียกใช้งาน datatable
                         if (result.isConfirmed) {
                             $.ajax({
                                 type: "POST",
-                                url: "../../Service/Banner/delete.php",
-
+                                url: "../../services/File/file_group/delete.php",
                                 data: {
                                     id: id
                                 }
@@ -110,7 +94,6 @@ $(function() { // เรียกใช้งาน datatable
             },
             responsive: {
                 details: {
-
                     renderer: $.fn.dataTable.Responsive.renderer.tableAll({
                         tableClass: 'table'
                     })
@@ -128,21 +111,32 @@ $(function() { // เรียกใช้งาน datatable
                     "next": "หน้าต่อไป"
                 }
             }
-        });
+        })
     }
 
 })
 
+$(function() {
+    $("#datepicker").datepicker({
+        todayHighlight: true, // to highlight the today's date
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayHighlight: true
+    }).datepicker('update', new Date());
+});
 
-$('#adbanner').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
+
+$('#file_group').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
     e.preventDefault();
     $.ajax({
         type: 'POST',
-        url: "../../Service/Banner/create.php",
-        data: new FormData(this),
-        contentType: false,
-        cache: false,
-        processData: false,
+        url: "../../services/File/file_group/create.php",
+        data: {
+            g_name: $("#g_name").val(),
+            detail: $("#g_detail").val(),
+            date: $("#g_date").val(),
+            g_address: $("#g_address").val(),
+        },
     }).done(function(resp) {
         Swal.fire({
             text: 'เพิ่มข้อมูลเรียบร้อย',
@@ -154,126 +148,65 @@ $('#adbanner').on('submit', function(e) { // เรียกใช้งาน �
         });
     })
 
-});
 
-$(document).ready(function() {
 
-    var _URL = window.URL || window.webkitURL;
-
-    $('#b_file').change(function() {
-        var file = $(this)[0].files[0];
-
-        img = new Image();
-        var imgwidth = 0;
-        var imgheight = 0;
-        var maxwidth = 1140;
-        var maxheight = 400;
-
-        img.src = _URL.createObjectURL(file);
-        img.onload = function() {
-            imgwidth = this.width;
-            imgheight = this.height;
-
-            $("#width").text(imgwidth);
-            $("#height").text(imgheight);
-            if (imgwidth <= maxwidth && imgheight <= maxheight) {
-
-            } else {
-                alert("Image size must be " + maxwidth + "X" + maxheight);
-            }
-        };
-        img.onerror = function() {
-
-            $("#response").text("not a valid file: " + file.type);
-        }
-
-    });
 });
 
 
-$(document).on('click', '.edit_data', function() { // เรียกใช้งาน แก้ไขข้อมูล (MOdal previews)
+$(document).on('click', '.edit_file_group', function() { // เรียกใช้งาน แก้ไขข้อมูล (MOdal previews)
     let id = $(this).data('id');
 
     $.ajax({
-        url: "../../Service/Banner/update.php",
+        url: "../../services/File/file_group/update.php",
         method: "GET",
         data: {
             id: id
         },
         dataType: "json",
         success: function(data) {
-            $('#eb_id').val(data[0].b_id);
-            $('#eb_title').val(data[0].b_title);
-            $('#eb_detail').val(data[0].b_detail);
-            $('#eb_link').val(data[0].b_link);
-            $('#eb_by').val(data[0].b_by);
-            $('#eb_date').val(data[0].b_date);
-            $('#eb_name').val(data[0].b_image);
-            $('#ebshowimg').html('<img src="../../uploads/banner/' + data[0].b_image + '" class=" py-2 w-100" width="100px">');
-            $('#eresponse').html(data[0].b_image);
-            $('#ebanner_uploads').modal('show');
+            $('#eg_id').val(data[0].g_id);
+            $('#eg_name').val(data[0].g_name);
+            $('#eg_detail').val(data[0].g_detail);
+            $('#eg_date').val(data[0].g_date);
+            $('#eg_address').val(data[0].g_address);
+            $('#eadfile_g').modal('show');
         }
     });
 });
 
-$('#eadbanner').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
 
 
+$('#efile_group').on('submit', function(e) { // เรียกใช้งาน [บันทึกข้อมูลแก้ไข] (สำคัญ)
     e.preventDefault();
     $.ajax({
-        type: 'POST',
-        url: "../../Service/Banner/update.php",
-        data: new FormData(this),
-        contentType: false,
-        cache: false,
-        processData: false,
-    }).done(function(resp) {
-        Swal.fire({
-            text: 'อัพเดตข้อมูลเรียบร้อย',
-            icon: 'success',
-            confirmButtonText: 'ตกลง',
-        }).then((result) => {
-            location.reload();
-        });
-    })
-
-});
-
-
-
-
-
-
-
-$("#e_image").change((e) => { // เรียกใช้งาน UPLOADFILE แก้ไข (สำคัญ)
-
-    var form_data = new FormData();
-    var ins = document.getElementById(e.target.id).files.length;
-    for (var x = 0; x < ins; x++) {
-        form_data.append("files[]", document.getElementById(e.target.id).files[x]);
-    }
-    $.ajax({
-        // url: './api/uploadfile.php', // point to server-side PHP script 
-        url: "../../Service/News/uploadfile.php", // point to server-side PHP script
-        dataType: 'text', // what to expect back from the PHP script
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_data,
-        type: 'post',
+        type: "POST",
+        dataType: "JSON",
+        url: "../../services/File/file_group/update.php",
+        data: {
+            id: $('#eg_id').val(),
+            name: $('#eg_name').val(),
+            detail: $('#eg_detail').val(),
+            address: $('#eg_address').val(),
+        },
         success: function(response) {
-            // console.log('good', response)
-            $("#e_imgname").val(response)
+            Swal.fire({
+                text: 'อัพเดตข้อมูลเรียบร้อย',
+                icon: 'success',
+                confirmButtonText: 'ตกลง',
+            }).then((result) => {
+                location.reload();
+
+            });
+
+
         },
         error: function(err) {
-            console.log('bad', err)
+
         }
-    });
+    })
+
 })
 
-
-
-
 function preview_image(event) { // เรียกใช้งาน preview imagebefore (สำคัญ)
     var reader = new FileReader();
     reader.onload = function() {
@@ -283,30 +216,11 @@ function preview_image(event) { // เรียกใช้งาน preview ima
     reader.readAsDataURL(event.target.files[0]);
 }
 
-function preview_image(event) { // เรียกใช้งาน preview imagebefore (สำคัญ)
+function preview_eimage(event) { // เรียกใช้งาน preview เก่า (สำคัญ)
     var reader = new FileReader();
     reader.onload = function() {
-        var output = document.getElementById('showimg');
+        var output = document.getElementById('update_showimg');
         output.src = reader.result;
     }
     reader.readAsDataURL(event.target.files[0]);
 }
-
-function preview_image(event) { // เรียกใช้งาน preview imagebefore (สำคัญ)
-    var reader = new FileReader();
-    reader.onload = function() {
-        var output = document.getElementById('ebshowimg');
-        output.src = reader.result;
-    }
-    reader.readAsDataURL(event.target.files[0]);
-}
-
-
-$("#b_file").change(function() {
-    $("#file_name").text(this.files[0].name);
-});
-
-$("#eb_file").change(function() {
-    $("#eresponse").text(this.files[0].name);
-
-});

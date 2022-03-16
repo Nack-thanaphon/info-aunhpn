@@ -2,7 +2,7 @@ $(function() { // เรียกใช้งาน datatable
     $.ajax({
         type: "GET",
         dataType: "JSON",
-        url: "../../Service/User/",
+        url: "../../services/User/",
         data: {},
     }).done(function(data) {
         let tableData = []
@@ -99,7 +99,7 @@ $(function() { // เรียกใช้งาน datatable
                         if (result.isConfirmed) {
                             $.ajax({
                                 type: "POST",
-                                url: "../../Service/User/delete.php",
+                                url: "../../services/User/delete.php",
 
                                 data: {
                                     id: id
@@ -150,7 +150,7 @@ $(function() { // เรียกใช้งาน datatable
 $(document).on('submit', '#crete_user', function(event) {
     event.preventDefault();
     $.ajax({
-        url: "../../Service/User/create.php",
+        url: "../../services/User/create.php",
         method: "POST",
         data: {
             fullname: $("#full_name").val(),
@@ -179,7 +179,7 @@ $(document).on('click', '#edit-user', function() { // เรียกใช้�
     let id = $(this).data('id');
 
     $.ajax({
-        url: "../../Service/User/update.php",
+        url: "../../services/User/update.php",
         method: "GET",
         data: {
             id: id
@@ -200,7 +200,7 @@ $(document).on('click', '#detail-user', function() { // เรียกใช้
     let id = $(this).data('id');
 
     $.ajax({
-        url: "../../Service/User/update.php",
+        url: "../../services/User/update.php",
         method: "GET",
         data: {
             id: id
@@ -223,7 +223,7 @@ $('#edit_userform').on('submit', function(e) { // เรียกใช้งา
     $.ajax({
         type: "POST",
         dataType: "JSON",
-        url: "../../Service/User/update.php",
+        url: "../../services/User/update.php",
         data: {
             id: $('#euser_id').val(),
             fullname: $('#efull_name').val(),

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var calendar = $('#calendar').fullCalendar({
         editable: true,
-        events: "../../Service/Activity/",
+        events: "../../services/Activity/",
         displayEventTime: false,
         eventRender: function(event, element, view) {
             if (event.allDay === 'true') {
@@ -18,7 +18,7 @@ $(document).ready(function() {
                 event.preventDefault();
                 var data = $(this).serialize();
                 $.ajax({
-                    url: '../../Service/Activity/create.php',
+                    url: '../../services/Activity/create.php',
                     type: 'POST',
                     dataType: 'json',
                     data: data
@@ -52,7 +52,7 @@ $(document).ready(function() {
         eventClick: function(event) {
             $.ajax({
                 type: "GET",
-                url: "../../Service/Activity/update.php",
+                url: "../../services/Activity/update.php",
                 data: "&id=" + event.id,
                 success: function(data) {
                     data = JSON.parse(data)
@@ -79,7 +79,7 @@ $(document).ready(function() {
                     if (result.isConfirmed) {
                         $.ajax({
                             type: "POST",
-                            url: "../../Service/Activity/delete.php",
+                            url: "../../services/Activity/delete.php",
                             data: "&id=" + e_id,
                         }).done(function() {
                             Swal.fire({

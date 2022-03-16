@@ -2,7 +2,7 @@ $(function() { // เรียกใช้งาน datatable
     $.ajax({
         type: "GET",
         dataType: "JSON",
-        url: "../../Service/File/",
+        url: "../../services/File/file_type/",
         data: {},
     }).done(function(data) {
         let tableData = []
@@ -10,14 +10,11 @@ $(function() { // เรียกใช้งาน datatable
         for (var i = 0; i < data.length; i++) {
             tableData.push([
                 `${data[i].id}`,
+
                 `${data[i].name}`,
-                `${data[i].group}`,
-                `${data[i].type}`,
-                `<input class="toggle-event"  id="toggle_file${data[i].id}" data-id="${data[i].id}" type="checkbox" name="status" 
-                ${data[i].s_status ? 'checked' : ''} data-toggle="toggle" data-on="เปิด" 
-                        data-off="ปิด" data-onstyle="success" data-style="ios">`,
+
                 `<div class="btn-group" role="group">
-                        <button " type="button" class="btn btn-warning edit_file_upload" data-toggle="modal" data-id="${data[i].id}"  >
+                        <button " type="button" class="btn btn-warning edit_file_type" data-toggle="modal" data-id="${data[i].id}"  >
                             <i class="far fa-edit"></i> แก้ไข
                         </button>
                         <button type="button" class="btn btn-danger" id="delete" data-id="${data[i].id}">
@@ -39,33 +36,18 @@ $(function() { // เรียกใช้งาน datatable
     })
 
     function initDataTables(tableData) { // สร้าง datatable
-        $('#file_table').DataTable({
+        $('#file_t').DataTable({
             data: tableData,
             columns: [{
-                    title: "ลำดับ",
+                    title: "ลำดับที่",
                     className: "align-middle",
                     width: "10%"
                 },
 
                 {
-                    title: "หัวข้อเอกสาร",
+                    title: "ชนิดเอกสาร",
                     className: "align-middle",
-                    width: "60%"
-                },
-                {
-                    title: "ประเภท",
-                    className: "align-middle",
-                    width: "20%"
-                },
-                {
-                    title: "ชนิด",
-                    className: "align-middle",
-                    width: "10%"
-                },
-                {
-                    title: "สถานะ",
-                    className: "align-middle",
-                    width: "10%"
+                    width: "70%"
                 },
 
                 {
@@ -89,7 +71,7 @@ $(function() { // เรียกใช้งาน datatable
                         if (result.isConfirmed) {
                             $.ajax({
                                 type: "POST",
-                                url: "../../Service/File/delete.php",
+                                url: "../../services/File/file_type/delete.php",
                                 data: {
                                     id: id
                                 }
@@ -135,75 +117,59 @@ $(function() { // เรียกใช้งาน datatable
 
 })
 
-$(document).ready(function(e) {
-    $("#fileupload").on('submit', (function(e) {
-        e.preventDefault();
-        $.ajax({
-            url: "../../Service/File/create.php",
-            type: "POST",
-            data: new FormData(this),
-            contentType: false,
-            cache: false,
-            processData: false,
-        }).done(function(resp) {
-            Swal.fire({
-                text: 'เพิ่มข้อมูลเรียบร้อย',
-                icon: 'success',
-                confirmButtonText: 'ตกลง',
-            }).then((result) => {
-                location.reload();
-            });
-        })
 
-    }));
+$('#file_type').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: "../../services/File/file_type/create.php",
+        data: {
+            t_name: $("#t_name").val(),
+        },
+    }).done(function(resp) {
+        Swal.fire({
+            text: 'เพิ่มข้อมูลเรียบร้อย',
+            icon: 'success',
+            confirmButtonText: 'ตกลง',
+        }).then((result) => {
+            location.reload();
+
+        });
+    })
+
+
+
 });
 
 
-$(document).on('click', '.edit_file_upload', function() { // เรียกใช้งาน แก้ไขข้อมูล (MOdal previews)
+$(document).on('click', '.edit_file_type', function() { // เรียกใช้งาน แก้ไขข้อมูล (MOdal previews)
     let id = $(this).data('id');
     $.ajax({
-        url: "../../Service/File/update.php",
+        url: "../../services/File/file_type/update.php",
         method: "GET",
         data: {
             id: id
         },
         dataType: "json",
         success: function(data) {
-
-            $('#ef_id').val(data[0].f_id);
-            $('#ef_name').val(data[0].f_name);
-            $('#ef_group').val(data[0].f_group);
-            $('#t_id').val(data[0].t_id);
-            $('#efile_name').html(data[0].f_file);
-            $('#ef_fname').val(data[0].f_file);
-            $('#ef_detail').val(data[0].f_detail);
-            $('#ef_date').val(data[0].f_date);
-            $('#ef_by').val(data[0].f_by);
-            $('#eadfile_uploads').modal('show');
-
-            if (data[0].t_id == '1') $(".edit-ftype1").trigger('click')
-            else if (data[0].t_id == '2') $(".edit-ftype2").trigger('click')
-            else if (data[0].t_id == '3') $(".edit-ftype3").trigger('click')
+            $('#et_id').val(data[0].t_id);
+            $('#et_name').val(data[0].t_name);
+            $('#eadfile_t').modal('show');
         }
     });
 });
 
 
 
-$('#efileupload').on('submit', function(e) { // เรียกใช้งาน [บันทึกข้อมูลแก้ไข] (สำคัญ)
+$('#efile_type').on('submit', function(e) { // เรียกใช้งาน [บันทึกข้อมูลแก้ไข] (สำคัญ)
     e.preventDefault();
     $.ajax({
         type: "POST",
         dataType: "JSON",
-        url: "../../Service/File/update.php",
+        url: "../../services/File/file_type/update.php",
         data: {
-            id: $('#ef_id').val(),
-            name: $('#ef_name').val(),
-            group: $('#ef_group').val(),
-            type: $('#t_id').val(),
-            detail: $('#ef_detail').val(),
-            date: $('#ef_date').val(),
-            by: $('#ef_by').val(),
+            id: $('#et_id').val(),
+            name: $('#et_name').val(),
         },
         success: function(response) {
             Swal.fire({
@@ -223,11 +189,3 @@ $('#efileupload').on('submit', function(e) { // เรียกใช้งา�
     })
 
 })
-
-
-
-
-
-$("#f_file").change(function() {
-    $("#file_name").text(this.files[0].name);
-});

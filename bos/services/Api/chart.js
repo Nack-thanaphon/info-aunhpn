@@ -15,7 +15,7 @@ function showGraph() {
     $.ajax({
         type: "GET",
         dataType: "JSON",
-        url: "../../Service/File/chart.php",
+        url: "../../services/File/chart.php",
         data: {},
     }).done(function(data) {
 

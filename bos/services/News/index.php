@@ -41,24 +41,3 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 } else {
     http_response_code(405);
 }
-
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (isset($_POST["id"])) {
-        $stmt =  $conn->prepare("SELECT * FROM tbl_news WHERE n_id = '" . $_POST["id"] . "'");
-        $stmt->execute();
-        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        echo json_encode($row);
-        http_response_code(200);
-    }
-} else 
-if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    if (isset($_GET["id"])) {
-        $stmt =  $conn->prepare("SELECT * FROM tbl_news WHERE n_id = '" . $_GET["id"] . "'");
-        $stmt->execute();
-        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        echo json_encode($row);
-        http_response_code(200);
-    }
-}

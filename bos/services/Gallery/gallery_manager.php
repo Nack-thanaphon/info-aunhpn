@@ -1,5 +1,5 @@
 <?php
-include "../../../bos/Function/function.php"
+include "../../../function/function.php"
 
 ?>
 
@@ -18,9 +18,7 @@ include "../../../bos/Function/function.php"
                                     </h4>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <button type="button" name="create_folder" id="create_folder"
-                                        class="btn btn-success" data-target="#exampleModal"
-                                        data-toggle="modal">+เพิ่มอัลบั้ม </button>
+                                    <button type="button" name="create_folder" id="create_folder" class="btn btn-success" data-target="#exampleModal" data-toggle="modal">+เพิ่มอัลบั้ม </button>
                                 </div>
                             </div>
                         </div>
@@ -126,22 +124,19 @@ include "../../../bos/Function/function.php"
                         <div class="form-group col-md-12">
                             <label for="" class="text-primary"> <label for="">ชื่ออัลบั้ม</label>
                             </label>
-                            <input type="text" name="folder_name" id="folder_name" class="form-control"
-                                placeholder="กรุณากรอกชื่ออัลบั้ม" />
+                            <input type="text" name="folder_name" id="folder_name" class="form-control" placeholder="กรุณากรอกชื่ออัลบั้ม" />
                         </div>
                         <div class="form-group col-md-12">
                             <div class="form-group">
                                 <label for="n_name" id="text_header" class="text-primary">รายละเอียดอัลบั้ม</label>
 
-                                <textarea class="form-control" id="d_gallary" type="text" name="d_gallary" rows="3"
-                                    placeholder="กรุณากรอกรายละเอียดอัลบั้ม"></textarea>
+                                <textarea class="form-control" id="d_gallary" type="text" name="d_gallary" rows="3" placeholder="กรุณากรอกรายละเอียดอัลบั้ม"></textarea>
                             </div>
                         </div>
 
                         <input type="hidden" name="action" id="action" />
                         <input type="hidden" name="old_name" id="old_name" />
-                        <button type="submit" name="folder_button" id="c_gallery" class="btn-submit"
-                            value="Create">เรียบร้อย</button>
+                        <button type="submit" name="folder_button" id="c_gallery" class="btn-submit" value="Create">เรียบร้อย</button>
 
                     </div>
                 </form>
@@ -277,22 +272,19 @@ include "../../../bos/Function/function.php"
                         <div class="form-group col-md-12">
                             <label for="" class="text-primary"> <label for="">ชื่ออัลบั้ม</label>
                             </label>
-                            <input type="text" name="folder_name" id="folder_name" class="form-control"
-                                placeholder="กรุณากรอกชื่ออัลบั้ม" />
+                            <input type="text" name="folder_name" id="folder_name" class="form-control" placeholder="กรุณากรอกชื่ออัลบั้ม" />
                         </div>
                         <div class="form-group col-md-12">
                             <div class="form-group">
                                 <label for="n_name" id="text_header" class="text-primary">รายละเอียดอัลบั้ม</label>
 
-                                <textarea class="form-control" id="d_gallary" type="text" name="d_gallary" rows="3"
-                                    placeholder="กรุณากรอกรายละเอียดอัลบั้ม"></textarea>
+                                <textarea class="form-control" id="d_gallary" type="text" name="d_gallary" rows="3" placeholder="กรุณากรอกรายละเอียดอัลบั้ม"></textarea>
                             </div>
                         </div>
 
                         <input type="hidden" name="action" id="action" />
                         <input type="hidden" name="old_name" id="old_name" />
-                        <button type="submit" name="folder_button" id="c_gallery" class="btn-submit"
-                            value="Create">เรียบร้อย</button>
+                        <button type="submit" name="folder_button" id="c_gallery" class="btn-submit" value="Create">เรียบร้อย</button>
 
                     </div>
                 </form>
@@ -323,21 +315,18 @@ include "../../../bos/Function/function.php"
                         <label for="" class="text-primary"> <label for="">ชื่ออัลบั้ม</label>
                         </label>
                         <input type="hidden" name="old_name" id="old_name" />
-                        <input type="text" name="folder_name" id="efolder_name" class="form-control"
-                            placeholder="กรุณากรอกชื่ออัลบั้ม" />
+                        <input type="text" name="folder_name" id="efolder_name" class="form-control" placeholder="กรุณากรอกชื่ออัลบั้ม" />
                     </div>
                     <div class="form-group col-md-12">
                         <div class="form-group">
                             <label>รายละเอียดอัลบั้ม</label>
 
-                            <textarea class="form-control" id="ed_gallary" type="text" name="ed_gallary" rows="3"
-                                placeholder="กรุณากรอกรายละเอียดอัลบั้ม"></textarea>
+                            <textarea class="form-control" id="ed_gallary" type="text" name="ed_gallary" rows="3" placeholder="กรุณากรอกรายละเอียดอัลบั้ม"></textarea>
                         </div>
                     </div>
 
                     <input type="hidden" name="eid" id="eid" />
-                    <button type="submit" name="eg_update" id="eg_update" class="btn-submit"
-                        value="Create">เรียบร้อย</button>
+                    <button type="submit" name="eg_update" id="eg_update" class="btn-submit" value="Create">เรียบร้อย</button>
 
                 </div>
 
@@ -358,32 +347,32 @@ include "../../../bos/Function/function.php"
         </script>
 
         <script>
-        $(document).ready(function() {
-            if (window.File && window.FileList && window.FileReader) {
-                $("#filephotos").on("change", function(e) {
-                    var files = e.target.files,
-                        filesLength = files.length;
-                    for (var i = 0; i < filesLength; i++) {
-                        var f = files[i]
-                        var fileReader = new FileReader();
-                        fileReader.onload = (function(e) {
-                            var file = e.target;
-                            $("<div class=\"img-thumb-wrapper card shadow m-2 \">" +
-                                "<img class=\"img-thumb\" src=\"" + e.target.result +
-                                "\" title=\"" + file.name + "\"/>" +
-                                "<br/><span class=\"remove\">ลบ</span>" +
-                                "</div>").insertAfter("#preview");
-                            $(".remove").click(function() {
-                                $(this).parent(".img-thumb-wrapper").remove();
-                            });
+            $(document).ready(function() {
+                if (window.File && window.FileList && window.FileReader) {
+                    $("#filephotos").on("change", function(e) {
+                        var files = e.target.files,
+                            filesLength = files.length;
+                        for (var i = 0; i < filesLength; i++) {
+                            var f = files[i]
+                            var fileReader = new FileReader();
+                            fileReader.onload = (function(e) {
+                                var file = e.target;
+                                $("<div class=\"img-thumb-wrapper card shadow m-2 \">" +
+                                    "<img class=\"img-thumb\" src=\"" + e.target.result +
+                                    "\" title=\"" + file.name + "\"/>" +
+                                    "<br/><span class=\"remove\">ลบ</span>" +
+                                    "</div>").insertAfter("#preview");
+                                $(".remove").click(function() {
+                                    $(this).parent(".img-thumb-wrapper").remove();
+                                });
 
-                        });
-                        fileReader.readAsDataURL(f);
-                    }
-                });
-            } else {
-                alert("Your browser doesn't support to File API")
-            }
-        });
+                            });
+                            fileReader.readAsDataURL(f);
+                        }
+                    });
+                } else {
+                    alert("Your browser doesn't support to File API")
+                }
+            });
         </script>
 </body>

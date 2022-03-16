@@ -3,7 +3,7 @@ $(function() { // เรียกใช้งาน datatable
     $.ajax({
         type: "POST",
         dataType: "JSON",
-        url: "../../Service/Gallery/create.php",
+        url: "../../services/Gallery/create.php",
         data: {
             action: action
         },
@@ -101,7 +101,7 @@ $(function() { // เรียกใช้งาน datatable
                 //         if (result.isConfirmed) {
                 //             $.ajax({
                 //                 type: "POST",
-                //                 url: "../../Service/Gallery/delete.php",
+                //                 url: "../../services/Gallery/delete.php",
 
                 //                 data: {
                 //                     id: id,
@@ -163,7 +163,7 @@ $(document).ready(function() {
 
         if (folder_name != '') {
             $.ajax({
-                url: "../../Service/Gallery/create.php",
+                url: "../../services/Gallery/create.php",
                 method: "POST",
                 data: {
                     folder_name: folder_name,
@@ -187,7 +187,7 @@ $(document).ready(function() {
         let id = $(this).data('id');
 
         $.ajax({
-            url: "../../Service/Gallery/update.php",
+            url: "../../services/Gallery/update.php",
             method: "GET",
             data: {
                 id: id
@@ -210,7 +210,7 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             dataType: "JSON",
-            url: "../../Service/Gallery/update.php",
+            url: "../../services/Gallery/update.php",
             data: {
 
                 id: $('#eid').val(),
@@ -266,7 +266,7 @@ $(document).ready(function() {
             form_data.append("files[]", document.getElementById('files').files[index]);
         }
         $.ajax({
-            url: "../../Service/Gallery/upload.php",
+            url: "../../services/Gallery/upload.php",
             type: 'POST',
             data: form_data,
             id,
@@ -285,7 +285,7 @@ $(document).ready(function() {
         let id = $(this).data('id');
 
         $.ajax({
-            url: "../../Service/Gallery/image_update.php",
+            url: "../../services/Gallery/image_update.php",
             method: "GET",
             data: {
                 id: id,
@@ -301,10 +301,10 @@ $(document).ready(function() {
                     html += `
                      <tr>
                         <td>${data[i].id}</td>
-                        <td><img src="../../Service/Gallery/${data[i].image}" class="img-thumbnail" height="50" width="50" /></td>
+                        <td><img src="../../services/Gallery/${data[i].image}" class="img-thumbnail" height="50" width="50" /></td>
                         <td>${data[i].name}</td>
                         
-                        <td><button name="remove_file" class="remove_file btn btn-danger" data-id="${data[i].id}" id="../../Service/Gallery/${data[i].image}">  
+                        <td><button name="remove_file" class="remove_file btn btn-danger" data-id="${data[i].id}" id="../../services/Gallery/${data[i].image}">  
                             <p class="m-0 p-0 font-weight-bold ">
                             <i class="fas fa-trash m-0 p-0"></i>
                             </p>
@@ -343,7 +343,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "../../Service/Gallery/delete.php",
+                    url: "../../services/Gallery/delete.php",
                     method: "POST",
                     data: {
                         id: id,
@@ -376,7 +376,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "../../Service/Gallery/status.php",
+                    url: "../../services/Gallery/status.php",
                     method: "POST",
                     data: {
                         id: id,

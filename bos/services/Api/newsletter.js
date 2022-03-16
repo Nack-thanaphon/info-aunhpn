@@ -2,25 +2,25 @@ $(function() { // เรียกใช้งาน datatable
     $.ajax({
         type: "GET",
         dataType: "JSON",
-        url: "../../Service/File/file_type/",
+        url: "../../services/Newsletter/",
         data: {},
     }).done(function(data) {
         let tableData = []
         data = data.result;
         for (var i = 0; i < data.length; i++) {
             tableData.push([
-                `${data[i].id}`,
-
-                `${data[i].name}`,
-
+                `<a href="./export/newsletter.php?id=${data[i].id}" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
+                `${data[i].title}`,
+                `${data[i].date}`,
+                `${data[i].user}`,
                 `<div class="btn-group" role="group">
-                        <button " type="button" class="btn btn-warning edit_file_type" data-toggle="modal" data-id="${data[i].id}"  >
-                            <i class="far fa-edit"></i> แก้ไข
-                        </button>
-                        <button type="button" class="btn btn-danger" id="delete" data-id="${data[i].id}">
-                            <i class="far fa-trash-alt"></i> ลบ
-                        </button>
-                    </div>`
+                    <a href="./newsletter_edit.php?id=${data[i].id}" id="newsletter_edit" class="btn btn-warning "  data-id="${data[i].id}"  >
+                        <i class="far fa-edit"></i> แก้ไข
+                    </a>
+                <button type="button" class="btn btn-danger" id="delete" data-id="${data[i].id}">
+                    <i class="far fa-trash-alt"></i> ลบ
+                </button>
+            </div>`
             ]);
         };
 
@@ -36,24 +36,32 @@ $(function() { // เรียกใช้งาน datatable
     })
 
     function initDataTables(tableData) { // สร้าง datatable
-        $('#file_t').DataTable({
+        $('#newsletter_table').DataTable({
             data: tableData,
             columns: [{
                     title: "ลำดับที่",
-                    className: "align-middle",
-                    width: "10%"
+                    className: "align-middle"
                 },
 
                 {
-                    title: "ชนิดเอกสาร",
+                    title: "หัวข้อข่าว",
                     className: "align-middle",
-                    width: "70%"
+                    width: "30%"
                 },
 
+                {
+                    title: "ประจำเดือน",
+                    className: "align-middle",
+
+                },
+
+                {
+                    title: "ผู้จัดการ",
+                    className: "align-middle"
+                },
                 {
                     title: "จัดการ",
-                    className: "align-middle",
-                    width: "20%"
+                    className: "align-middle"
                 }
             ],
             initComplete: function() { // เรียกใช้งาน ลบข้อมูล datatable
@@ -71,7 +79,8 @@ $(function() { // เรียกใช้งาน datatable
                         if (result.isConfirmed) {
                             $.ajax({
                                 type: "POST",
-                                url: "../../Service/File/file_type/delete.php",
+                                url: "../../services/Newsletter/delete.php",
+
                                 data: {
                                     id: id
                                 }
@@ -95,6 +104,7 @@ $(function() { // เรียกใช้งาน datatable
             },
             responsive: {
                 details: {
+
                     renderer: $.fn.dataTable.Responsive.renderer.tableAll({
                         tableClass: 'table'
                     })
@@ -114,78 +124,30 @@ $(function() { // เรียกใช้งาน datatable
             }
         })
     }
-
 })
 
 
-$('#file_type').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
+$('#Newsletter_ad').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
     e.preventDefault();
     $.ajax({
         type: 'POST',
-        url: "../../Service/File/file_type/create.php",
-        data: {
-            t_name: $("#t_name").val(),
-        },
+        url: "../../services/Newsletter/create.php",
+        data: $('#Newsletter_ad').serialize()
     }).done(function(resp) {
         Swal.fire({
             text: 'เพิ่มข้อมูลเรียบร้อย',
             icon: 'success',
             confirmButtonText: 'ตกลง',
         }).then((result) => {
-            location.reload();
-
+            location.assign('./newsletter.php');
         });
     })
-
-
-
 });
 
 
-$(document).on('click', '.edit_file_type', function() { // เรียกใช้งาน แก้ไขข้อมูล (MOdal previews)
-    let id = $(this).data('id');
-    $.ajax({
-        url: "../../Service/File/file_type/update.php",
-        method: "GET",
-        data: {
-            id: id
-        },
-        dataType: "json",
-        success: function(data) {
-            $('#et_id').val(data[0].t_id);
-            $('#et_name').val(data[0].t_name);
-            $('#eadfile_t').modal('show');
-        }
+
+$(function() { // เรียกใช้งาน Summernote
+    $('#detail').summernote({
+        height: 300,
     });
-});
-
-
-
-$('#efile_type').on('submit', function(e) { // เรียกใช้งาน [บันทึกข้อมูลแก้ไข] (สำคัญ)
-    e.preventDefault();
-    $.ajax({
-        type: "POST",
-        dataType: "JSON",
-        url: "../../Service/File/file_type/update.php",
-        data: {
-            id: $('#et_id').val(),
-            name: $('#et_name').val(),
-        },
-        success: function(response) {
-            Swal.fire({
-                text: 'อัพเดตข้อมูลเรียบร้อย',
-                icon: 'success',
-                confirmButtonText: 'ตกลง',
-            }).then((result) => {
-                location.reload();
-
-            });
-
-
-        },
-        error: function(err) {
-
-        }
-    })
-
 })
