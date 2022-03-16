@@ -51,8 +51,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">File management:</h6>
                 <a class="collapse-item" href="./file.php">จัดการเอกสาร</a>
-                <a class="collapse-item" href="./file_g.php">จัดการประเภทเอกสาร</a>
-                <a class="collapse-item" href="./file_t.php">จัดการชนิดเอกสาร</a>
+                <a class="collapse-item" href="./file_group.php">จัดการประเภทเอกสาร</a>
+                <a class="collapse-item" href="./file_type.php">จัดการชนิดเอกสาร</a>
             </div>
         </div>
     </li>

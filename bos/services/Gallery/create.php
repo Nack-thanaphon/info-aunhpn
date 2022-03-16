@@ -24,87 +24,25 @@ function format_folder_size($size)
     return $size;
 }
 
-
-
-
-
-function get_folder_size($folder_name)
-{
-    $total_size = 0;
-    $file_data = scandir($folder_name);
-    foreach ($file_data as $file) {
-        if ($file === '.' or $file === '..') {
-            continue;
-        } else {
-
-            $path = $folder_name . '/' . $file;
-            $total_size = $total_size + filesize($path);
-        }
-    }
-    return format_folder_size($total_size);
-}
-
-
-
-if (isset($_POST["action"])) {
-
-    if ($_POST["action"] == "fetch") {
-        $response = array();
-        $response['result'] = array();
-
-        $select_stmt = $conn->prepare("SELECT * FROM tbl_gallery WHERE g_status = '1' ");
-        $select_stmt->execute();
-
-
-        while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
-            extract($row);
-            $gallery = "../../uploads/gallery/";
-            $g_name = $row['g_name'];
-            $folder = array_filter(glob($gallery . $g_name), 'is_dir');
-
-            if (count($folder) > 0) {
-                foreach ($folder as $name) {
-                    $total = (count(scandir($name)) - 2);
-                    $size = get_folder_size($name);
-                }
-            }
-
-            $data_items = array(
-                "id" => $g_id,
-                "name" => $g_name,
-                "total" => $total,
-                "size" => $size,
+if ($_POST["action"] == "create") {
+    if (!file_exists($_POST["folder_name"])) {
+        $path = "../../uploads/gallery/";
+        mkdir($path . $_POST["folder_name"], 0777, true); {
+            $statement = $conn->prepare("INSERT INTO tbl_gallery (g_name,g_detail) VALUES (:g_name,:g_detail)");
+            $result = $statement->execute(
+                array(
+                    ':g_name' => $_POST["folder_name"],
+                    ':g_detail' => $_POST["gd_name"],
+                )
             );
-            array_push($response['result'], $data_items);
+            $response = [
+                'status' => true,
+                'message' => 'Create Success'
+            ];
         }
+        http_response_code(201);
         echo json_encode($response);
-        http_response_code(200);
     } else {
-        http_response_code(405);
-    }
-
-
-
-    if ($_POST["action"] == "create") {
-        if (!file_exists($_POST["folder_name"])) {
-            $path = "../../uploads/gallery/";
-            mkdir($path . $_POST["folder_name"], 0777, true); {
-                $statement = $conn->prepare("INSERT INTO tbl_gallery (g_name,g_detail) VALUES (:g_name,:g_detail)");
-                $result = $statement->execute(
-                    array(
-                        ':g_name' => $_POST["folder_name"],
-                        ':g_detail' => $_POST["gd_name"],
-                    )
-                );
-                $response = [
-                    'status' => true,
-                    'message' => 'Create Success'
-                ];
-            }
-            http_response_code(201);
-            echo json_encode($response);
-        } else {
-            echo 'ชื่อ folder ซ้ำ';
-        }
+        echo 'ชื่อ folder ซ้ำ';
     }
 }

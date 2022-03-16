@@ -21,11 +21,11 @@ if (empty($_SESSION['user'])) {
                     <?php include "./include/topbar.php"; ?>
                 </ul>
             </nav>
-
-            <?php include "./news/news_manager.php" ?>
-            <?php include "./include/footer.php"; ?>
-            <?php include "./include/script.php"; ?>
-
+            <div class="container-fluid">
+                <?php include "./news/news_manager.php" ?>
+                <?php include "./include/footer.php"; ?>
+                <?php include "./include/script.php"; ?>
+            </div>
         </div>
     </div>
 
@@ -357,7 +357,7 @@ if (empty($_SESSION['user'])) {
                 confirmButtonText: 'ตกลง',
             }).then((result) => {
                 $.ajax({
-                    url: "../../Service/News/status.php",
+                    url: "../..//services/News/status.php",
                     method: "POST",
                     data: {
                         id: id,

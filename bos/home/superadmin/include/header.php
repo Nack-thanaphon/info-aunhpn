@@ -18,20 +18,20 @@
     <link href="./assets/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="./assets/css/style.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../Plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="../../Plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    <link rel="stylesheet" href="../../Plugins/bootstrap-toggle/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet" href="../../plugins/bootstrap-toggle/bootstrap-toggle.min.css">
 
     <!-- datatable -->
     <link href="./assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../Plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../Plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- toast/Sweetalert -->
 
 
 
-    <link rel="stylesheet" href="../../Plugins/fullcalendar/fullcalendar.min.css" />
-    <script src="../../Plugins/fullcalendar/lib/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../plugins/fullcalendar/fullcalendar.min.css" />
+    <script src="../../plugins/fullcalendar/lib/jquery.min.js"></script>
 
     <!-- Google -->
     <link

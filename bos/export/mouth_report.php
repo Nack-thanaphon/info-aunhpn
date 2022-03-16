@@ -5,7 +5,7 @@
 
 include('../../../../database/connect.php');
 
-require_once('../../../Plugins/vendor/autoload.php');
+require_once('../../../plugins/vendor/autoload.php');
 
 
 

@@ -22,7 +22,7 @@ if (empty($_SESSION['user'])) {
                 </ul>
             </nav>
             <div class="container-fluid">
-                <?php include "./newsletter/newsletter_manager.php" ?>
+                <?php include "./newsletter/newsletter_update_manager.php" ?>
                 <?php include "./include/footer.php"; ?>
                 <?php include "./include/script.php"; ?>
             </div>
@@ -48,7 +48,7 @@ if (empty($_SESSION['user'])) {
                     `${data[i].date}`,
                     `${data[i].user}`,
                     `<div class="btn-group" role="group">
-                    <a href="./newsletter_update.php?id=${data[i].id}" id="newsletter_edit" class="btn btn-warning "  data-id="${data[i].id}"  >
+                    <a href="newsletter_update?id=${data[i].id}" id="newsletter_edit" class="btn btn-warning "  data-id="${data[i].id}"  >
                         <i class="far fa-edit"></i> แก้ไข
                     </a>
                 <button type="button" class="btn btn-danger" id="delete" data-id="${data[i].id}">

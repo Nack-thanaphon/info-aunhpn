@@ -22,7 +22,7 @@ if (empty($_SESSION['user'])) {
                 </ul>
             </nav>
             <div class="container-fluid">
-                <?php include "./newsletter/newsletter_manager.php" ?>
+                <?php include "./file/file_group_manager.php" ?>
                 <?php include "./include/footer.php"; ?>
                 <?php include "./include/script.php"; ?>
             </div>
@@ -36,25 +36,24 @@ if (empty($_SESSION['user'])) {
         $.ajax({
             type: "GET",
             dataType: "JSON",
-            url: "../../services/Newsletter/",
+            url: "../../services/File/file_group/",
             data: {},
         }).done(function(data) {
             let tableData = []
             data = data.result;
             for (var i = 0; i < data.length; i++) {
                 tableData.push([
-                    `<a href="./export/newsletter.php?id=${data[i].id}" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
-                    `${data[i].title}`,
-                    `${data[i].date}`,
-                    `${data[i].user}`,
+                    `<a href="https://www.mugh.or.th/single_news.php?id=${data[i].id}" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
+                    `${data[i].name}`,
+
                     `<div class="btn-group" role="group">
-                    <a href="./newsletter_update.php?id=${data[i].id}" id="newsletter_edit" class="btn btn-warning "  data-id="${data[i].id}"  >
-                        <i class="far fa-edit"></i> แก้ไข
-                    </a>
-                <button type="button" class="btn btn-danger" id="delete" data-id="${data[i].id}">
-                    <i class="far fa-trash-alt"></i> ลบ
-                </button>
-            </div>`
+                        <button " type="button" class="btn btn-warning edit_file_group" data-toggle="modal" data-id="${data[i].id}"  >
+                            <i class="far fa-edit"></i> แก้ไข
+                        </button>
+                        <button type="button" class="btn btn-danger" id="delete" data-id="${data[i].id}">
+                            <i class="far fa-trash-alt"></i> ลบ
+                        </button>
+                    </div>`
                 ]);
             };
 
@@ -70,32 +69,24 @@ if (empty($_SESSION['user'])) {
         })
 
         function initDataTables(tableData) { // สร้าง datatable
-            $('#newsletter_table').DataTable({
+            $('#file_g').DataTable({
                 data: tableData,
                 columns: [{
                         title: "ลำดับที่",
-                        className: "align-middle"
-                    },
-
-                    {
-                        title: "หัวข้อข่าว",
                         className: "align-middle",
-                        width: "30%"
+                        width: "10%"
                     },
 
                     {
-                        title: "ประจำเดือน",
+                        title: "ประเภทเอกสาร",
                         className: "align-middle",
-
+                        width: "70%"
                     },
 
-                    {
-                        title: "ผู้จัดการ",
-                        className: "align-middle"
-                    },
                     {
                         title: "จัดการ",
-                        className: "align-middle"
+                        className: "align-middle",
+                        width: "20%"
                     }
                 ],
                 initComplete: function() { // เรียกใช้งาน ลบข้อมูล datatable
@@ -113,8 +104,7 @@ if (empty($_SESSION['user'])) {
                             if (result.isConfirmed) {
                                 $.ajax({
                                     type: "POST",
-                                    url: "../../services/Newsletter/delete.php",
-
+                                    url: "../../services/File/file_group/delete.php",
                                     data: {
                                         id: id
                                     }
@@ -138,7 +128,6 @@ if (empty($_SESSION['user'])) {
                 },
                 responsive: {
                     details: {
-
                         renderer: $.fn.dataTable.Responsive.renderer.tableAll({
                             tableClass: 'table'
                         })
@@ -158,32 +147,119 @@ if (empty($_SESSION['user'])) {
                 }
             })
         }
+
     })
 
+    $(function() {
+        $("#datepicker").datepicker({
+            todayHighlight: true, // to highlight the today's date
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        }).datepicker('update', new Date());
+    });
 
-    $('#Newsletter_ad').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
+
+    $('#file_group').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: "../../services/Newsletter/create.php",
-            data: $('#Newsletter_ad').serialize()
+            url: "../../services/File/file_group/create.php",
+            data: {
+                g_name: $("#g_name").val(),
+                detail: $("#g_detail").val(),
+                date: $("#g_date").val(),
+                g_address: $("#g_address").val(),
+            },
         }).done(function(resp) {
             Swal.fire({
                 text: 'เพิ่มข้อมูลเรียบร้อย',
                 icon: 'success',
                 confirmButtonText: 'ตกลง',
             }).then((result) => {
-                location.assign('./newsletter.php');
+                location.reload();
+
             });
         })
+
+
+
+    });
+
+
+    $(document).on('click', '.edit_file_group', function() { // เรียกใช้งาน แก้ไขข้อมูล (MOdal previews)
+        let id = $(this).data('id');
+
+        $.ajax({
+            url: "../../services/File/file_group/update.php",
+            method: "GET",
+            data: {
+                id: id
+            },
+            dataType: "json",
+            success: function(data) {
+                $('#eg_id').val(data[0].g_id);
+                $('#eg_name').val(data[0].g_name);
+                $('#eg_detail').val(data[0].g_detail);
+                $('#eg_date').val(data[0].g_date);
+                $('#eg_address').val(data[0].g_address);
+                $('#eadfile_g').modal('show');
+            }
+        });
     });
 
 
 
-    $(function() { // เรียกใช้งาน Summernote
-        $('#detail').summernote({
-            height: 300,
-        });
+    $('#efile_group').on('submit', function(e) { // เรียกใช้งาน [บันทึกข้อมูลแก้ไข] (สำคัญ)
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            dataType: "JSON",
+            url: "../../services/File/file_group/update.php",
+            data: {
+                id: $('#eg_id').val(),
+                name: $('#eg_name').val(),
+                detail: $('#eg_detail').val(),
+                address: $('#eg_address').val(),
+            },
+            success: function(response) {
+                Swal.fire({
+                    text: 'อัพเดตข้อมูลเรียบร้อย',
+                    icon: 'success',
+                    confirmButtonText: 'ตกลง',
+                }).then((result) => {
+                    location.reload();
+
+                });
+
+
+            },
+            error: function(err) {
+
+            }
+        })
+
     })
+
+    function preview_image(event) { // เรียกใช้งาน preview imagebefore (สำคัญ)
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('showimg');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function preview_eimage(event) { // เรียกใช้งาน preview เก่า (สำคัญ)
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('update_showimg');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
     </script>
+
+
+
 </body>

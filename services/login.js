@@ -19,19 +19,25 @@ $(function() {
                     case (resp = "superadmin"):
                         toastr.success("เข้าสู่ระบบสำเร็จ");
                         setTimeout(() => {
-                            location.href = './bos/Home/Superadmin/'
+                            location.href = './bos/home/superadmin/'
                         }, 800);
                         break
                     case (resp = "admin"):
                         toastr.success("เข้าสู่ระบบสำเร็จ");
                         setTimeout(() => {
-                            location.href = './bos/Home/Admin/'
+                            location.href = './bos/home/admin/'
                         }, 800);
                         break
                     case (resp = "editer"):
                         toastr.success("เข้าสู่ระบบสำเร็จ");
                         setTimeout(() => {
-                            location.href = './bos/Home/Editer/'
+                            location.href = './bos/home/editer/'
+                        }, 800);
+                        break
+                    case (resp = "user"):
+                        toastr.success("เข้าสู่ระบบสำเร็จ");
+                        setTimeout(() => {
+                            location.href = './bos/home/user/'
                         }, 800);
                         break
                 };
