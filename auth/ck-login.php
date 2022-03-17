@@ -77,6 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             case '3':
                                 echo json_encode("editer");
                                 break;
+                            case '4':
+                                echo json_encode("user");
+                                break;
                         }
                     } else {
                         http_response_code(400);
