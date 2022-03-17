@@ -33,6 +33,8 @@ if (empty($_SESSION['user'])) {
 
     <script>
     $(function() { // เรียกใช้งาน datatable
+        var myModal = new bootstrap.Modal(document.getElementById('detail_user'))
+        myModal.show()
         $.ajax({
             type: "GET",
             dataType: "JSON",
@@ -477,6 +479,40 @@ if (empty($_SESSION['user'])) {
 
         return (p(a) + p(b) + p(c) + p(d)).toLowerCase();
     };
+
+
+    $(document).on('change', '.toggle-event', function(e) { // เรียกใช้งาน สถานะ datatable
+        // console.log('e', 1)
+        // console.log('e', e.target.id)
+
+        let id = $(this).data("id");
+        let status = '';
+
+        if ($("#" + e.target.id).prop('checked')) {
+            status = '1';
+        } else {
+            status = '0';
+        } {
+            Swal.fire({
+                text: 'อัพเดตข้อมูลเรียบร้อย',
+                icon: 'success',
+                confirmButtonText: 'ตกลง',
+            }).then((result) => {
+                $.ajax({
+                    url: "../../services/User/status.php",
+                    method: "POST",
+                    data: {
+                        id: id,
+                        status: status
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        location.reload();
+                    }
+                })
+            });
+        }
+    });
     </script>
 
 

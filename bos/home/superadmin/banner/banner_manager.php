@@ -4,7 +4,7 @@ include "../../../bos/function/function.php"
 ?>
 
 <div class="row mx-auto ">
-    <div class="col-12 col-md-8 p-0 m-0">
+    <div class="col-12  p-0 m-0">
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header  border-left-primary text-primary ">
@@ -31,7 +31,7 @@ include "../../../bos/function/function.php"
 
         </div>
     </div>
-    <div class="col-12 col-md-4 p-0 m-0 d-none d-sm-block d-flex justify-content-between">
+    <!-- <div class="col-12 col-md-4 p-0 m-0 d-none d-sm-block d-flex justify-content-between">
         <div class="row mx-auto">
             <div class="col-12  p-0 m-0">
                 <div class="card">
@@ -76,14 +76,12 @@ include "../../../bos/function/function.php"
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>
-</div>
+
 
 
 
@@ -117,12 +115,12 @@ include "../../../bos/function/function.php"
                                     <div class="form-group col-md-12">
                                         <label for="b_name">ชื่อแบนเนอร์</label>
                                         <input type="text" class="form-control" name="b_title" id="b_title"
-                                            placeholder="กรุณากรอกชื่อแบนเนอร์" required>
+                                            placeholder="กรุณากรอกชื่อแบนเนอร์">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="n_name">ลิงค์แบนเนอร์(*ถ้ามี)</label>
                                         <input type="text" class="form-control" name="b_link" id="b_link"
-                                            placeholder="กรุณากรอกลิงค์แบนเนอร์" required>
+                                            placeholder="กรุณากรอกลิงค์แบนเนอร์">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <div class="form-group">
@@ -162,7 +160,7 @@ include "../../../bos/function/function.php"
                                     <div class="form-group col-md-12" onchange="preview_image(event)">
                                         <label for="url">เลือกไฟล์เอกสาร (*เฉพาะไฟล์ .PNG,.JPG,)</label>
                                         <div class="custom-file">
-                                            <label class="custom-file-label" id="response">
+                                            <label class="custom-file-label">
                                                 <label class="custom-file-label" id="file_name">
                                                     (กว้าง 1140 px * สูง 400 px เท่านั้น )
                                                 </label>
@@ -170,16 +168,16 @@ include "../../../bos/function/function.php"
                                             <input id="b_name" type="hidden" name="b_name">
                                             <input id="b_file" type="file" class="custom-file-input" name="b_file">
                                         </div>
+                                        <small class="text-danger" id="response"></small>
                                     </div>
-
                                 </div>
 
 
                                 <div class="form-group col-sm-12 w-100 ">
                                     <input id="b_id" type="hidden" name="b_id">
 
-                                    <button type="submit" class="btn btn-primary btn-block mx-auto w-100"
-                                        name="submit">บันทึกข้อมูล</button>
+                                    <button type="submit" disabled class="btn btn-primary btn-block mx-auto w-100"
+                                        id="submit" name="submit">บันทึกข้อมูล</button>
 
                                 </div>
                             </div>
@@ -218,12 +216,12 @@ include "../../../bos/function/function.php"
                                     <div class="form-group col-md-12">
                                         <label for="b_name">ชื่อแบนเนอร์</label>
                                         <input type="text" class="form-control" name="eb_title" id="eb_title"
-                                            placeholder="กรุณากรอกชื่อแบนเนอร์" required>
+                                            placeholder="กรุณากรอกชื่อแบนเนอร์">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="n_name">ลิงค์แบนเนอร์(*ถ้ามี)</label>
                                         <input type="text" class="form-control" name="eb_link" id="eb_link"
-                                            placeholder="กรุณากรอกลิงค์แบนเนอร์" required>
+                                            placeholder="กรุณากรอกลิงค์แบนเนอร์">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <div class="form-group">
@@ -260,28 +258,14 @@ include "../../../bos/function/function.php"
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12" onchange="preview_image(event)">
-                                        <!-- <label for="url">เลือกไฟล์เอกสาร (*เฉพาะไฟล์ .PNG,.JPG,)</label>
-                                            <div class="custom-file">
-                                                <label class="custom-file-label" id="eresponse">
-                                                    <label class="custom-file-label" id="efile_name">
-                                                        (กว้าง 1140 px * สูง 400 px เท่านั้น )
-                                                    </label>
-                                                </label>
-                                                <input id="eb_name" type="hidden" name="eb_name">
-                                                <input id="eb_file" type="file" class="custom-file-input"
-                                                    name="eb_file">
-                                            </div> -->
+
                                     </div>
-
                                 </div>
-
-
                                 <div class="form-group col-sm-12 w-100 ">
                                     <input id="eb_id" type="hidden" name="eb_id">
-
                                     <button type="submit" class="btn btn-primary btn-block mx-auto w-100"
-                                        name="submit">บันทึกข้อมูล</button>
-
+                                        name="submit">บันทึกข้อมูล
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -101,7 +101,7 @@ include "../../../bos/function/function.php"
                                     <textarea id="detail" class="textarea" name="n_detail"
                                         placeholder="Place some text here" required>
                                     </textarea>
-                                    <small id="message_detail" class="text-danger"></small>
+
 
                                 </div>
                             </div>
@@ -141,8 +141,7 @@ include "../../../bos/function/function.php"
                                 <div class="form-group col-md-4">
                                     <div class="input-group">
                                         <div id="datepicker" class="input-group date">
-                                            <input class="form-control" type="text" id="en_date" name="en_date"
-                                                required />
+                                            <input class="form-control" type="text" id="en_date" name="en_date" />
                                             <div class="input-group-append">
                                                 <button class="btn btn-outline-secondary" type="button"><span
                                                         class="input-group-addon">

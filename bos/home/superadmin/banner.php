@@ -43,7 +43,7 @@ if (empty($_SESSION['user'])) {
             data = data.result;
             for (var i = 0; i < data.length; i++) {
                 tableData.push([
-                    `<a href="https://www.mugh.or.th/single_news.php?id=${data[i].id}" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
+                    `<a href="https://www.aun-hpn.or.th" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
                     `<img src="../../uploads/banner/${data[i].image}" class="img-fluid" width="100px">`,
                     `${data[i].name}`,
                     `${data[i].date}`,
@@ -211,9 +211,12 @@ if (empty($_SESSION['user'])) {
                 $("#width").text(imgwidth);
                 $("#height").text(imgheight);
                 if (imgwidth <= maxwidth && imgheight <= maxheight) {
-
+                    $("#submit").attr('disabled', false);
                 } else {
-                    alert("Image size must be " + maxwidth + "X" + maxheight);
+                    $("#submit").attr('disabled', true);
+                    $('#response').show();
+                    $("#response").html("รูปภาพต้องมีขนาด " + maxwidth + "X" + maxheight +
+                        " เท่านั้น");
                 }
             };
             img.onerror = function() {
@@ -253,7 +256,6 @@ if (empty($_SESSION['user'])) {
 
     $('#eadbanner').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
 
-
         e.preventDefault();
         $.ajax({
             type: 'POST',
@@ -275,11 +277,6 @@ if (empty($_SESSION['user'])) {
     });
 
 
-
-
-
-
-
     $("#e_image").change((e) => { // เรียกใช้งาน UPLOADFILE แก้ไข (สำคัญ)
 
         var form_data = new FormData();
@@ -297,7 +294,6 @@ if (empty($_SESSION['user'])) {
             data: form_data,
             type: 'post',
             success: function(response) {
-                // console.log('good', response)
                 $("#e_imgname").val(response)
             },
             error: function(err) {
@@ -307,16 +303,37 @@ if (empty($_SESSION['user'])) {
     })
 
 
+    $(document).on('change', '.toggle-event', function(e) { // เรียกใช้งาน สถานะ datatable
 
+        let id = $(this).data("id");
+        let status = '';
 
-    function preview_image(event) { // เรียกใช้งาน preview imagebefore (สำคัญ)
-        var reader = new FileReader();
-        reader.onload = function() {
-            var output = document.getElementById('showimg');
-            output.src = reader.result;
+        if ($("#" + e.target.id).prop('checked')) {
+            status = '1';
+        } else {
+            status = '0';
+        } {
+            Swal.fire({
+                text: 'อัพเดตข้อมูลเรียบร้อย',
+                icon: 'success',
+                confirmButtonText: 'ตกลง',
+            }).then((result) => {
+                $.ajax({
+                    url: "../../services/Banner/status.php",
+                    method: "POST",
+                    data: {
+                        id: id,
+                        status: status
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        location.reload();
+                    }
+                })
+            });
         }
-        reader.readAsDataURL(event.target.files[0]);
-    }
+    });
+
 
     function preview_image(event) { // เรียกใช้งาน preview imagebefore (สำคัญ)
         var reader = new FileReader();

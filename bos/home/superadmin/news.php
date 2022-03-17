@@ -29,8 +29,6 @@ if (empty($_SESSION['user'])) {
         </div>
     </div>
 
-
-
     <script>
     $(function() { // เรียกใช้งาน datatable
         $.ajax({
@@ -390,7 +388,7 @@ if (empty($_SESSION['user'])) {
                 confirmButtonText: 'ตกลง',
             }).then((result) => {
                 $.ajax({
-                    url: "../..//services/News/status.php",
+                    url: "../../services/News/status.php",
                     method: "POST",
                     data: {
                         id: id,

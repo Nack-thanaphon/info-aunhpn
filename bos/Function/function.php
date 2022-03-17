@@ -75,7 +75,6 @@ function file_type($conn)
     $result = $statement->fetchAll();
     $output = '';
     foreach ($result as $i => $row) {
-
         $output .= ' <input class="editcheckbox edit-ftype' . ($i + 1) . ' form-check-input"  type="radio" 
         id="t_id' . $i + 1 . '" name="t_id" value="' . $row["t_id"] . '" required  > 
         <label class="form-check-label" for="f_group">' . $row["t_name"] . '</label>';

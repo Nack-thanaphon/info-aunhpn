@@ -19,13 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $id = $_POST['id'];
     $name = $_POST['name'];
     $group = $_POST['group'];
-    $type = $_POST['type'];
+
     $detail = $_POST['detail'];
     $by = $_POST['by'];
     $date = $_POST['date'];
 
     $query = " UPDATE tbl_file SET `f_name` = '" . $name . "', `f_detail` = '" . $detail . "', 
-    `f_group` = '" . $group . "' ,`t_id` = '" . $type . "',`f_by` = '" . $by . "',`f_date` = '" . $date . "'
+    `f_group` = '" . $group . "' ,`f_by` = '" . $by . "',`f_date` = '" . $date . "'
     WHERE f_id = '" . $id . "' ";
     $stmt = $conn->prepare($query);
     $stmt->execute();

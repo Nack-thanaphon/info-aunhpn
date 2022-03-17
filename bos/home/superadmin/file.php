@@ -8,11 +8,11 @@ if (empty($_SESSION['user'])) {
 }
 ?>
 
+
 <body id="page-top">
     <div id="wrapper">
         <?php include "./include/navbar.php"; ?>
         <div id="content-wrapper" class="d-flex flex-column">
-
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
@@ -48,7 +48,7 @@ if (empty($_SESSION['user'])) {
                     `${data[i].group}`,
                     `${data[i].type}`,
                     `<input class="toggle-event"  id="toggle_file${data[i].id}" data-id="${data[i].id}" type="checkbox" name="status" 
-                ${data[i].s_status ? 'checked' : ''} data-toggle="toggle" data-on="เปิด" 
+                ${data[i].f_status ? 'checked' : ''} data-toggle="toggle" data-on="เปิด" 
                         data-off="ปิด" data-onstyle="success" data-style="ios">`,
                     `<div class="btn-group" role="group">
                         <button " type="button" class="btn btn-warning edit_file_upload" data-toggle="modal" data-id="${data[i].id}"  >
@@ -170,6 +170,21 @@ if (empty($_SESSION['user'])) {
     })
 
     $(document).ready(function(e) {
+
+        $('#f_file').on('change', function() {
+            let validExt = ['docx', 'pdf', ]
+            var extension = this.files[0].type.split('/')[1]
+            if (validExt.indexOf(extension) == -1) {
+                $("#submit").attr('disabled', true);
+                $('#msg_file').show();
+                $("#msg_file").html("คุณอัพโหลดไฟล์ไม่ถูกต้อง ไฟล์ต้องเป็น .pdf เท่านั้น");
+            } else {
+                $("#submit").attr('disabled', false);
+            }
+        })
+    })
+
+    $(document).ready(function(e) {
         $("#fileupload").on('submit', (function(e) {
             e.preventDefault();
             $.ajax({
@@ -207,7 +222,6 @@ if (empty($_SESSION['user'])) {
                 $('#ef_id').val(data[0].f_id);
                 $('#ef_name').val(data[0].f_name);
                 $('#ef_group').val(data[0].f_group);
-                $('#t_id').val(data[0].t_id);
                 $('#efile_name').html(data[0].f_file);
                 $('#ef_fname').val(data[0].f_file);
                 $('#ef_detail').val(data[0].f_detail);
@@ -215,9 +229,6 @@ if (empty($_SESSION['user'])) {
                 $('#ef_by').val(data[0].f_by);
                 $('#eadfile_uploads').modal('show');
 
-                if (data[0].t_id == '1') $(".edit-ftype1").trigger('click')
-                else if (data[0].t_id == '2') $(".edit-ftype2").trigger('click')
-                else if (data[0].t_id == '3') $(".edit-ftype3").trigger('click')
             }
         });
     });
@@ -225,6 +236,7 @@ if (empty($_SESSION['user'])) {
 
 
     $('#efileupload').on('submit', function(e) { // เรียกใช้งาน [บันทึกข้อมูลแก้ไข] (สำคัญ)
+
         e.preventDefault();
         $.ajax({
             type: "POST",
@@ -234,7 +246,6 @@ if (empty($_SESSION['user'])) {
                 id: $('#ef_id').val(),
                 name: $('#ef_name').val(),
                 group: $('#ef_group').val(),
-                type: $('#t_id').val(),
                 detail: $('#ef_detail').val(),
                 date: $('#ef_date').val(),
                 by: $('#ef_by').val(),
@@ -248,18 +259,67 @@ if (empty($_SESSION['user'])) {
                     location.reload();
 
                 });
-
+                console.log("good", response);
 
             },
             error: function(err) {
-
+                console.log("bad", err);
             }
         })
 
     })
 
+    $(function() {
+        $("#datepicker").datepicker({
+            todayHighlight: true, // to highlight the today's date
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        }).datepicker('update', new Date());
+
+        $(".date").datepicker({
+            todayHighlight: true, // to highlight the today's date
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        }).datepicker('update', new Date());
+    });
 
 
+    $("#f_file").change(function() {
+        $("#file_name").text(this.files[0].name);
+    });
+
+    $(document).on('change', '.toggle-event', function(e) { // เรียกใช้งาน สถานะ datatable
+
+        let id = $(this).data("id");
+        let status = '';
+
+        if ($("#" + e.target.id).prop('checked')) {
+            status = '1';
+        } else {
+            status = '0';
+        } {
+            Swal.fire({
+                text: 'อัพเดตข้อมูลเรียบร้อย',
+                icon: 'success',
+                confirmButtonText: 'ตกลง',
+            }).then((result) => {
+                $.ajax({
+                    url: "../../services/File/status.php",
+                    method: "POST",
+                    data: {
+                        id: id,
+                        status: status
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        location.reload();
+                    }
+                })
+            });
+        }
+    });
 
 
     $("#f_file").change(function() {
