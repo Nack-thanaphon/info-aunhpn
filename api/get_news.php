@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             "type" => $n_type,
             "detail" => $n_detail,
             "url" => $url,
-            "slug" => $slug,
+            "user_id" => $user_id,
             "image" => $n_image,
             "date" => $create_at,
         );

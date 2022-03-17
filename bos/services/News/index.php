@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             "name" => $n_name,
             "type" => $n_type,
             "url" => $url,
-            "slug" => $slug,
+            "user_id" => $user_id,
             "image" => $n_image,
             "n_status" => $status,
         );

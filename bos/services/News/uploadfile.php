@@ -40,17 +40,12 @@ if (isset($_FILES['files']) && !empty($_FILES['files'])) {
                 $milliseconds = round(microtime(true) * 1000);
                 $new_file_name = $milliseconds . $i . "." . $ext;
 
-
-
-
                 if (move_uploaded_file($tmp, $path . $new_file_name)) {
                     chmod($path . $new_file_name, 0777);
                     echo 'uploads/images/' . $new_file_name;
                 } else {
                     echo "Sorry, there was an error uploading your file. " . $path . $new_file_name;
                 }
-
-
 
                 $fn = dirname(__FILE__) . '/' . $fn . '' . $new_file_name . ",";
             }

@@ -35,7 +35,7 @@ if (empty($_SESSION['user'])) {
     $(document).ready(function() {
         var calendar = $('#calendar').fullCalendar({
             editable: true,
-            events: "../../services/Activity/",
+            events: "../../Service/Activity/",
             displayEventTime: false,
             eventRender: function(event, element, view) {
                 if (event.allDay === 'true') {
@@ -53,7 +53,7 @@ if (empty($_SESSION['user'])) {
                     event.preventDefault();
                     var data = $(this).serialize();
                     $.ajax({
-                        url: '../../services/Activity/create.php',
+                        url: '../../Service/Activity/create.php',
                         type: 'POST',
                         dataType: 'json',
                         data: data
@@ -88,7 +88,7 @@ if (empty($_SESSION['user'])) {
             eventClick: function(event) {
                 $.ajax({
                     type: "GET",
-                    url: "../../services/Activity/update.php",
+                    url: "../../Service/Activity/update.php",
                     data: "&id=" + event.id,
                     success: function(data) {
                         data = JSON.parse(data)
@@ -115,7 +115,7 @@ if (empty($_SESSION['user'])) {
                         if (result.isConfirmed) {
                             $.ajax({
                                 type: "POST",
-                                url: "../../services/Activity/delete.php",
+                                url: "../../Service/Activity/delete.php",
                                 data: "&id=" + e_id,
                             }).done(function() {
                                 Swal.fire({

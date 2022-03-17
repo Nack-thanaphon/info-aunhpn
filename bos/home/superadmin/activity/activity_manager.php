@@ -26,7 +26,7 @@ include "../../../bos/Function/function.php"
                         <div class="card ">
                             <div class=" card-header border-left-primary shadow h-100 py-3">
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-6">
                                         <b>
                                             <h4 class="p-0 m-0 pl-2 text-left text-primary">
                                                 <i class="fas fa-rss-square p-0"></i>

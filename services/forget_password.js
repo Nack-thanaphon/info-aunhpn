@@ -201,7 +201,7 @@ $(document).on("click", "#btn_update", function(e) {
 
     let password = $("#password").val();
     let cpassword = $("#cpassword").val();
-    let token = ($("#token").val());
+    let token = $("#token").val();
 
     if (password == "") {
         $('#message').show();

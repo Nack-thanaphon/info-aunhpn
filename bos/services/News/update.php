@@ -14,24 +14,20 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     }
 } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-
     $id = $_POST['id'];
     $name = $_POST['name'];
     $type = $_POST['type'];
     $url = $_POST['url'];
     $image = $_POST['image'];
-    $slug = $_POST['slug'];
     $detail = $_POST['detail'];
     $date = $_POST['date'];
 
 
-
-
-    $query = " UPDATE tbl_news SET `n_name` = '" . $name . "', `n_type` = '" . $type . "', 
+    $query = " UPDATE tbl_news SET `n_name` = '" . $name . "', 
+    `n_type` = '" . $type . "', 
     `url` = '" . $url . "', 
-    `slug` = '" . $slug . "', 
     `n_image` = '" . $image . "', 
-    `n_detail` = '" . $detail . "'
+    `n_detail` = '" . $detail . "',
     `n_date` = '" . $date . "'
   
 

@@ -167,21 +167,45 @@ if (empty($_SESSION['user'])) {
     })
 
 
+
     $('#formData').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: "../../services/News/create.php",
-            data: $('#formData').serialize()
-        }).done(function(resp) {
-            Swal.fire({
-                text: 'เพิ่มข้อมูลเรียบร้อย',
-                icon: 'success',
-                confirmButtonText: 'ตกลง',
-            }).then((result) => {
-                location.assign('./news.php');
-            });
-        })
+
+        let name = $("#n_name").val();
+        let image = $("#n_image").val();
+        let date = $("#n_date").val();
+        let datail = $("#detail").summernote();
+
+        if (name == "") {
+            $('#message_name').show();
+            $('#message_name').html('กรุณากรอกหัวข้อข่าว');
+            return false
+        }
+        if (image == "") {
+            $('#message_img').show();
+            $('#message_img').html('กรุณาอัพภาพหน้าปก');
+            return false
+        }
+        if (datail == "") {
+            $('#message_detail').show();
+            $('#message_detail').html('กรุณาใส่ข้อมูลข่าว');
+            return false
+        } else {
+
+            e.preventDefault()
+            $.ajax({
+                type: 'POST',
+                url: "../../services/News/create.php",
+                data: $('#formData').serialize()
+            }).done(function(resp) {
+                Swal.fire({
+                    text: 'เพิ่มข้อมูลเรียบร้อย',
+                    icon: 'success',
+                    confirmButtonText: 'ตกลง',
+                }).then((result) => {
+                    location.assign('./news.php');
+                });
+            })
+        }
 
 
 
@@ -192,7 +216,6 @@ if (empty($_SESSION['user'])) {
 
     $(document).on('click', '.edit_data', function() { // เรียกใช้งาน แก้ไขข้อมูล (MOdal previews)
         let id = $(this).data('id');
-
         $.ajax({
             url: "../../services/News/update.php",
             method: "GET",
@@ -201,15 +224,16 @@ if (empty($_SESSION['user'])) {
             },
             dataType: "json",
             success: function(data) {
+
                 $('#eid').val(data[0].n_id);
                 $('#ename').val(data[0].n_name);
                 $('#eimage').html(data[0].n_image);
                 $('#e_imgname').val(data[0].n_image);
                 $('#eshowimg').html('<img src="../../' + data[0].n_image +
-                    '" class="p-4 w-100" width="100px">');
+                    '" class="p-1 w-100" width="100px">');
                 $('#etype').val(data[0].n_type);
+                $('#en_date').val(data[0].n_date);
                 $('#eurl').val(data[0].url);
-                $('#eslug').val(data[0].slug);
                 $('#edetail').summernote('pasteHTML', data[0].n_detail);
                 $('#enews').modal('show');
             }
@@ -230,8 +254,8 @@ if (empty($_SESSION['user'])) {
                 detail: $("#edetail").val(),
                 image: $("#e_imgname").val(),
                 type: $("#etype").val(),
-                slug: $("#eslug").val(),
                 url: $("#eurl").val(),
+                date: $('#en_date').val()
             },
             success: function(response) {
                 Swal.fire({
@@ -242,7 +266,6 @@ if (empty($_SESSION['user'])) {
                     location.assign('./news.php');
                 });
                 // console.log("good", response);
-
             },
             error: function(err) {
                 // console.log("bad", err);
@@ -251,30 +274,40 @@ if (empty($_SESSION['user'])) {
 
     })
 
+    $(function() {
+        $("#datepicker").datepicker({
+            todayHighlight: true, // to highlight the today's date
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        }).datepicker('update', new Date());
+    });
+
 
 
 
     $(function() { // เรียกใช้งาน Summernote
+
         $('#detail').summernote({
-            height: 300,
+            height: 200,
         });
         $('#edetail').summernote({
-            height: 300,
+            height: 200,
         });
     })
 
 
 
 
+
+
     $("#n_image").change((e) => { // เรียกใช้งาน UPLOADFILE (สำคัญ)
-        // console.log(1)
+
         var form_data = new FormData();
         var ins = document.getElementById(e.target.id).files.length;
-        for (var x = 0; x < ins; x++) {
-            form_data.append("files[]", document.getElementById(e.target.id).files[x]);
-        }
+
         form_data.append("files[]", document.getElementById(e.target.id).files[0]);
-        // console.log('fromdata', form_data)
+
         $.ajax({
             // url: './api/uploadfile.php', // point to server-side PHP script 
             url: '../../services/News/uploadfile.php', // point to server-side PHP script
@@ -299,9 +332,8 @@ if (empty($_SESSION['user'])) {
 
         var form_data = new FormData();
         var ins = document.getElementById(e.target.id).files.length;
-        for (var x = 0; x < ins; x++) {
-            form_data.append("files[]", document.getElementById(e.target.id).files[x]);
-        }
+        form_data.append("files[]", document.getElementById(e.target.id).files[0]);
+
         $.ajax({
             // url: './api/uploadfile.php', // point to server-side PHP script 
             url: "../../services/News/uploadfile.php", // point to server-side PHP script
@@ -312,7 +344,6 @@ if (empty($_SESSION['user'])) {
             data: form_data,
             type: 'post',
             success: function(response) {
-                // console.log('good', response)
                 $("#e_imgname").val(response)
             },
             error: function(err) {
@@ -339,6 +370,8 @@ if (empty($_SESSION['user'])) {
         }
         reader.readAsDataURL(event.target.files[0]);
     }
+
+
     $(document).on('change', '.toggle-event', function(e) { // เรียกใช้งาน สถานะ datatable
         // console.log('e', 1)
         // console.log('e', e.target.id)
