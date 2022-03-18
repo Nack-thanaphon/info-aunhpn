@@ -33,8 +33,8 @@ if (empty($_SESSION['user'])) {
 
     <script>
     $(function() { // เรียกใช้งาน datatable
-        var myModal = new bootstrap.Modal(document.getElementById('detail_user'))
-        myModal.show()
+        // var myModal = new bootstrap.Modal(document.getElementById('detail_user'))
+        // myModal.show()
         $.ajax({
             type: "GET",
             dataType: "JSON",
@@ -45,8 +45,9 @@ if (empty($_SESSION['user'])) {
             data = data.result;
             for (var i = 0; i < data.length; i++) {
                 tableData.push([
-
-                    ` <button " type="button" class="btn btn-outline-primary p-1" id="detail-user" data-toggle="modal" data-id="${data[i].id}">${data[i].id}</button>`,
+                    ` <button  type="button" class="btn btn-outline-primary p-1" id="d-user" data-toggle="modal" value="${data[i].salt}" >${data[i].id}
+ 
+                    </button>`,
                     `${data[i].name}`,
                     `${data[i].position}`,
                     `${data[i].status}`,
@@ -54,9 +55,9 @@ if (empty($_SESSION['user'])) {
                 ${data[i].u_status ? 'checked' : ''} data-toggle="toggle" data-on="เปิด" 
                         data-off="ปิด" data-onstyle="success" data-style="ios">`,
                     `<div class="btn-group" role="group">
-                        <button " type="button" class="btn btn-warning " id="edit-user" data-toggle="modal" data-id="${data[i].id}"  >
+                        <a href="./user_profile.php?salt=${data[i].salt}" type="button" class="btn btn-warning " id="edit-user"  data-id="${data[i].id}"  >
                             <i class="far fa-edit"></i> แก้ไข
-                        </button>
+                        </a>
                         <button type="button" class="btn btn-danger" id="delete" data-id="${data[i].id}">
                             <i class="far fa-trash-alt"></i> ลบ
                         </button>
@@ -211,39 +212,17 @@ if (empty($_SESSION['user'])) {
 
 
 
-    $(document).on('click', '#edit-user', function() { // เรียกใช้งาน แก้ไขข้อมูล (MOdal previews)
-        let id = $(this).data('id');
+    $(document).on('click', '#d-user', function() { // เรียกใช้งาน แก้ไขข้อมูล (MOdal previews)
+        let salt = $('#d-user').val();
 
         $.ajax({
             url: "../../services/User/update.php",
             method: "GET",
             data: {
-                id: id
+                salt: salt
             },
             dataType: "json",
             success: function(data) {
-                $('#euser_id').val(data[0].user_id);
-                $('#efull_name').val(data[0].full_name);
-                $('#euser_name').val(data[0].user_name);
-                $('#euser_email').val(data[0].user_email);
-                $('#euser_role_id').val(data[0].user_role_id);
-                $('#edit_user').modal('show');
-            }
-        });
-    });
-
-    $(document).on('click', '#detail-user', function() { // เรียกใช้งาน แก้ไขข้อมูล (MOdal previews)
-        let id = $(this).data('id');
-
-        $.ajax({
-            url: "../../services/User/update.php",
-            method: "GET",
-            data: {
-                id: id
-            },
-            dataType: "json",
-            success: function(data) {
-
                 $('#dfull_name').html(data[0].full_name);
                 $('#duser_name').html(data[0].user_name);
                 $('#duser_email').html(data[0].user_email);

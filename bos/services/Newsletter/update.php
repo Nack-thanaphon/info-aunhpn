@@ -19,14 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $name = $_POST['name'];
     $detail = $_POST['detail'];
     $date = $_POST['date'];
-    $create = $_POST['create'];
+
 
     $query = " UPDATE tbl_newsletter 
     SET 
     `n_title` = '" . $name . "', 
     `n_detail` = '" . $detail . "',
-    `n_date` = '" . $date . "',
-    `n_create` = '" . $create . "'
+    `n_date` = '" . $date . "'
   
     WHERE id = '" . $id . "' ";
     $stmt = $conn->prepare($query);

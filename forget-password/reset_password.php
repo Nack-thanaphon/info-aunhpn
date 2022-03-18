@@ -46,7 +46,6 @@
                             <input type="password" id="cpassword" class="form-control"
                                 placeholder="Enter Your Re-Password" autocomplete="new-password">
                             <small id="cmessage" class="text-danger"></small>
-                        </div>
                     </form>
 
                 </div>
@@ -64,7 +63,6 @@
                 alt="login image" class="login-img">
         </div>
     </div>
-
 
 
 

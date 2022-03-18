@@ -161,7 +161,20 @@ if (empty($_SESSION['user'])) {
     })
 
 
+    $('#n_title').change(function() {
+        let d2 = $("#n_title").val();
+
+        if (d2 !== "") {
+            $("#submit").attr('disabled', false);
+        } else {
+            $("#submit").attr('disabled', true);
+            $('#msg').show()
+            $('#msg').html('กรุณาใส่ข้อมูลก่อนกดเพิ่มข้อมูล')
+        }
+    })
+
     $('#Newsletter_ad').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
+
         e.preventDefault();
         $.ajax({
             type: 'POST',
@@ -185,5 +198,12 @@ if (empty($_SESSION['user'])) {
             height: 300,
         });
     })
+
+
+    var dp = $("#datepicker").datepicker({
+        format: "MM-yyyy",
+        startView: "months",
+        minViewMode: "months"
+    });
     </script>
 </body>

@@ -3,9 +3,9 @@
 
 
 
-include('../../../../database/connect.php');
+include('../../database/connect.php');
 
-require_once('../../../plugins/vendor/autoload.php');
+require_once('../plugins/vendor/autoload.php');
 
 
 

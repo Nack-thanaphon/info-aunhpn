@@ -54,7 +54,6 @@ if (isset($_POST['uemail'])) {
 			));
 			if ($mail->send()) {
 				$_SESSION["successMsg"] = "กรุณาตรวจสอบอีเมลล์ของคุณ";
-				header("location:index.php");
 			} else {
 				echo "Mailer Error: " . $mail->ErrorInfo;
 			}

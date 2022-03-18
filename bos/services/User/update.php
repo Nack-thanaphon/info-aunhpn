@@ -4,8 +4,8 @@ include "../../database/connect.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    if (isset($_GET["id"])) {
-        $stmt =  $conn->prepare("SELECT * FROM tbl_user INNER JOIN  tbl_user_role ON  tbl_user_role.user_role_id = tbl_user.user_role_id WHERE user_id = '" . $_GET["id"] . "'");
+    if (isset($_GET["salt"])) {
+        $stmt =  $conn->prepare("SELECT * FROM tbl_user INNER JOIN  tbl_user_role ON  tbl_user_role.user_role_id = tbl_user.user_role_id WHERE salt = '" . $_GET["salt"] . "'");
         $stmt->execute();
         $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

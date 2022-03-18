@@ -8,8 +8,8 @@ include "../../database/connect.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $now = date("Y-m-d H:i:s");
-    $statement = $conn->prepare("INSERT INTO tbl_newsletter(n_title, n_user_id ,n_detail ,n_create, n_date,n_views ,n_status) 
-    VALUES (:n_title, :n_user_id ,:n_detail ,:n_create, :n_date,:n_views ,:n_status)");
+    $statement = $conn->prepare("INSERT INTO tbl_newsletter(n_title, n_user_id ,n_detail , n_date,n_views ,n_status) 
+    VALUES (:n_title, :n_user_id ,:n_detail , :n_date,:n_views ,:n_status)");
 
     $result = $statement->execute(
         array(
@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             ':n_user_id' => $_POST["n_user_id"],
             ':n_detail' => $_POST["n_detail"],
             ':n_date'  => $_POST["n_date"],
-            ':n_create'  => $_POST["n_create"],
             ':n_status' => '1',
             ':n_views' => '0'
         )

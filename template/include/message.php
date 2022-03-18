@@ -27,12 +27,9 @@ if (isset($_SESSION["errorMsg"])) {
 
 if (isset($_SESSION["successMsg"])) {
 ?>
-
 <label class="col-12 alert bg-primary text-white">
     <?php echo $_SESSION["successMsg"];
         unset($_SESSION["successMsg"]); ?>
 </label>
 
-<?php
-}
-?>
+<?php } ?>

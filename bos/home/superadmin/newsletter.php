@@ -43,7 +43,7 @@ if (empty($_SESSION['user'])) {
             data = data.result;
             for (var i = 0; i < data.length; i++) {
                 tableData.push([
-                    `<a href="./export/newsletter.php?id=${data[i].id}" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
+                    `<a href="../../export/newsletter.php?id=${data[i].id}" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
                     `${data[i].title}`,
                     `${data[i].date}`,
                     `${data[i].user}`,

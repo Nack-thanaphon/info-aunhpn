@@ -23,16 +23,13 @@ include "../../../bos/function/function.php"
                 <div class="card-body">
                     <div class="form-group col-md-12">
                         <div class="row">
-                            <div class="col">
-                                <label for="url">ประจำเดือน</label>
-                                <input type="text" class="form-control" name="n_date" id="n_date" placeholder="March">
-                            </div>
+
                             <div class="col">
                                 <label for="url">วันเดือนปี</label>
                                 <div class="input-group">
                                     <div id="datepicker" class="input-group date">
-                                        <input class="form-control" type="date" name="n_create" id="n_create"
-                                            readonly />
+                                        <input class="form-control" type="text" id="n_date" name="n_date" readonly
+                                            placeholder="จดหมายข่าวประจำเดือน :" />
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button"><span
                                                     class="input-group-addon">
@@ -82,7 +79,7 @@ $(document).ready(function() {
             $('#n_title').val(data[0].n_title);
             $('#detail').summernote('pasteHTML', data[0].n_detail);
             $('#n_date').val(data[0].n_date);
-            $('#n_create').val(data[0].n_create);
+
             // console.log("good", data)
         },
         error: function(err) {
@@ -103,8 +100,6 @@ $('#eNewsletter_ad').on('submit', function(e) { // เรียกใช้ง�
             name: $("#n_title").val(),
             detail: $("#detail").val(),
             date: $("#n_date").val(),
-            create: $("#n_create").val(),
-
         },
         success: function(response) {
             Swal.fire({

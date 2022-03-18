@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             "id" => $user_id,
             "image" => $user_image,
             "name" => $full_name,
+            "salt" => $salt,
             "email" => $user_email,
             "position" => $user_role,
             "status" => $status,

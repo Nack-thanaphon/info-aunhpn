@@ -60,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             'user_email' => $row['user_email'],
                             'full_name' => $row['full_name'],
                             'user_name' => $row['user_name'],
+                            'salt' => $row['salt'],
                             'user_password' => $row['user_password'],
                             'user_position' => $row['user_role'],
                             'user_role_id' => $row['user_role_id'],

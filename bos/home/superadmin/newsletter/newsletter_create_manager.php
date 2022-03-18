@@ -22,15 +22,13 @@ include "../../../bos/function/function.php"
                 <div class="card-body">
                     <div class="form-group col-md-12">
                         <div class="row">
-                            <div class="col">
-                                <label for="url">ประจำเดือน</label>
-                                <input type="text" class="form-control" name="n_date" placeholder="March">
-                            </div>
+
                             <div class="col">
                                 <label for="url">วันเดือนปี</label>
                                 <div class="input-group">
                                     <div id="datepicker" class="input-group date">
-                                        <input class="form-control" type="date" name="n_create" readonly />
+                                        <input class="form-control" type="text" name="n_date" readonly
+                                            placeholder="จดหมายข่าวประจำเดือน :" />
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button"><span
                                                     class="input-group-addon">
@@ -45,18 +43,21 @@ include "../../../bos/function/function.php"
                     </div>
                     <div class="form-group col-md-12">
                         <label for="b_name">ชื่อจดหมายข่าว</label>
-                        <input type="text" class="form-control" name="n_title" placeholder="กรุณากรอกชื่อจดหมายข่าว"
-                            required>
+                        <input type="text" id="n_title" class="form-control" name="n_title"
+                            placeholder="กรุณากรอกชื่อจดหมายข่าว">
                     </div>
                     <div class="form-group col-md-12">
                         <div class="form-group">
                             <label for="">รายละเอียดจดหมายข่าว</label>
-                            <textarea class="form-group col-md-12" class="textarea" name="n_detail" value="" id="detail"
+                            <small id="msg" class="text-danger"></small>
+                            <textarea class="form-group col-md-12" class="textarea" name="n_detail" id="detail"
                                 name="n_detail"></textarea>
                         </div>
+
                     </div>
                     <input type="hidden" name="n_user_id" value="<?php echo $_SESSION['user']['id'] ?>" />
-                    <button type="submit" class="btn-submit">เรียบร้อย</button>
+                    <button type="submit" disabled class="btn btn-primary btn-block mx-auto w-100" id="submit"
+                        name="submit">บันทึกข้อมูล</button>
             </form>
         </div>
     </div>

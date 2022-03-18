@@ -275,9 +275,25 @@ html {
     color: black;
 }
 
+.profile-pic-div {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid grey;
+}
+
+#file {
+    display: none;
+}
+
 .profile-img {
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 250px;
     margin: 0 auto 10px;
     display: block;
     -moz-border-radius: 60%;
@@ -286,9 +302,45 @@ html {
 }
 
 .profile-name {
+    position: relative;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     margin: 10px 0 0;
     min-height: 1em;
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.profile-name:hover .profile-img {
+    opacity: 0.3;
+}
+
+.profile-name:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: #0E508C;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
 }

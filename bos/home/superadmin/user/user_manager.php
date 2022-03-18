@@ -102,7 +102,7 @@ include "../../../bos/function/function.php"
 
 
 
-<div id="edit_user" class="modal fade">
+<!-- <div id="edit_user" class="modal fade">
     <div class="modal-dialog">
         <form id="edit_userform">
             <div class="modal-content">
@@ -149,7 +149,7 @@ include "../../../bos/function/function.php"
         </form>
 
     </div>
-</div>
+</div> -->
 
 
 <div class="container login-container">

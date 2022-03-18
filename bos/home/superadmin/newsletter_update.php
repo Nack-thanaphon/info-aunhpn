@@ -178,7 +178,11 @@ if (empty($_SESSION['user'])) {
         })
     });
 
-
+    var dp = $("#datepicker").datepicker({
+        format: "MM-yyyy",
+        startView: "months",
+        minViewMode: "months"
+    })
 
     $(function() { // เรียกใช้งาน Summernote
         $('#detail').summernote({
