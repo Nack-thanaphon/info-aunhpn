@@ -33,6 +33,7 @@ if (empty($_SESSION['user'])) {
 
     <script>
     $(function() { // เรียกใช้งาน datatable
+
         var action = "fetch";
         $.ajax({
             type: "POST",
@@ -192,6 +193,7 @@ if (empty($_SESSION['user'])) {
         var action = "create";
 
         if (folder_name != '') {
+
             $.ajax({
                 url: "../../services/Gallery/create.php",
                 method: "POST",
@@ -206,7 +208,9 @@ if (empty($_SESSION['user'])) {
                         text: 'เพิ่มอัลบั้มภาพเรียบร้อย',
                         icon: 'success',
                         confirmButtonText: 'ตกลง',
-                    })
+                    }).then((data) => {
+                        location.reload();
+                    });
                 }
             });
         } else {
@@ -215,6 +219,8 @@ if (empty($_SESSION['user'])) {
     });
 
     $(document).on("click", ".update", function() {
+
+
         let id = $(this).data('id');
 
         $.ajax({
@@ -235,7 +241,6 @@ if (empty($_SESSION['user'])) {
     });
 
     $('#eg_update').on('click', function(e) { // เรียกใช้งาน [บันทึกข้อมูลแก้ไข] (สำคัญ)
-
         e.preventDefault();
         $.ajax({
             type: "POST",
@@ -275,14 +280,51 @@ if (empty($_SESSION['user'])) {
         $('#hidden_folder_name').val(folder_name);
         $('#uploadModal').modal('show');
         $('#g_id').val(id);
-
     });
 
+    $(document).ready(function() {
+        if (window.File && window.FileList && window.FileReader) {
+            $("#files").on("change", function(e) {
+                var files = e.target.files,
+                    filesLength = files.length;
+                for (var i = 0; i < filesLength; i++) {
+                    var f = files[i]
+                    var fileReader = new FileReader();
+                    fileReader.onload = (function(e) {
+                        var file = e.target;
+                        $("<div class=\"img-thumb-wrapper card shadow m-2 \">" +
+                            "<img class=\"img-thumb\" src=\"" + e.target.result +
+                            "\" title=\"" + file.name + "\"/>" +
+                            "<br/><span class=\"remove\">ลบ</span>" +
+                            "</div>").insertAfter("#preview");
+                        $(".remove").click(function() {
+                            $(this).parent(".img-thumb-wrapper").remove();
+                        });
+
+                    });
+                    fileReader.readAsDataURL(f);
+                }
+            });
+        } else {
+            alert("Your browser doesn't support to File API")
+        }
+    });
+
+
+    $('#files').change(function() {
+        let file_check = $("#files").val();
+
+        if (file_check !== "") {
+            $("#submit").attr('disabled', false);
+        } else {
+            $("#submit").attr('disabled', true);
+
+        }
+    })
 
     $('#submit').on('click', function() {
 
         var form_data = new FormData();
-
         let id = $('#g_id').val();
         let folder = $('#hidden_folder_name').val();
         var totalfiles = document.getElementById('files').files.length;
@@ -306,12 +348,12 @@ if (empty($_SESSION['user'])) {
                     text: 'อัพเดตข้อมูลเรียบร้อย',
                     icon: 'success',
                     confirmButtonText: 'ตกลง',
-                })
+                }).then((response) => {
+                    location.reload();
+                });
             }
         });
     });
-
-
 
     $(document).on("click", ".view_files", function() {
         let id = $(this).data('id');
@@ -324,16 +366,17 @@ if (empty($_SESSION['user'])) {
             },
             dataType: "json",
             success: function(response) {
-
+                $('#filelistModal').modal('show');
                 let html = '';
 
                 data = response.result;
 
                 for (var i = 0; i < data.length; i++) {
+
                     html += `
                      <tr>
                         <td>${data[i].id}</td>
-                        <td><img src="../../services/Gallery/${data[i].image}" class="img-thumbnail" height="50" width="50" /></td>
+                        <td><img src="../../services/Gallery/${data[i].image}"  height="80" width="80" /></td>
                         <td>${data[i].name}</td>
                         
                         <td><button name="remove_file" class="remove_file btn btn-danger" data-id="${data[i].id}" id="../../services/Gallery/${data[i].image}">  
@@ -346,7 +389,7 @@ if (empty($_SESSION['user'])) {
                     `
                 }
                 $('#tbody').html(html);
-                $('#filelistModal').modal('show');
+
 
             },
             error: function(err) {
@@ -387,7 +430,9 @@ if (empty($_SESSION['user'])) {
                             text: 'อัพเดตข้อมูลเรียบร้อย',
                             icon: 'success',
                             confirmButtonText: 'ตกลง',
-                        })
+                        }).then((response) => {
+                            location.reload();
+                        });
                     }
                 });
             }
@@ -420,7 +465,9 @@ if (empty($_SESSION['user'])) {
                             text: 'อัพเดตข้อมูลเรียบร้อย',
                             icon: 'success',
                             confirmButtonText: 'ตกลง',
-                        })
+                        }).then((response) => {
+                            location.reload();
+                        });
                     }
                 });
             }

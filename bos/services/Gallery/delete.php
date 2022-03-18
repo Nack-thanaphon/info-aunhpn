@@ -41,10 +41,7 @@ if ($_POST["action"] == "delete") {
     } else {
         http_response_code(405);
     }
-}
-
-
-if ($_POST["action"] == "remove_file") {
+} else if ($_POST["action"] == "remove_file") {
     if (file_exists($_POST["path"])) {
         unlink($_POST["path"]);
 
