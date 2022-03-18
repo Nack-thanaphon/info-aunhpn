@@ -37,6 +37,11 @@ if (empty($_SESSION['user'])) {
             editable: true,
             events: "../../services/Activity/",
             displayEventTime: false,
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
             eventRender: function(event, element, view) {
                 if (event.allDay === 'true') {
                     event.allDay = true;
@@ -85,7 +90,7 @@ if (empty($_SESSION['user'])) {
                 });
             },
 
-            
+
             eventClick: function(event) {
                 $.ajax({
                     type: "GET",
@@ -144,10 +149,10 @@ if (empty($_SESSION['user'])) {
         }, 1000);
     }
 
-    $('#event_ad').click(function() {
-        $("#e_header").html('<label for="n_name" id="e_header"><h4>เพิ่มกิจกรรม</h4></label>');
+    // $('#event_ad').click(function() {
+    //     $("#e_header").html('<label for="n_name" id="e_header"><h4>เพิ่มกิจกรรม</h4></label>');
 
-    });
+    // });
     </script>
 
 

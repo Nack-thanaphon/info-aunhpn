@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $data_items = array(
             "id" => $f_id,
             "name" => $f_name,
-            "group" => '<span class="badge badge-info">' . $g_name . '</span>',
+            "group" => '<span class="badge rounded-pill bg-info text-white">' . $g_name . '</span>',
             "type" => $t_name,
             "f_status" => $status,
         );
