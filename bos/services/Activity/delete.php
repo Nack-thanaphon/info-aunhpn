@@ -11,7 +11,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $stmt = $conn->prepare($query);
     $stmt->execute();
 
-
-
     echo $id;
 }

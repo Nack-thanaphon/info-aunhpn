@@ -31,11 +31,14 @@ if (empty($_SESSION['user'])) {
 
     <script>
     $(function() { // เรียกใช้งาน datatable
+
         $.ajax({
             type: "GET",
             dataType: "JSON",
-            url: "../../services/Activity/",
-            data: {},
+            url: "../../services/Activity/table.php",
+            data: {
+
+            },
         }).done(function(data) {
             let tableData = []
             data = data.result;

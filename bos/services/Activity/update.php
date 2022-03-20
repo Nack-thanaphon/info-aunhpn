@@ -15,16 +15,29 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     //ประกาศตัวแปรรับค่าจากฟอร์ม
-    $id = $_POST['eb_id'];
-    $name = $_POST['eb_title'];
-    $detail = $_POST['eb_detail'];
-    $link = $_POST['eb_link'];
-    $by = $_POST['eb_by'];
-    $date = $_POST['eb_date'];
 
-    $query = " UPDATE tbl_banner SET `b_title` = '" . $name . "', `b_detail` = '" . $detail . "', 
-        `b_link` = '" . $link . "' ,`b_by` = '" . $by . "',`b_date` = '" . $date . "'
-        WHERE b_id = '" . $id . "' ";
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $detail = $_POST['detail'];
+    $link = $_POST['link'];
+    $type = $_POST['type'];
+    $address = $_POST['address'];
+    $start = $_POST['start'];
+    $end = $_POST['end'];
+    $time_start = $_POST['time_start'];
+    $time_end = $_POST['time_end'];
+
+    $query = " UPDATE tbl_events SET 
+    `title` = '" . $title . "',
+    `e_detail` = '" . $detail . "', 
+    `e_link` = '" . $link . "' ,
+    `et_id` = '" . $type . "',
+    `e_address` = '" . $address . "',
+    `start` = '" . $start . "',
+    `end` = '" . $end . "',
+    `time_start` = '" . $time_start . "',
+    `time_end` = '" . $time_end . "'
+    WHERE id = '" . $id . "' ";
     $stmt = $conn->prepare($query);
     $stmt->execute();
 

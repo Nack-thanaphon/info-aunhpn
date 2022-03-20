@@ -116,7 +116,7 @@ include "../../function/function.php"
                 </div>
 
 
-                <form id="create_gallery">
+                <div id="create_gallery">
                     <div class="modal-body">
                         <div class="form-group col-md-12">
                             <label for="" class="text-primary"> <label for="">ชื่ออัลบั้ม</label>
@@ -135,11 +135,10 @@ include "../../function/function.php"
 
                         <input type="hidden" name="action" id="action" />
                         <input type="hidden" name="old_name" id="old_name" />
-                        <button type="submit" name="folder_button" id="c_gallery" class="btn-submit"
-                            value="Create">เรียบร้อย</button>
+                        <button name="folder_button" id="c_gallery" class="btn-submit" value="Create">เรียบร้อย</button>
 
                     </div>
-                </form>
+                </div>
 
             </div>
         </div>
@@ -163,7 +162,7 @@ include "../../function/function.php"
                 </div>
 
 
-                <form id="create_gallery">
+                <div id="create_gallery">
                     <div class="modal-body">
                         <div class="form-group col-md-12">
                             <label for="" class="text-primary"> <label for="">ชื่ออัลบั้ม</label>
@@ -182,11 +181,11 @@ include "../../function/function.php"
 
                         <input type="hidden" name="action" id="action" />
                         <input type="hidden" name="old_name" id="old_name" />
-                        <button type="submit" name="folder_button" id="c_gallery" class="btn-submit"
+                        <button name="folder_button" id="c_gallery5" class="btn-submit"
                             value="Create">เรียบร้อย</button>
 
                     </div>
-                </form>
+                </div>
 
             </div>
         </div>
