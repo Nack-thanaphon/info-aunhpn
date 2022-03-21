@@ -1,41 +1,26 @@
 <?php
 
+header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Max-Age: 86400');
 
 include "../database/connect.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    $query = " SELECT * FROM tbl_news WHERE n_status = '1'";
+    $items_arr['result'] = array();
 
-    if (isset($_POST["month"])) {
-        $brand_filter = implode("','", $_POST["month"]);
-        $query .= " AND n_name IN('" . $brand_filter . "')";
+    $month = $_POST['month'];
+
+    $query = "SELECT * FROM tbl_news WHERE `n_name` LIKE '%$month%' ";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        extract($row);
+        array_push($items_arr['result'], $row);
     }
-
-
-
-    $statement = $conn->prepare($query);
-    $statement->execute();
-    $result = $statement->fetchAll();
-    $total_row = $statement->rowCount();
-    $output = '';
-    if ($total_row > 0) {
-        foreach ($result as $row) {
-            $output .= '
-       <div class="col-sm-4 col-lg-3 col-md-3">
-        <div style="border:1px solid #ccc; border-radius:5px; padding:16px; margin-bottom:16px; height:450px;">
-     
-         <p align="center"><strong><a href="#">' . $row['n_name'] . '</a></strong></p>
-         <h4 style="text-align:center;" class="text-danger" >' . $row['n_detail'] . '</h4>
-        
-        </div>
-    
-       </div>
-       ';
-        }
-    } else {
-        $output = '<h3>No Data Found</h3>';
-    }
-    echo $output;
+    echo json_encode($items_arr);
+    http_response_code(200);
 }

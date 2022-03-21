@@ -9,23 +9,27 @@ include "../database/connect.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    $select_stmt = $conn->prepare("SELECT * FROM tbl_news INNER JOIN  tbl_news_type ON  tbl_news_type.n_type_id = tbl_news.n_type WHERE n_status = '1' ORDER BY n_id  DESC");
+    $select_stmt = $conn->prepare("SELECT * FROM tbl_file 
+    INNER JOIN  tbl_file_type ON  
+    tbl_file_type.t_id= tbl_file.f_type
+    INNER JOIN  tbl_file_group ON  
+    tbl_file_group.g_id = tbl_file.f_group WHERE f_status = '1'
+    ");
     $select_stmt->execute();
 
     $response = array();
     $response['result'] = array();
 
+
     while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
+
         $data_items = array(
-            "id" => $n_id,
-            "name" => $n_name,
-            "type" => $n_type,
-            "detail" => $n_detail,
-            "url" => $url,
-            "user_id" => $user_id,
-            "image" => $n_image,
-            "date" => $create_at,
+            "id" => $f_id,
+            "name" => $f_name,
+            "group" => $g_name,
+            "type" => $t_name,
+            "file" => $f_file,
         );
         array_push($response['result'], $data_items);
     }
