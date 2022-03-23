@@ -362,6 +362,16 @@ if (empty($_SESSION['user'])) {
         $("#eresponse").text(this.files[0].name);
 
     });
+
+    $(function() {
+        $("#datepicker,#editdatepicker").datepicker({
+            todayHighlight: true, // to highlight the today's date
+            format: 'dd-M-yyyy',
+            autoclose: true,
+            todayHighlight: true
+        }).datepicker('update', new Date());
+    });
     </script>
+
 
 </body>

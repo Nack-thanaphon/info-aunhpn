@@ -9,10 +9,15 @@ $('#profile').click(function() { // เรียกใช้งาน แก้�
         },
         dataType: "json",
         success: function(data) {
-            $('#mdfull_name').html(data[0].full_name);
+            data = data.result;
+
+            console.log(data)
+
+
+            $('#mdfull_name').html(data[0].name);
             $('#mduser_name').html(data[0].user_name);
-            $('#mduser_email').html(data[0].user_email);
-            $('#mduser_role_id').html(data[0].user_role);
+            $('#mduser_email').html(data[0].email);
+            $('#mduser_role_id').html(data[0].position);
             $('#mdetail_user').modal('show');
         }
     });

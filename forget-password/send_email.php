@@ -22,7 +22,7 @@ if (isset($_POST['uemail'])) {
 			$reset_link = "เรียนคุณ $dbusername! <br>
 			กรุณาคลิ๊กด้านล่างนี้เพื่อเปลี่ยนรหัสผ่านของคุณ<br><br><br>
 			โดย AUN-HPN[team]<br><br>
-			<hr><a href='localhost/reset_password.php?token=$dbtoken' class='btn btn-success'>เปลี่ยนรหัสผ่าน</a>";
+			<hr><a href='https://info-aun-hpn.com/forget-password/reset_password.php?token=$dbtoken' class='btn btn-success'>เปลี่ยนรหัสผ่าน</a>";
 
 
 			require_once "../PHPMailer/PHPMailer.php";

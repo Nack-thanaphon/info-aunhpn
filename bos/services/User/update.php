@@ -7,9 +7,33 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (isset($_GET["salt"])) {
         $stmt =  $conn->prepare("SELECT * FROM tbl_user INNER JOIN  tbl_user_role ON  tbl_user_role.user_role_id = tbl_user.user_role_id WHERE salt = '" . $_GET["salt"] . "'");
         $stmt->execute();
-        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        echo json_encode($row);
+        $response = array();
+        $response['result'] = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            extract($row);
+
+            $status = '';
+            if ($row["user_status"] == '1') {
+                $status = '<span class="badge badge-pill badge-success">กำลังใช้งาน</span>';
+            } else {
+                $status = '<span class="badge badge-pill badge-danger">ไม่ได้ใช้งาน</span>';
+            }
+
+            $data_items = array(
+                "id" => $user_id,
+                "image" => $user_image,
+                "name" => $full_name,
+                "salt" => $salt,
+                "email" => $user_email,
+                "position" => $user_role,
+                "status" => $status,
+
+            );
+            array_push($response['result'], $data_items);
+        }
+        echo json_encode($response);
         http_response_code(200);
     }
 } else if ($_SERVER['REQUEST_METHOD'] == "POST") {

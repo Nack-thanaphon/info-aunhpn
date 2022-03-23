@@ -36,20 +36,25 @@ if (empty($_SESSION['user'])) {
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "../../services/user/update.php",
+            url: "../../services/User/update.php",
             data: {
                 salt: salt,
             },
             success: function(data) {
+
+                data = data.result;
+                // for (var i = 0; i < data.length; i++)
+                console.log(data)
                 // $('#duser_id').html(data[0].user_id);
-                $('#dfull_name').html(data[0].full_name);
+                $('#dfull_name').html(data[0].name);
                 $('#duser_name').html(data[0].user_name);
-                $('#duser_email').html(data[0].user_email);
-                $('#duser_role_id').html(data[0].user_role);
+                $('#duser_email').html(data[0].email);
+                $('#duser_role_id').html(data[0].position);
+                $('#status').html(data[0].status);
                 console.log("good", data)
             },
             error: function(err) {
-                // console.log("bad", err)
+                console.log("bad", err)
 
             }
         })

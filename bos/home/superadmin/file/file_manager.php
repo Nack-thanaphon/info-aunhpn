@@ -85,7 +85,7 @@ include "../../../bos/function/function.php"
                             style="display: block; width: 646px; height: 208px;"
                             class="chartjs-render-monitor"></canvas>
                     </div>
-                    <div class="mt-4 text-center small">
+                    <div class="mt-4 text-center small" id="myPieChart1">
                         <span class="mr-2">
                             <i class="fas fa-circle text-primary"></i> PDF
                         </span>
@@ -305,5 +305,4 @@ include "../../../bos/function/function.php"
         </div>
 
     </div>
-</div>
 </div>

@@ -24,13 +24,13 @@ if (empty($_SESSION['user'])) {
             <div class="container-fluid">
                 <?php include "./activity/activity_manager.php" ?>
                 <?php include "./include/footer.php"; ?>
-                <?php include "./include/script.php"; ?>
+
             </div>
         </div>
     </div>
 
 
-
+    <?php include "./include/script.php"; ?>
     <script>
     $(document).ready(function() {
         var eventobj;

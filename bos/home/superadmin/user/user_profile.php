@@ -27,7 +27,7 @@ include "../../../bos/function/function.php"
                         <!-- <div class="container"> -->
                         <p class="text-center">รูปประจำตัว</p>
                         <div class="profile-name">
-                            <img src="https://scontent.fbkk12-1.fna.fbcdn.net/v/t39.30808-6/260284501_461086452110209_5998823695527518410_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeF7dkCBqJPE2yfAe3xSRFran4TDBiv2d_ifhMMGK_Z3-FUONH-d6Ve9Ws78y-utCwQT4AzdD8v-LFRrQ84jlqmE&_nc_ohc=Zqp4cxPiAPgAX83j8aq&_nc_zt=23&_nc_ht=scontent.fbkk12-1.fna&oh=00_AT_o6WV8hY26PFXpxCxLpx-hnhn71dpP1hBQHuq3XEZQZg&oe=62383035"
+                            <img src="https://img.freepik.com/free-vector/call-center-customer-service-businesswoman-character-pose-with-laptop-headset-phone_40876-1939.jpg?size=338&ext=jpg"
                                 id="photo" alt="..." class="img-circle profile-img">
                             <div class="middle">
                                 <label for="file" class="text" id="uploadBtn">เลือกรูปภาพ</label>
@@ -97,7 +97,7 @@ include "../../../bos/function/function.php"
                                 <div class=" col-6 p-0 m-0 py-1">
                                     <div class="form-group">
                                         <p class="text-primary">สถานะการใช้งาน :</p>
-                                        <p class="badge badge-pill badge-success">ใช้งานอยู่</p>
+                                        <p id="status"></p>
                                     </div>
                                 </div>
                             </div>

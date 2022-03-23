@@ -26,5 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] = "GET") {
     echo json_encode($data);
     http_response_code(200);
 } else {
+
     http_response_code(405);
 }

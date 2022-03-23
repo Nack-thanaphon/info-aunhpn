@@ -23,7 +23,6 @@ for ($index = 0; $index < $countfiles; $index++) {
     if (isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != '') {
         // File name
         $filename = $_FILES['files']['name'][$index];
-
         // Get extension
         $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
@@ -37,11 +36,12 @@ for ($index = 0; $index < $countfiles; $index++) {
 
             $params = array();
             $path = $upload_location . "/" . $filename;
+            $news_name = "gallery" . "/" . $_POST['folder'] . "/" . $filename;
 
             // Upload file
             if (move_uploaded_file($_FILES['files']['tmp_name'][$index], $path)) {
                 $params = array(
-                    'image' => $path,
+                    'image' => $news_name,
                     'g_id' => $id,
                     /** ตัวอย่าง FK สำหรับอ้างถึงว่า รูปภาพที่บันทึกนี้ ถูกใช้กับข้อมูลอะไร */
                     'datetime' => date("Y-m-d h:i:s")

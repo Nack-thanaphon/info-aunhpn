@@ -366,20 +366,20 @@ if (empty($_SESSION['user'])) {
             },
             dataType: "json",
             success: function(response) {
+                console.log(response)
+
                 $('#filelistModal').modal('show');
                 let html = '';
 
                 data = response.result;
-
                 for (var i = 0; i < data.length; i++) {
 
                     html += `
                      <tr>
                         <td>${data[i].id}</td>
-                        <td><img src="../../services/Gallery/${data[i].image}"  height="80" width="80" /></td>
+                        <td><img src="../../uploads/${data[i].image}"  height="80" width="80" /></td>
                         <td>${data[i].name}</td>
-                        
-                        <td><button name="remove_file" class="remove_file btn btn-danger" data-id="${data[i].id}" id="../../services/Gallery/${data[i].image}">  
+                        <td><button name="remove_file" class="remove_file btn btn-danger" data-id="${data[i].id}" id="../../uploads/${data[i].image}">  
                             <p class="m-0 p-0 font-weight-bold ">
                             <i class="fas fa-trash m-0 p-0"></i>
                             </p>
@@ -399,13 +399,13 @@ if (empty($_SESSION['user'])) {
     })
 
 
-
-
-
     $(document).on('click', '.remove_file', function() {
         let id = $(this).data('id');
         var path = $(this).attr("id");
         var action = "remove_file";
+
+        console.log(id)
+        console.log(path)
 
         Swal.fire({
             text: "คุณแน่ใจหรือไม่...ที่จะลบรายการนี้?",

@@ -11,7 +11,6 @@ $(function() {
             data: {
                 useremail: $("#useremail").val(),
                 password: MD5($("#password").val()),
-
             },
             success: (resp) => {
                 // console.log(resp);

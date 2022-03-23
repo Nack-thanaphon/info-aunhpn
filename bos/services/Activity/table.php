@@ -25,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
 
+
+
         $start_time = DateThai($row['start']);
         $end_time = DateThai($row['end']);
 

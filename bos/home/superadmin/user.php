@@ -24,13 +24,13 @@ if (empty($_SESSION['user'])) {
             <div class="container-fluid">
                 <?php include "./user/user_manager.php" ?>
                 <?php include "./include/footer.php"; ?>
-                <?php include "./include/script.php"; ?>
+
             </div>
         </div>
     </div>
 
 
-
+    <?php include "./include/script.php"; ?>
     <script>
     $(function() { // เรียกใช้งาน datatable
         // var myModal = new bootstrap.Modal(document.getElementById('detail_user'))
@@ -136,7 +136,7 @@ if (empty($_SESSION['user'])) {
                             if (result.isConfirmed) {
                                 $.ajax({
                                     type: "POST",
-                                    url: "../../services/User/delete.php",
+                                    url: "../../services/User/ck_delete.php",
 
                                     data: {
                                         id: id
@@ -184,11 +184,12 @@ if (empty($_SESSION['user'])) {
     })
 
 
-    $(document).on('submit', '#crete_user', function(event) {
+    $(document).on('click', '#create_user', function() {
         event.preventDefault();
         $.ajax({
-            url: "../../services/User/create.php",
+            url: "../../services/User/ck_create.php",
             method: "POST",
+            dataType: "JSON",
             data: {
                 fullname: $("#full_name").val(),
                 password: MD5($("#user_password").val()),
@@ -213,8 +214,8 @@ if (empty($_SESSION['user'])) {
 
 
     $(document).on('click', '#d-user', function() { // เรียกใช้งาน แก้ไขข้อมูล (MOdal previews)
-        let salt = $('#d-user').val();
 
+        const salt = $('#d-user').val();
         $.ajax({
             url: "../../services/User/update.php",
             method: "GET",
@@ -223,11 +224,14 @@ if (empty($_SESSION['user'])) {
             },
             dataType: "json",
             success: function(data) {
-                $('#dfull_name').html(data[0].full_name);
-                $('#duser_name').html(data[0].user_name);
-                $('#duser_email').html(data[0].user_email);
-                $('#duser_role_id').html(data[0].user_role);
-                $('#detail_user').modal('show');
+                console.log(data)
+                data = data.result;
+
+                // $('#dfull_name').html(data[0].name);
+                // $('#duser_name').html(data[0].user_name);
+                // $('#duser_email').html(data[0].email);
+                // $('#duser_role_id').html(data[0].position);
+                // $('#detail_user').modal('show');
             }
         });
     });
@@ -478,7 +482,7 @@ if (empty($_SESSION['user'])) {
                 confirmButtonText: 'ตกลง',
             }).then((result) => {
                 $.ajax({
-                    url: "../../services/User/status.php",
+                    url: "../../services/User/ck_status.php",
                     method: "POST",
                     data: {
                         id: id,

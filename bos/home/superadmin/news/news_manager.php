@@ -164,7 +164,7 @@ include "../../../bos/function/function.php"
                                     </label>
                                     <div class="custom-file" onchange="preview_eimage(event)">
                                         <input type="file" class="custom-file-input n_image" name="n_image"
-                                            id="n_image">
+                                            id="e_image">
                                         <input id="e_imgname" type="hidden" name="e_imgname">
                                         <label class="custom-file-label" for="n_image">เลือกรูปภาพ</label>
 

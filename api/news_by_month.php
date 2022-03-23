@@ -9,7 +9,7 @@ include "../database/connect.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    $select_stmt = $conn->prepare("SELECT DISTINCT(n_name) FROM tbl_news WHERE n_status = '1' ORDER BY n_name DESC ");
+    $select_stmt = $conn->prepare("SELECT (n_date) FROM tbl_news WHERE n_status = '1'  GROUP BY n_date ");
     $select_stmt->execute();
 
     $response = array();
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             "url" => $url,
             "user_id" => $user_id,
             "image" => $n_image,
-            "date" => $create_at,
+            "date" => $n_date,
         );
         array_push($response['result'], $data_items);
     }

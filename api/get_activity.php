@@ -7,8 +7,6 @@ header('Access-Control-Max-Age: 86400');
 
 include "../database/connect.php";
 
-
-
 function DateThai($strDate)
 {
     $strYear = date("Y", strtotime($strDate)) + 543;
@@ -21,29 +19,35 @@ function DateThai($strDate)
 
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    $select_stmt = $conn->prepare("SELECT * FROM tbl_news INNER JOIN  tbl_news_type ON  tbl_news_type.n_type_id = tbl_news.n_type WHERE n_status = '1'  ORDER BY n_id  ASC LIMIT 3 ");
+    $select_stmt = $conn->prepare("SELECT * FROM tbl_events 
+    INNER JOIN tbl_events_type ON tbl_events.et_id = tbl_events_type.et_id 
+    INNER JOIN tbl_user ON tbl_user.user_id = tbl_events.e_user
+    ORDER BY id DESC 
+    ");
     $select_stmt->execute();
 
     $response = array();
     $response['result'] = array();
 
+
     while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
 
+        $date = DateThai($row['end']);
 
-
-
-        $c_time = DateThai($row['create_at']);
 
         $data_items = array(
-            "id" => $n_id,
-            "name" => $n_name,
-            "type" => $n_type,
-            "detail" => $n_detail,
-            "url" => $url,
-            "user_id" => $user_id,
-            "image" => $n_image,
-            "date" => $c_time,
+            "id" => $id,
+            "creater" => $user_name,
+            "title" => $title,
+            "type" => $et_name,
+            "detail" => $e_detail,
+            "address" => $e_address,
+            "start_date" => $start,
+            "end_date" => $date,
+            "start_time" => $time_start,
+            "end_time" => $time_end,
+
         );
         array_push($response['result'], $data_items);
     }

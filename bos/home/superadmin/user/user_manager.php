@@ -41,53 +41,52 @@ include "../../../bos/function/function.php"
 
 <div id="c_user" class="modal fade">
     <div class="modal-dialog">
-        <form method="post" id="crete_user">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title"><i class="fa fa-plus"></i>เพิ่มข้อมูลผู้ใช้งาน</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12 col-md-4 ">
-                            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                                alt="" width="150px" height="auto">
-                        </div>
-                        <div class="col-12 col-md-8">
-                            <div class="form-group">
-                                <label for="">ตำแหน่งผู้ใช้งาน</label>
-                                <select name="user_role_id" id="user_role_id" class="form-control">
-                                    <?php echo user_role($conn) ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>ชื่อ-นามสกุล ผู้ใช้งาน</label>
-                                <input type="text" name="full_name" id="full_name" class="form-control" required />
-                            </div>
-                            <div class="form-group">
-                                <label>ชื่อผู้ใช้งาน(id)</label>
-                                <input type="text" name="user_name" id="user_name" class="form-control" required />
-                            </div>
-                            <div class="form-group">
-                                <label>อีเมลผู้ใช้งาน</label>
-                                <input type="email" name="user_email" id="user_email" class="form-control" required />
-                            </div>
-                            <div class="form-group">
-                                <label>รหัสผ่าน</label>
-                                <input type="password" name="user_password" id="user_password" class="form-control"
-                                    required />
-                            </div>
-                        </div>
-
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fa fa-plus"></i>เพิ่มข้อมูลผู้ใช้งาน</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 col-md-4 ">
+                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                            alt="" width="150px" height="auto">
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="user_id" id="user_id" />
-                    <button type="submit" name="action" id="action" class="btn btn-info">เพิ่มข้อมูล</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="col-12 col-md-8">
+                        <div class="form-group">
+                            <label for="">ตำแหน่งผู้ใช้งาน</label>
+                            <select name="user_role_id" id="user_role_id" class="form-control">
+                                <?php echo user_role($conn) ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>ชื่อ-นามสกุล ผู้ใช้งาน</label>
+                            <input type="text" name="full_name" id="full_name" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>ชื่อผู้ใช้งาน(id)</label>
+                            <input type="text" name="user_name" id="user_name" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>อีเมลผู้ใช้งาน</label>
+                            <input type="email" name="user_email" id="user_email" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label>รหัสผ่าน</label>
+                            <input type="password" name="user_password" id="user_password" class="form-control"
+                                autocomplete="new-password" required />
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </form>
+            <div class="modal-footer">
+                <input type="hidden" name="user_id" id="user_id" />
+                <button id="create_user" class="btn btn-primary">เพิ่มข้อมูล</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
 
     </div>
 </div>
@@ -100,56 +99,6 @@ include "../../../bos/function/function.php"
 
 
 
-
-
-<!-- <div id="edit_user" class="modal fade">
-    <div class="modal-dialog">
-        <form id="edit_userform">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title"><i class="fa fa-plus"></i>แก้ไขข้อมูลผู้ใช้งาน</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12 col-md-4 ">
-                            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                                alt="" width="150px" height="auto">
-                        </div>
-                        <div class="col-12 col-md-8">
-                            <div class="form-group">
-                                <label for="">ตำแหน่งผู้ใช้งาน</label>
-                                <select name="user_role_id" id="euser_role_id" class="form-control">
-                                    <?php echo user_role($conn) ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>ชื่อ-นามสกุล ผู้ใช้งาน</label>
-                                <input type="text" name="full_name" id="efull_name" class="form-control" required />
-                            </div>
-                            <div class="form-group">
-                                <label>ชื่อผู้ใช้งาน(id)</label>
-                                <input type="text" name="user_name" id="euser_name" class="form-control" required />
-                            </div>
-                            <div class="form-group">
-                                <label>อีเมลผู้ใช้งาน</label>
-                                <input type="email" name="user_email" id="euser_email" class="form-control" required />
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="user_id" id="euser_id" />
-                    <button type="submit" class="btn btn-info">อัพเดตข้อมูล</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </form>
-
-    </div>
-</div> -->
 
 
 <div class="container login-container">

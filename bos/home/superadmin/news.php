@@ -166,6 +166,7 @@ if (empty($_SESSION['user'])) {
 
 
 
+
     $('#formData').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
 
         let name = $("#n_name").val();
@@ -194,6 +195,7 @@ if (empty($_SESSION['user'])) {
                 type: 'POST',
                 url: "../../services/News/create.php",
                 data: $('#formData').serialize()
+
             }).done(function(resp) {
                 Swal.fire({
                     text: 'เพิ่มข้อมูลเรียบร้อย',
@@ -281,6 +283,11 @@ if (empty($_SESSION['user'])) {
         }).datepicker('update', new Date());
     });
 
+    var dp = $("#datepicker").datepicker({
+        format: "MM-yyyy",
+        startView: "months",
+        minViewMode: "months"
+    });
 
 
 
@@ -326,15 +333,17 @@ if (empty($_SESSION['user'])) {
     })
 
 
-    $("#e_image").change((e) => { // เรียกใช้งาน UPLOADFILE แก้ไข (สำคัญ)
+
+    $("#e_image").change((e) => { // เรียกใช้งาน UPLOADFILE (สำคัญ)
 
         var form_data = new FormData();
         var ins = document.getElementById(e.target.id).files.length;
+
         form_data.append("files[]", document.getElementById(e.target.id).files[0]);
 
         $.ajax({
             // url: './api/uploadfile.php', // point to server-side PHP script 
-            url: "../../services/News/uploadfile.php", // point to server-side PHP script
+            url: '../../services/News/uploadfile.php', // point to server-side PHP script
             dataType: 'text', // what to expect back from the PHP script
             cache: false,
             contentType: false,
@@ -342,6 +351,7 @@ if (empty($_SESSION['user'])) {
             data: form_data,
             type: 'post',
             success: function(response) {
+                // console.log('response', response)
                 $("#e_imgname").val(response)
             },
             error: function(err) {
@@ -349,6 +359,7 @@ if (empty($_SESSION['user'])) {
             }
         });
     })
+
 
 
     function preview_image(event) { // เรียกใช้งาน preview imagebefore (สำคัญ)

@@ -242,7 +242,7 @@ include "../../../bos/function/function.php"
                                             <div class="col">
                                                 <label for="url">วันเดือนปี</label>
                                                 <div class="input-group">
-                                                    <div id="datepicker" class="input-group date">
+                                                    <div id="editdatepicker" class="input-group date">
                                                         <input class="form-control" type="text" id="eb_date"
                                                             name="eb_date" readonly />
                                                         <div class="input-group-append">
