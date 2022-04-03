@@ -52,15 +52,16 @@ if (isset($_POST['uemail'])) {
 				'verify_peer_name' => false,
 				'allow_self_signed' => false
 			));
+
 			if ($mail->send()) {
-				$_SESSION["successMsg"] = "กรุณาตรวจสอบอีเมลล์ของคุณ";
+				echo "<label class='col-12 alert bg-success text-white'>กรุณาตรวจสอบอีเมลล์ของคุณ</label>";
 			} else {
 				echo "Mailer Error: " . $mail->ErrorInfo;
 			}
 		} else {
-			$_SESSION["errorMsg"] = "คุณใส่อีเมลล์ไม่ถูกต้อง";
+			echo "<label class='col-12 alert bg-danger text-white'>คุณใส่อีเมลล์ไม่ถูกต้อง</label>";
 		}
 	} else {
-		$_SESSION["errorMsg"] = "ไม่มีอีเมลล์นี้ในระบบ";
+		echo "<label class='col-12 alert bg-danger text-white'>ไม่มีอีเมลล์นี้ในระบบ</label>";
 	}
 }
