@@ -33,8 +33,7 @@ if (empty($_SESSION['user'])) {
     <?php include "./include/script.php"; ?>
     <script>
     $(function() { // เรียกใช้งาน datatable
-        // var myModal = new bootstrap.Modal(document.getElementById('detail_user'))
-        // myModal.show()
+
         $.ajax({
             type: "GET",
             dataType: "JSON",

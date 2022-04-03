@@ -73,7 +73,7 @@ include "../../../bos/function/function.php"
                                 placeholder="กรอกชื่อผู้ใช้งาน เช่น Jariya srikad" />
                         </div>
                         <div class="form-group">
-                            <small>อีเมลผู้ใช้งาน</small>
+                            <small>อีเมลผู้ใช้งาน <span id="ck_email"></span></small>
                             <input type="email" name="user_email" id="user_email" class="form-control" required
                                 placeholder="กรอกอีเมลล์ผู้ใช้งาน" />
                         </div>
@@ -82,7 +82,7 @@ include "../../../bos/function/function.php"
                             <input type="password" name="user_password" id="user_password" class="form-control "
                                 autocomplete="new-password" required placeholder="กรอกรหัสผ่าน" />
                             <small>รหัสผ่าน ครั้งที่ 2
-                                <span class="text-danger" id="msg">(*รหัสผ่านจำเป็นต้องตรงกัน)</span></small>
+                                <span class="text-danger" id="msg"></span></small>
                             <input type="password" name="user_password" id="reuser_password" class="form-control"
                                 required placeholder="กรอกรหัสผ่านอีกครั้ง" />
                         </div>

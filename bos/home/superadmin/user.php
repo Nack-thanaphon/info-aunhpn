@@ -183,17 +183,40 @@ if (empty($_SESSION['user'])) {
         }
     })
 
+
+    $('#user_email').on('change', function() {
+
+        let email = $('#user_email').val()
+        $('#ck_email').removeClass()
+
+
+        $.ajax({
+            url: "../../services/User/ck_email.php",
+            method: "GET",
+            dataType: "JSON",
+            data: {
+                email: email
+            },
+            success: function(resp) {
+                if (resp == false) {
+                    $('#ck_email').addClass("text-success")
+                    $('#ck_email').html("(*อีเมลล์สามารถใช้ได้)")
+                } else {
+                    $('#ck_email').addClass("text-danger")
+                    $('#ck_email').html("(*อีเมลล์ซ้ำไม่สามารถใช้ได้)")
+                }
+            }
+        })
+    })
+
     $('#reuser_password').change(function() {
 
         let password = $("#reuser_password").val();
-
         if (password != "") {
             $("#create_user").attr('disabled', false);
         } else {
             $("#create_user").attr('disabled', true);
-
         }
-
     })
 
     $(document).on('click', '#create_user', function() {
@@ -202,6 +225,7 @@ if (empty($_SESSION['user'])) {
         var repassword = $("#reuser_password").val();
         if (password != repassword) {
             $('#reuser_password').css('border', '1px solid red');
+            $('#msg').html('(*รหัสผ่านจำเป็นต้องตรงกัน)')
             Swal.fire({
                 icon: 'error',
                 title: 'เกิดข้อผิดพลาด',

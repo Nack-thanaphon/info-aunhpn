@@ -1,6 +1,6 @@
 <?php
 require_once './database/connect.php';
-include 'template/include/header.php';
+include './template/include/header.php';
 ?>
 
 <body>
@@ -14,14 +14,14 @@ include 'template/include/header.php';
                     </div>
                     <div class="login-wrapper my-auto">
                         <h1 class="login-title">Log in</h1>
-                        <?php include 'template/include/message.php'; ?>
+                        <?php include './template/include/message.php'; ?>
 
-                        <form id="formlogin">
+                        <form id="formlogin" method="POST">
                             <div class="form-group">
                                 <label for="name" class="text-uppercase">User email</label>
                                 <input type="text" name="user_email" id="useremail" class="form-control"
                                     placeholder="Enter Your Email ID">
-                                <small id="messageName" class="text-danger">Your name is mandatory.</small>
+                                <!-- <small id="messageName" class="text-danger">Your name is mandatory.</small> -->
                             </div>
                             <div class="form-group mb-4">
                                 <label for="pass" class="text-uppercase">Password</label>
