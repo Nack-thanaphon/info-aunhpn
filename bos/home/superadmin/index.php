@@ -3,9 +3,9 @@ include "../../database/connect.php";
 include "./include/header.php";
 
 // checking user logged or not
-if (($_SESSION['user']['user_role_id']) !== '1') {
-    $message = "คุณไม่ได้รับอนุญาติในการเข้าถึง";
-    echo "<script type='text/javascript'>alert('$message');</script>";
+if (($_SESSION['user']['user_role_id']) != '1') {
+    echo "คุณไม่ได้รับอนุญาติในการเข้าถึง";
+
     header('location: ./index.php');
 }
 ?>

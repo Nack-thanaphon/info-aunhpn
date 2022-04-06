@@ -48,7 +48,6 @@ if (empty($_SESSION['user'])) {
                 // 
                 $('#duser_id').val(data[0].salt);
                 $('#photo').attr('src', '../../uploads/banner/' + data[0].image + '');
-                $('#duser_id').val(data[0].id);
                 $('#dfull_name').html(data[0].name);
                 $('#duser_name').html(data[0].username);
                 $('#duser_date').html(data[0].date);
@@ -89,7 +88,6 @@ if (empty($_SESSION['user'])) {
     $('#update_profile').on('submit', function(e) { // เรียกใช้งาน เพิ่มข้อมูล (สำคัญ)
         var form_data = new FormData();
         e.preventDefault();
-
         $.ajax({
             type: 'POST',
             url: "../../services/User/profile.php",
@@ -100,17 +98,14 @@ if (empty($_SESSION['user'])) {
         }).done(function(resp) {
 
 
-            console.log(form_data)
+            Swal.fire({
+                text: 'เพิ่มข้อมูลเรียบร้อย',
+                icon: 'success',
+                confirmButtonText: 'ตกลง',
+            }).then((result) => {
+                // location.reload();
 
-
-            // Swal.fire({
-            //     text: 'เพิ่มข้อมูลเรียบร้อย',
-            //     icon: 'success',
-            //     confirmButtonText: 'ตกลง',
-            // }).then((result) => {
-            //     // location.reload();
-
-            // });
+            });
         })
 
     });
