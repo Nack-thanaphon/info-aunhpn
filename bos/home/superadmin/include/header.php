@@ -47,3 +47,16 @@
     <script src="./assets/vendor/chart.js/Chart.min.js"></script>
 
 </head>
+
+<div id="loading">
+
+    <!-- <div id="loading-image" alt="Loading..."> -->
+    <div class="loader" alt="Loading...">Loading...</div>
+    <!-- </div> -->
+</div>
+
+<script>
+$(window).on('load', function() {
+    $('#loading').hide();
+})
+</script>

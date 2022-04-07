@@ -110,7 +110,7 @@ include "../../../bos/function/function.php"
                                         <h4>รายละเอียดแบนเนอร์</h4>
                                     </label>
                                     <div class="col-md-12">
-                                        <img class="w-100 pb-2" height="100%" id="showimg" alt="">
+                                        <img class="w-100 pb-2" height="100%" id="showimg">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="b_name">ชื่อแบนเนอร์</label>
@@ -257,7 +257,7 @@ include "../../../bos/function/function.php"
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-12" onchange="preview_image(event)">
+                                    <div class="form-group col-md-12" onchange="epreview_image(event)">
 
                                     </div>
                                 </div>
