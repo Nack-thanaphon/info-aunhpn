@@ -69,7 +69,7 @@ function file_group($conn)
 }
 function file_type($conn)
 {
-    $query = "SELECT * FROM tbl_file_type ORDER BY t_id ASC";
+    $query = "SELECT * FROM tbl_file_type ORDER BY t_id ASC ";
     $statement = $conn->prepare($query);
     $statement->execute();
     $result = $statement->fetchAll();

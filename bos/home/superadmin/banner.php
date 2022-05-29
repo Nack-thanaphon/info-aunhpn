@@ -343,7 +343,7 @@ if (empty($_SESSION['user'])) {
         reader.readAsDataURL(event.target.files[0]);
     }
 
-    function epreview_image(event) { // เรียกใช้งาน preview imagebefore (สำคัญ)
+    function preview_image(event) { // เรียกใช้งาน preview imagebefore (สำคัญ)
         var reader = new FileReader();
         reader.onload = function() {
             var output = document.getElementById('ebshowimg');

@@ -22,8 +22,7 @@
 
 <!-- Nav Item - User Information -->
 <li class="nav-item dropdown no-arrow align-self-left">
-    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="row p-0 m-0">
             <div class="col-12 p-0 m-0">
                 <span class=" d-none d-lg-inline text-gray-600 small">
@@ -34,18 +33,18 @@
                 <span class="badge badge-pill badge-primary">
                     <?php echo $_SESSION['user']['user_position'] ?>
                 </span>
+                <input type="hidden" id="profile_id" value="<?php echo $_SESSION['user']['salt'] ?>">
             </div>
         </div>
         <div class="col-12 px-3 p-0 m-0">
-            <img class="img-profile rounded-circle"
-                src="https://img.freepik.com/free-vector/call-center-customer-service-businesswoman-character-pose-with-laptop-headset-phone_40876-1939.jpg?size=338&ext=jpg">
+            <img class="img-profile rounded-circle" id="profile_top" src="">
             <!-- <img src="                           alt="..." class="img-circle profile-img"> -->
         </div>
     </a>
     <!-- Dropdown - User Information -->
     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
         <!-- <a class="dropdown-item" id="profile" href="#" data-toggle="modal">
-            <input type="hidden" id="profile_id" value="<?php echo $_SESSION['user']['salt'] ?>">
+   
             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
             Profile
         </a> -->
@@ -61,3 +60,30 @@
         </a>
     </div>
 </li>
+
+<script>
+    $(document).ready(function() {
+
+        var salt = $("#profile_id").val()
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "../../services/User/update.php",
+            data: {
+                salt: salt,
+            },
+            success: function(data) {
+                data = data.result;
+
+
+                $('#profile_top').attr('src', '../../uploads/profile/' + data[0].image + '');
+
+
+            },
+            error: function(err) {
+                console.log("bad", err)
+
+            }
+        })
+    })
+</script>

@@ -128,6 +128,7 @@ include "../../../bos/function/function.php"
                                 <div class="form-group col-md-12">
                                     <label for="exampleFormControlSelect1">ประเภทเอกสาร </label>
                                     <select class="form-control" id="f_group" name="f_group">
+
                                         <?php echo  file_group($conn) ?>
                                     </select>
                                 </div>
@@ -140,6 +141,7 @@ include "../../../bos/function/function.php"
                                         <div class="col-8 text-right">
                                             <div class="form-check form-check-inline ">
                                                 <?php echo  file_type($conn) ?>
+
                                             </div>
 
                                         </div>

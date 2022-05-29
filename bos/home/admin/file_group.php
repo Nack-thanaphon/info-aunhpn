@@ -43,7 +43,7 @@ if (empty($_SESSION['user'])) {
             data = data.result;
             for (var i = 0; i < data.length; i++) {
                 tableData.push([
-                    `<a href="https://www.mugh.or.th/single_news.php?id=${data[i].id}" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
+                    `<a href="https://www.aun-hpn.or.th/single_news.php?id=${data[i].id}" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
                     `${data[i].name}`,
 
                     `<div class="btn-group" role="group">

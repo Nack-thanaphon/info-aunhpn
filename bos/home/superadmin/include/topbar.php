@@ -22,8 +22,7 @@
 
 <!-- Nav Item - User Information -->
 <li class="nav-item dropdown no-arrow align-self-left">
-    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="row p-0 m-0">
             <div class="col-12 p-0 m-0">
                 <span class=" d-none d-lg-inline text-gray-600 small">
@@ -63,28 +62,28 @@
 </li>
 
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
 
-    var salt = $("#profile_id").val()
-    $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: "../../services/User/update.php",
-        data: {
-            salt: salt,
-        },
-        success: function(data) {
-            data = data.result;
+        var salt = $("#profile_id").val()
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "../../services/User/update.php",
+            data: {
+                salt: salt,
+            },
+            success: function(data) {
+                data = data.result;
 
-            if (data[0].image != '') {
+
                 $('#profile_top').attr('src', '../../uploads/profile/' + data[0].image + '');
+
+
+            },
+            error: function(err) {
+                console.log("bad", err)
+
             }
-
-        },
-        error: function(err) {
-            console.log("bad", err)
-
-        }
+        })
     })
-})
 </script>

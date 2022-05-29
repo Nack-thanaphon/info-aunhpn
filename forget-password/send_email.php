@@ -21,8 +21,8 @@ if (isset($_POST['uemail'])) {
 			// They can click on this link to reset the password with the token. 
 			$reset_link = "เรียนคุณ $dbusername! <br>
 			กรุณาคลิ๊กด้านล่างนี้เพื่อเปลี่ยนรหัสผ่านของคุณ<br><br><br>
-			โดย AUN-HPN[team]<br><br>
-			<hr><a href='https://info-aun-hpn.com/forget-password/reset_password.php?token=$dbtoken' class='btn btn-success'>เปลี่ยนรหัสผ่าน</a>";
+			โดย AUN-HPN [team]<br><br>
+			<hr><a href='https://info-Aun-hpn.com/forget-password/reset_password.php?token=$dbtoken' class='btn btn-success'>เปลี่ยนรหัสผ่าน</a>";
 
 
 			require_once "../PHPMailer/PHPMailer.php";
@@ -38,7 +38,7 @@ if (isset($_POST['uemail'])) {
 			$mail->Mailer = "smtp";
 			$mail->SMTPAuth = true;
 			$mail->Username = "aunhpn.mahidol@gmail.com"; // enter your email address
-			$mail->Password = "f6e64gq6"; // enter your password
+			$mail->Password = "@F6e64gq6"; // enter your password
 			$mail->Port = 587;
 			$mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
 			$mail->SMTPAutoTLS = false;
@@ -53,16 +53,15 @@ if (isset($_POST['uemail'])) {
 				'verify_peer_name' => false,
 				'allow_self_signed' => false
 			));
-
 			if ($mail->send()) {
-				echo "<label class='col-12 alert bg-success text-white'>กรุณาตรวจสอบอีเมลล์ของคุณ</label>";
+				$_SESSION["successMsg"] = "กรุณาตรวจสอบอีเมลล์ของคุณ";
 			} else {
 				echo "Mailer Error: " . $mail->ErrorInfo;
 			}
 		} else {
-			echo "<label class='col-12 alert bg-danger text-white'>คุณใส่อีเมลล์ไม่ถูกต้อง</label>";
+			$_SESSION["errorMsg"] = "คุณใส่อีเมลล์ไม่ถูกต้อง";
 		}
 	} else {
-		echo "<label class='col-12 alert bg-danger text-white'>ไม่มีอีเมลล์นี้ในระบบ</label>";
+		$_SESSION["errorMsg"] = "ไม่มีอีเมลล์นี้ในระบบ";
 	}
 }

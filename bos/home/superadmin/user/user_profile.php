@@ -27,8 +27,7 @@ include "../../../bos/function/function.php"
                         <!-- <div class="container"> -->
                         <p class="text-center">รูปประจำตัว</p>
                         <div class="profile-name">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png"
-                                id="photo" alt="..." class="img-circle profile-img">
+                            <img src="../../uploads/profile/no_img.png" id="profile_pic"  class="img-circle profile-img">
 
                             <div class="middle">
                                 <label for="p_file" class="text" id="uploadBtn">เลือกรูปภาพ</label>
@@ -96,8 +95,7 @@ include "../../../bos/function/function.php"
                                         </a>
                                     </div>
                                     <div class="col-8">
-                                        <button class="btn btn-primary w-100" type="submit"
-                                            name="submit">อัพเดตข้อมูล</button>
+                                        <button class="btn btn-primary w-100" type="submit" name="submit">อัพเดตข้อมูล</button>
                                     </div>
                                 </div>
                             </div>
