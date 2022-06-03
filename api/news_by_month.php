@@ -9,7 +9,7 @@ include "../database/connect.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    $select_stmt = $conn->prepare("SELECT (n_date) FROM tbl_news WHERE n_status = '1'  GROUP BY n_date ");
+    $select_stmt = $conn->prepare("SELECT (n_date) FROM tbl_news WHERE n_status = '1'  GROUP BY n_date ORDER n_date By DESC ");
     $select_stmt->execute();
 
     $response = array();

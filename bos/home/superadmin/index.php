@@ -1,8 +1,8 @@
-<?php include "./include/header.php"; ?>
+<?php include "../../include/superadmin_header.php"; ?>
 
 <body id="page-top">
     <div id="wrapper">
-        <?php include "./include/navbar.php"; ?>
+        <?php include "../../include/navbar.php"; ?>
         <div id="content-wrapper" class="d-flex flex-column">
 
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -10,7 +10,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <ul class="navbar-nav ml-auto">
-                    <?php include "./include/topbar.php"; ?>
+                    <?php include "../../include/topbar.php"; ?>
                 </ul>
             </nav>
             <div class="container-fluid">
@@ -19,8 +19,8 @@
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> ออกรายงาน Excel</a>
                 </div>
                 <?php include "./dashboard/dashboard.php" ?>
-                <?php include "./include/footer.php"; ?>
-                <?php include "./include/script.php"; ?>
+                <?php include "../../include/footer.php"; ?>
+                <?php include "../../include/script.php"; ?>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <?php
-include "./include/header.php";
+include "../../include/superadmin_header.php";
 include "../../database/connect.php";
 
 // checking user logged or not
@@ -10,7 +10,7 @@ if (empty($_SESSION['user'])) {
 
 <body id="page-top">
     <div id="wrapper">
-        <?php include "./include/navbar.php"; ?>
+        <?php include "../../include/navbar.php"; ?>
         <div id="content-wrapper" class="d-flex flex-column">
 
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -18,13 +18,13 @@ if (empty($_SESSION['user'])) {
                     <i class="fa fa-bars"></i>
                 </button>
                 <ul class="navbar-nav ml-auto">
-                    <?php include "./include/topbar.php"; ?>
+                    <?php include "../../include/topbar.php"; ?>
                 </ul>
             </nav>
             <div class="container-fluid">
                 <?php include "./file/file_group_manager.php" ?>
-                <?php include "./include/footer.php"; ?>
-                <?php include "./include/script.php"; ?>
+                <?php include "../../include/footer.php"; ?>
+                <?php include "../../include/script.php"; ?>
             </div>
         </div>
     </div>
@@ -40,10 +40,12 @@ if (empty($_SESSION['user'])) {
                 data: {},
             }).done(function(data) {
                 let tableData = []
+                let n = 1
                 data = data.result;
                 for (var i = 0; i < data.length; i++) {
                     tableData.push([
-                        `<a href="https://www.aun-hpn.or.th/single_news.php?id=${data[i].id}" target="_blank" class="btn btn-outline-primary p-1"> ${data[i].id} </a>`,
+
+                        `${n++}`,
                         `${data[i].name}`,
 
                         `<div class="btn-group" role="group">
@@ -71,6 +73,9 @@ if (empty($_SESSION['user'])) {
             function initDataTables(tableData) { // สร้าง datatable
                 $('#file_g').DataTable({
                     data: tableData,
+                    order: [
+                        ['0', 'desc']
+                    ],
                     columns: [{
                             title: "ลำดับที่",
                             className: "align-middle",
