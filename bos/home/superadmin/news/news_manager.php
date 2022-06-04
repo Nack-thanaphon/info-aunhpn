@@ -15,7 +15,7 @@ include "../../../bos/function/function.php"
                         </h4>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
-                        <button class="btn bg-success text-white " data-toggle="modal" data-target="#adnews">
+                        <button class="btn bg-primary text-white " data-toggle="modal" data-target="#adnews">
                             <i class="fas fa-plus"></i>
                             เพิ่มข่าวสาร
                         </button>

@@ -30,10 +30,15 @@ html {
     box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
 }
 
-.panel-default>.panel-heading {
+.panel-heading {
     color:var(--forth);
-    background-color: var(--secound);
+    background-color:var(--secound);
     border-color: #dddddd;
+}
+
+
+.panel-body{
+    background-color: #E12350 !important;
 }
 
 .panel-body h1 {

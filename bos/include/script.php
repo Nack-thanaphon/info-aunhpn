@@ -19,7 +19,7 @@
 <script src="../../plugins/fullcalendar/fullcalendar.min.js"></script>
 
 <!-- Page level plugins -->
-<!-- <script src="./assets/vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
+<script src="../../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="../../assets/vendor/datatables/jquery.dataTables.min.js"></script>
 
 <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>

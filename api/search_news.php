@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $month = $_POST['month'];
 
-    $query = "SELECT * FROM tbl_news WHERE `n_name` LIKE '%$month%' ";
+    $query = "SELECT * FROM tbl_news WHERE `n_date` LIKE '%$month%' ";
     $stmt = $conn->prepare($query);
     $stmt->execute();
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
